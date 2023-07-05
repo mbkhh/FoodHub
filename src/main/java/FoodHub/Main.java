@@ -1,5 +1,6 @@
 package FoodHub;
 
+import FoodHub.Base.*;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -15,6 +16,8 @@ public class Main extends Application {
         stage.setTitle("Hello!");
         stage.setScene(scene);
         stage.show();
+        FoodHub.Base.Main.sql=new Sql();
+
     }
 
     public static void main(String[] args) {
