@@ -106,7 +106,7 @@ public class User {
 
         else return false;
     }
-    static User getUserById(int id) {
+    public static User getUserById(int id) {
         User ans = Main.sql.getUser(id);
         return ans;
     }

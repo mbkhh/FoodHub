@@ -1,6 +1,7 @@
 package FoodHub;
 
 import FoodHub.Base.*;
+import FoodHub.Control.CartController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -9,15 +10,20 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 public class Main extends Application {
+    public static Stage primaryStage;
+    public static final int primaryWidth = 1000;
+    public static final int primaryHeight = 700;
     @Override
     public void start(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("hello-view.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 320, 240);
-        stage.setTitle("Hello!");
-        stage.setScene(scene);
-        stage.show();
+        primaryStage = stage;
+//        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("hello-view.fxml"));
+//        Scene scene = new Scene(fxmlLoader.load(), 320, 240);
+//        stage.setTitle("Hello!");
+//        stage.setScene(scene);
+//        stage.show();
         FoodHub.Base.Main.sql=new Sql();
-
+        User.currentUser = User.getUserById(1);
+        CartController.show();
     }
 
     public static void main(String[] args) {
