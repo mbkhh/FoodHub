@@ -7,12 +7,12 @@
 
 <HBox prefHeight="100.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/" xmlns:fx="http://javafx.com/fxml/1" fx:controller="FoodHub.Control.CartRow">
     <children>
-        <Label fx:id="nameLBL" prefWidth="180.0" styleClass="TableLable" text="Kebab" />
+        <Label fx:id="nameLBL" prefWidth="210.0" styleClass="TableLable" text="Kebab" />
         <Label fx:id="costLBL" prefWidth="80.0" styleClass="TableLable" text="100" />
         <Label fx:id="discountLBL" prefWidth="120.0" styleClass="TableLable" text="10" />
         <Label fx:id="countLBL" prefWidth="100.0" styleClass="TableLable" text="2" />
         <Label fx:id="totalLBL" prefWidth="100.0" styleClass="TableLable" text="180" />
-        <Button mnemonicParsing="false" styleClass="TableButton" text="Remove" />
+        <Button mnemonicParsing="false" onAction="#remove" styleClass="TableButton" text="Remove" />
     </children>
     <padding>
         <Insets left="10.0" top="28.0" />

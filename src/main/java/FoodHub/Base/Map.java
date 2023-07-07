@@ -25,7 +25,7 @@ public class Map {
             e.printStackTrace();
         }
     }
-    static Vertex findPath(int node1, int node2) {
+    public static Vertex findPath(int node1, int node2) {
         ArrayList<Branch> all = Main.sql.getAllBranch();
         //System.out.println("search start!");
         ArrayList<Integer> indexed = new ArrayList<Integer>();

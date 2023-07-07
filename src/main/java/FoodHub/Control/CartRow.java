@@ -2,9 +2,16 @@ package FoodHub.Control;
 
 import javafx.scene.control.Label;
 
+import java.io.IOException;
+
 public class CartRow {
     public Label nameLBL,costLBL,countLBL,discountLBL,totalLBL;
     int cartId;
+
+    public void remove()
+    {
+        CartController.cartController.remove(cartId);
+    }
     public void setData(int id, String name , String cost, String discount, String count, String total)
     {
         setNameLBL(name);

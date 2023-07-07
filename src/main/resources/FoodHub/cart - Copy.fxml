@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.gluonhq.charm.glisten.control.TextField?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TextArea?>
-<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
@@ -15,29 +15,29 @@
       <HBox style="-fx-background-color: yellow;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
             <ScrollPane prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS">
-               <content>
-                  <AnchorPane minHeight="0.0" minWidth="0.0">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0">
                      <children>
                         <VBox fx:id="foodMenu" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                           <children>
-                              <HBox fx:id="cartTitleRow" prefHeight="100.0">
-                                 <children>
-                                    <Label prefWidth="210.0" styleClass="TableTitleLable" text="Name" />
-                                    <Label prefWidth="80.0" styleClass="TableTitleLable" text="Cost" />
-                                    <Label prefWidth="120.0" styleClass="TableTitleLable" text="Discount" />
-                                    <Label prefWidth="100.0" styleClass="TableTitleLable" text="Count" />
-                                    <Label prefWidth="100.0" styleClass="TableTitleLable" text="Total" />
-                                    <Label prefWidth="50.0" styleClass="TableTitleLable" text="   #" />
-                                 </children>
-                                 <padding>
-                                    <Insets left="10.0" top="28.0" />
-                                 </padding>
-                              </HBox>
-                           </children>
+                               <children>
+                                  <HBox prefHeight="100.0">
+                                     <children>
+                                        <Label prefWidth="210.0" styleClass="TableTitleLable" text="Name" />
+                                        <Label prefWidth="80.0" styleClass="TableTitleLable" text="Cost" />
+                                        <Label prefWidth="120.0" styleClass="TableTitleLable" text="Discount" />
+                                        <Label prefWidth="100.0" styleClass="TableTitleLable" text="Count" />
+                                        <Label prefWidth="100.0" styleClass="TableTitleLable" text="Total" />
+                                        <Label prefWidth="50.0" styleClass="TableTitleLable" text="   #" />
+                                     </children>
+                                     <padding>
+                                        <Insets left="10.0" top="28.0" />
+                                     </padding>
+                                  </HBox>
+                               </children>
                         </VBox>
                      </children>
                   </AnchorPane>
-               </content>
+              </content>
             </ScrollPane>
             <VBox prefHeight="200.0" prefWidth="300.0" spacing="20.0" style="-fx-background-color: #bbb;">
                <children>
@@ -52,7 +52,7 @@
                   <HBox prefHeight="100.0" prefWidth="200.0" spacing="20.0">
                      <children>
                         <Button fx:id="backBTN" mnemonicParsing="false" prefWidth="120.0" style="-fx-font-size: 23;" styleClass="TableButton" text="Back" />
-                        <Button fx:id="confirmBTN" mnemonicParsing="false" onAction="#confirm" prefWidth="120.0" style="-fx-font-size: 23;" styleClass="TableButton" text="Confirm" />
+                        <Button fx:id="confirmBTN" mnemonicParsing="false" prefWidth="120.0" style="-fx-font-size: 23;" styleClass="TableButton" text="Confirm" />
                      </children>
                      <padding>
                         <Insets left="10.0" top="10.0" />

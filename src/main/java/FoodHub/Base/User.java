@@ -187,7 +187,7 @@ public class User {
       
     }
 
-    static void reductionBalance(int reduction)
+    public static void reductionBalance(int reduction)
     {
         User.currentUser.balance -= reduction;
         Main.sql.updateUserBalance(currentUser.id, reduction);

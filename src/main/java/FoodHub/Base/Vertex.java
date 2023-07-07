@@ -1,6 +1,6 @@
 package FoodHub.Base;
 public class Vertex {
-    int pathLength;
+    public int pathLength;
     int nodeCount;
     int[] nodes;
     int nodeName;
@@ -20,7 +20,7 @@ public class Vertex {
         nodes[0] = node;
         nodeName = node;
     }
-    String getPath() {
+    public String getPath() {
         String ans = "";
         for (int i = 0; i < nodes.length; i++) {
             ans += nodes[i] + " - ";
