@@ -298,7 +298,7 @@ public class Sql {
         ArrayList<Order> ans = new ArrayList<Order>();
         try {
             Statement stm = connection.createStatement();
-            ResultSet rs = stm.executeQuery( "SELECT * FROM `Order` WHERE `userId` ="+userId+" ;" );
+            ResultSet rs = stm.executeQuery( "SELECT * FROM `Order` WHERE `userId` ="+userId+" ORDER BY `id` DESC ;" );
             while ( rs.next() ) {
                 int id = rs.getInt("id");
                 int restaurantId = rs.getInt("restaurantId");

@@ -12,7 +12,7 @@
         <Label fx:id="discountLBL" prefWidth="120.0" styleClass="TableLable" text="10" />
         <Label fx:id="countLBL" prefWidth="100.0" styleClass="TableLable" text="2" />
         <Label fx:id="totalLBL" prefWidth="100.0" styleClass="TableLable" text="180" />
-        <Button mnemonicParsing="false" onAction="#remove" styleClass="TableButton" text="Remove" />
+        <Button fx:id="removeBTN" mnemonicParsing="false" onAction="#remove" styleClass="TableButton" text="Remove" />
     </children>
     <padding>
         <Insets left="10.0" top="28.0" />

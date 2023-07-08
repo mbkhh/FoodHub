@@ -2,6 +2,13 @@
     -fx-font-size: 23;
     -fx-font-weight: bold;
 }
+.Title{
+    -fx-font-size: 53;
+    -fx-font-family: Gabriola;
+}
+.OrderInfoLable{
+    -fx-font-size: 22;
+}
 .CartDataLable{
     -fx-font-size: 20;
     -fx-font-weight: bold;

@@ -26,7 +26,7 @@ public class CartController {
     {
          FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("cart.fxml"));
          Scene scene = new Scene(fxmlLoader.load(), Main.primaryWidth, Main.primaryHeight);
-         Main.primaryStage.setTitle("Hello!");
+         Main.primaryStage.setTitle("Cart");
          Main.primaryStage.setScene(scene);
          Main.primaryStage.show();
     }
@@ -35,7 +35,6 @@ public class CartController {
     public void initialize() throws IOException
     {
         cartController = this;
-        System.out.println("sdd");
         int price = 0;
         int discount = 0;
         int totalprice=0;
@@ -68,8 +67,6 @@ public class CartController {
     }
     public void confirm()
     {
-        System.out.println("fu");
-
         ArrayList<Cart> te = FoodHub.Base.Main.sql.getCart(User.currentUser.id, 0) ;
         if(te.size() == 0){
             Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -124,6 +121,10 @@ public class CartController {
                 Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
                 alert.setContentText("Order with id "+lastId + " added successfully.");
                 alert.show();
+                alert.setOnCloseRequest(e->{
+                    try {OrderController.show(); }
+                    catch (Exception es){ System.out.println("Error at opening order list : "+es.getMessage()); }
+                });
             }
         }
     }
@@ -134,7 +135,6 @@ public class CartController {
     }
     public void reload()
     {
-        System.out.println("fu");
         System.out.println(foodMenu.getChildren());
         for (int i = foodMenu.getChildren().size()-1; i >=0 ; i--) {
             if(!foodMenu.getChildren().get(i).getId().equals("cartTitleRow"))

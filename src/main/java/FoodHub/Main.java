@@ -2,6 +2,7 @@ package FoodHub;
 
 import FoodHub.Base.*;
 import FoodHub.Control.CartController;
+import FoodHub.Control.OrderController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -23,7 +24,8 @@ public class Main extends Application {
 //        stage.show();
         FoodHub.Base.Main.sql=new Sql();
         User.currentUser = User.getUserById(1);
-        CartController.show();
+        //CartController.show();
+        OrderController.show();
     }
 
     public static void main(String[] args) {

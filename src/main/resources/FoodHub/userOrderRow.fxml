@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.HBox?>
+
+<?import javafx.geometry.Insets?>
+<HBox prefHeight="100.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/" xmlns:fx="http://javafx.com/fxml/1" fx:controller="FoodHub.Control.UserOrderRow">
+    <children>
+        <Label fx:id="idLBL" alignment="CENTER" prefWidth="55.0" styleClass="TableLable" text="78" />
+        <Label fx:id="addTimeLBL" alignment="CENTER" prefWidth="220.0" styleClass="TableLable" text="2000/12/25 23:55:55" />
+        <Label fx:id="discountLBL" alignment="CENTER" prefWidth="130.0" styleClass="TableLable" text="10000" />
+        <Label fx:id="totalLBL" alignment="CENTER" prefWidth="160.0" styleClass="TableLable" text="1000000" />
+        <Label fx:id="statusLBL" alignment="CENTER" prefWidth="120.0" styleClass="TableLable" text="Accepted" />
+        <Label fx:id="estimatedLBL" alignment="CENTER" prefWidth="200.0" styleClass="TableLable" text="53:25" />
+        <Button mnemonicParsing="false" onAction="#show" styleClass="TableButton" text="Show Details" />
+    </children>
+    <padding>
+        <Insets left="10.0" top="28.0" />
+    </padding>
+</HBox>
