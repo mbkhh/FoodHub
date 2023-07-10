@@ -105,6 +105,52 @@ public class Sql {
             System.out.println("Could not Insert data to database : InsertToCart : "+e.getMessage());
         }
     }
+    public void InsertToNode(int node ,int x ,int y) {
+        try {
+            Statement stm = connection.createStatement();
+            stm.executeUpdate( "Insert INTO Node (node , x , y ) VALUES ('"+node+"' , '"+x+"' , '"+y+"' );" );
+            stm.close();
+        } catch (SQLException e) {
+            System.out.println("Could not Insert data to database : InsertToCart : "+e.getMessage());
+        }
+    }
+    public int[] getNodeXY(int node) {
+        int ans[] = {0, 0};
+        try {
+            Statement stm = connection.createStatement();
+            ResultSet rs = stm.executeQuery( "SELECT * FROM Node Where `node`="+node+" ;" );
+            while ( rs.next() ) {
+                ans[0] = rs.getInt("x");
+                ans[1] = rs.getInt("y");
+            }
+            rs.close();
+            stm.close();
+            return ans;
+        } catch (SQLException e) {
+            System.out.println("Could not select data from database : getNodeXY : "+e.getMessage());
+            return ans;
+        }
+    }
+    public ArrayList<int[]> getAllNodes() {
+        ArrayList<int[]> a = new ArrayList<>();
+        try {
+            Statement stm = connection.createStatement();
+            ResultSet rs = stm.executeQuery( "SELECT * FROM Node;" );
+            while ( rs.next() ) {
+                int ans[] = {0, 0 , 0};
+                ans[0] = rs.getInt("node");
+                ans[1] = rs.getInt("x");
+                ans[2] = rs.getInt("y");
+                a.add(ans);
+            }
+            rs.close();
+            stm.close();
+            return a;
+        } catch (SQLException e) {
+            System.out.println("Could not select data from database : getNodeXY : "+e.getMessage());
+            return a;
+        }
+    }
     public void deleteMap() {
         try {
             Statement stm = connection.createStatement();

@@ -1,6 +1,7 @@
 package FoodHub.Control;
 
 import FoodHub.Base.Cart;
+import FoodHub.Base.Map;
 import FoodHub.Base.Order;
 import FoodHub.Base.User;
 import FoodHub.Main;
@@ -65,6 +66,12 @@ public class SingleOrderController {
         Main.primaryStage.setTitle("Order "+id);
         Main.primaryStage.setScene(scene);
         Main.primaryStage.show();
+    }
+    public  void showMap() throws IOException
+    {
+        ArrayList<Order> te = FoodHub.Base.Main.sql.getAllOrderById(id ,User.currentUser.id);
+        MapController.show("UserSingle",id);
+        MapController.mapController.markPath(te.get(0).path);
     }
     public void back() throws IOException
     {

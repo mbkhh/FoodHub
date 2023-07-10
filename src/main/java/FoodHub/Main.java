@@ -2,6 +2,7 @@ package FoodHub;
 
 import FoodHub.Base.*;
 import FoodHub.Control.CartController;
+import FoodHub.Control.MapController;
 import FoodHub.Control.OrderController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -26,6 +27,9 @@ public class Main extends Application {
         User.currentUser = User.getUserById(1);
         //CartController.show();
         OrderController.show();
+//        MapController.show();
+//        MapController.mapController.markPath("1 - 2 - 6 - 7 - 8 - 9 - 11 - ");
+//        MapController.mapController.markPath("1 - 3 - 4 - 5 - ");
     }
 
     public static void main(String[] args) {

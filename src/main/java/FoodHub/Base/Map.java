@@ -9,7 +9,7 @@ public class Map {
     static void InsertMapFromFile() {
         try {
             Main.sql.deleteMap();
-            File myObj = new File("graph.txt");
+            File myObj = new File("graph2.txt");
             Scanner myReader = new Scanner(myObj);
             String data = myReader.nextLine();
             while (myReader.hasNextLine()) {

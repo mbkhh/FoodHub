@@ -48,7 +48,7 @@
                                     <Insets left="15.0" top="25.0" />
                                  </padding>
                               </HBox>
-                              <HBox prefWidth="200.0">
+                              <HBox prefWidth="200.0" spacing="100.0">
                                  <children>
                                     <Label fx:id="discriptionLBL" styleClass="OrderInfoLable" text="Status: Registered" />
                                  </children>
@@ -56,8 +56,9 @@
                                     <Insets left="15.0" top="25.0" />
                                  </padding>
                               </HBox>
-                              <HBox prefHeight="100.0" prefWidth="200.0">
+                              <HBox prefHeight="100.0" spacing="30.0">
                                  <children>
+                                    <Button mnemonicParsing="false" prefHeight="27.0" prefWidth="129.0"  onAction="#showMap" styleClass="TableButton" text="Show Path in Map" />
                                     <Label fx:id="addressLBL" styleClass="OrderInfoLable" text="Path: 85-58-52-52-28-55-55-25-5-996-52-888-521-533" />
                                  </children>
                                  <padding>
