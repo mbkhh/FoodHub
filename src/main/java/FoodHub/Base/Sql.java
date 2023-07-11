@@ -6,67 +6,11 @@ public class Sql {
     public Sql() {
         try {
             Class.forName("org.sqlite.JDBC");
-            //connection = DriverManager.getConnection("jdbc:sqlite:D:\\Desktop\\Programing\\Snap-Food\\Databases\\test.db");
-            connection = DriverManager.getConnection("jdbc:sqlite:src\\main\\resources\\FoodHub\\Databases\\test.db");
+            connection = DriverManager.getConnection("jdbc:sqlite:D:\\Desktop\\Programing\\Snap-Food\\Databases\\test.db");
+//            connection = DriverManager.getConnection("jdbc:sqlite:Databases\\test.db");
 //            connection.setAutoCommit(false);
         } catch (Exception e) {
             System.out.println("Database connection error : " + e.getMessage());
-        }
-    }
-    void Select_test() {
-        try {
-            Statement stm = connection.createStatement();
-            ResultSet rs = stm.executeQuery( "SELECT * FROM User;" );
-            while ( rs.next() ) {
-                int id = rs.getInt("id");
-                String  username = rs.getString("username");
-                String  password = rs.getString("password");
-                String  name = rs.getString("name");
-                String  securityQuestion = rs.getString("securityQuestion");
-                String  securityAnswer = rs.getString("securityAnswer");
-                int  type = rs.getInt("type");
-
-                System.out.println( "ID = " + id );
-                System.out.println( "USERNAME = " + username );
-                System.out.println( "PASSWORD = " + password );
-                System.out.println( "NAME = " + name );
-                System.out.println( "securityQuestion = " + securityQuestion );
-                System.out.println( "securityAnswer = " + securityAnswer );
-                System.out.println( "type = " + type );
-
-                System.out.println();
-            }
-            rs.close();
-            stm.close();
-        } catch (SQLException e) {
-            System.out.println("Could not select data from database : Select_test : "+e.getMessage());
-        }
-    }
-    void Insert_test(String name , String fullname) {
-        try {
-            Statement stm = connection.createStatement();
-            stm.executeUpdate( "Insert INTO User (name , fullname) VALUES ('"+name+"' , '"+fullname+"');" );
-            stm.close();
-        } catch (SQLException e) {
-            System.out.println("Could not Insert data to database : Insert_test : "+e.getMessage());
-        }
-    }
-    void Update_test(int ID , String name , String fullname) {
-        try {
-            Statement stm = connection.createStatement();
-            stm.executeUpdate( "UPDATE User SET `name`='"+name+"' , `fullname`='"+fullname+"' WHERE `ID` = "+ID+";" );
-            stm.close();
-        } catch (SQLException e) {
-            System.out.println("Could not update data to database : update test : "+e.getMessage());
-        }
-    }
-    void delete_test(int ID ) {
-        try {
-            Statement stm = connection.createStatement();
-            stm.executeUpdate( "DELETE FROM User  WHERE `ID` = "+ID+";" );
-            stm.close();
-        } catch (SQLException e) {
-            System.out.println("Could not delete data to database : delete test : "+e.getMessage());
         }
     }
     /**
@@ -276,7 +220,7 @@ public class Sql {
             return ans;
         }
     }
-    public void InsertToOrder(int userId, int restaurantId, int deliveryId, String path, int pathLength,int estimatedTime, Long addTime, int totalprice, int totalDiscount, OrderStatus status, String discription) {
+    public void InsertToOrder(int userId, int restaurantId, int deliveryId, String path, int pathLength, int estimatedTime, Long addTime, int totalprice, int totalDiscount, OrderStatus status, String discription) {
         try {
             Statement stm =  connection.createStatement();
             stm.executeUpdate( "Insert INTO `Order` (userId ,restaurantId ,deliveryId,path , pathLength ,estimatedTotalTime ,addTime ,totalPrice ,totalDiscount ,status ,discription) VALUES ('"+userId+"' ,'"+restaurantId+"' ,'"+deliveryId+"','"+path+"' , '"+pathLength+"' ,'"+estimatedTime+"' ,'"+addTime+"' ,'"+totalprice+"' ,'"+totalDiscount+"' ,'"+status+"' ,'"+discription+"');" );
@@ -322,7 +266,7 @@ public class Sql {
             return ans;
         }
     }
-    public ArrayList<DiscountCode> getDiscountCodeOfUser(int userId,String code) {
+    public ArrayList<DiscountCode> getDiscountCodeOfUser(int userId, String code) {
         ArrayList<DiscountCode> ans = new ArrayList<DiscountCode>();
         try {
             Statement stm = connection.createStatement();
@@ -344,7 +288,7 @@ public class Sql {
         ArrayList<Order> ans = new ArrayList<Order>();
         try {
             Statement stm = connection.createStatement();
-            ResultSet rs = stm.executeQuery( "SELECT * FROM `Order` WHERE `userId` ="+userId+" ORDER BY `id` DESC ;" );
+            ResultSet rs = stm.executeQuery( "SELECT * FROM `Order` WHERE `userId` ="+userId+" ;" );
             while ( rs.next() ) {
                 int id = rs.getInt("id");
                 int restaurantId = rs.getInt("restaurantId");
@@ -454,7 +398,7 @@ public class Sql {
             return ans;
         }
     }
-    public ArrayList<Order> getOrderByIdAndDelivery(int orderId,int deliveryId) {
+    public ArrayList<Order> getOrderByIdAndDelivery(int orderId, int deliveryId) {
         ArrayList<Order> ans = new ArrayList<Order>();
         try {
             Statement stm = connection.createStatement();
@@ -763,37 +707,55 @@ public class Sql {
      * *
      **/
 
-    public void insertToRestaurant(int ownerId, String name, String type, int postCost) {
+    public void insertToRestaurant(int ownerId, String name, String foodType, int postCost) {
         try {
             Statement statement = connection.createStatement();
-            statement.executeUpdate("Insert INTO Restaurant (ownerId, name, type, postCost) VALUES ('" + ownerId + "', '" + name + "', '" + type + "', '" + postCost + "');");
+            statement.executeUpdate("Insert INTO Restaurant (ownerId, name, foodType, postCost) VALUES ('" + ownerId + "', '" + name + "', '" + foodType + "', '" + postCost + "');");
             statement.close();
         } catch (SQLException e) {
             System.out.println("Could not Insert data to database : insertToRestaurant : " + e.getMessage());
         }
     }
-    public void insertToFood(int restaurantId, String name, int price, String type, int discountPercent, long discountTime, String isActive) {
+    public void insertToFood(int restaurantId, String name, int price, String foodType, int discountPercent, long discountTime, String isActive) {
         try {
             Statement statement = connection.createStatement();
-            statement.executeUpdate("Insert INTO Food (restaurantId, name, price, type, discountPercent, discountTime, isActive) VALUES (" + restaurantId + ", '" + name + "', " + price + ", '" + type + "', " + discountPercent + ", " + discountTime + ", '" + isActive + "');");
+            statement.executeUpdate("Insert INTO Food (restaurantId, name, price, foodType, discountPercent, discountTime, isActive) VALUES (" + restaurantId + ", '" + name + "', " + price + ", '" + foodType + "', " + discountPercent + ", " + discountTime + ", '" + isActive + "');");
             statement.close();
         } catch (SQLException e) {
             System.out.println("Could not Insert data to database : insertToRestaurant : " + e.getMessage());
         }
     }
-    public void editRestaurant(int id, int ownerId, String name,  String type, int postCost) {
+    public void insertToComment(int restaurantId, int foodId, int userId, String comment, int rate, int replyId, long addingTime) {
         try {
             Statement statement = connection.createStatement();
-            statement.executeUpdate( "UPDATE Reastaurant SET ownerId = " + ownerId + ", name = '" + name + "', type = '" + type + "', postCost = " + postCost + " WHERE id = " + id + ";" );
+            statement.executeUpdate("Insert INTO Comment (restaurantId, foodId, userId, comment, rate, replyId, addingTime) VALUES (" + restaurantId + ", '" + foodId + "', " + userId + ", '" + comment + "', " + rate + ", " + replyId + ", '" + addingTime + "');");
+            statement.close();
+        } catch (SQLException e) {
+            System.out.println("Could not Insert data to database : insertToRestaurant : " + e.getMessage());
+        }
+    }
+    public void editRestaurant(int id, int ownerId, String name,  String foodType, int postCost) {
+        try {
+            Statement statement = connection.createStatement();
+            statement.executeUpdate( "UPDATE Reastaurant SET ownerId = " + ownerId + ", name = '" + name + "', foodType = '" + foodType + "', postCost = " + postCost + " WHERE id = " + id + ";" );
             statement.close();
         } catch (SQLException e) {
             System.out.println("Could not update data to database : editRestaurant : " + e.getMessage());
         }
     }
-    public void editFood(int id, int restaurantId, String name, int price, String type, int discountPercent, long discountTime, String isActive) {
+    public void editFood(int id, int restaurantId, String name, int price, String foodType, int discountPercent, long discountTime, String isActive) {
         try {
             Statement statement = connection.createStatement();
-            statement.executeUpdate( "UPDATE Food SET restaurantId = " + restaurantId + ", name = '" + name + "', price = " + price + " type = '" + type + "', discountPercent = " + discountPercent + ", discountTime = " + discountTime + ", isActive = '" + isActive + "' WHERE id = " + id + ";" );
+            statement.executeUpdate( "UPDATE Food SET restaurantId = " + restaurantId + ", name = '" + name + "', price = " + price + ", foodType = '" + foodType + "', discountPercent = " + discountPercent + ", discountTime = " + discountTime + ", isActive = '" + isActive + "' WHERE id = " + id + ";" );
+            statement.close();
+        } catch (SQLException e) {
+            System.out.println("Could not update data to database : editRestaurant : " + e.getMessage());
+        }
+    }
+    public void editComment(int id, String comment, int rate, long addingTime) {
+        try {
+            Statement statement = connection.createStatement();
+            statement.executeUpdate( "UPDATE Food SET comment = '" + comment + "', rate = " + rate + ", addingTime = " + addingTime + " WHERE id = " + id + ";" );
             statement.close();
         } catch (SQLException e) {
             System.out.println("Could not update data to database : editRestaurant : " + e.getMessage());
@@ -817,12 +779,23 @@ public class Sql {
             System.out.println("Could not delete data to database : deleteFromRestaurant : " + e.getMessage());
         }
     }
-    public ArrayList<Restaurant> getRestaurant(int idKey, String whichId, boolean isForAll) {
+    public void deleteFromComment(int idKey, String witchId) {
+        try {
+            Statement statement = connection.createStatement();
+            statement.executeUpdate( "DELETE FROM Comment WHERE " + witchId + " = " + idKey + ";" );
+            statement.close();
+        } catch (SQLException e) {
+            System.out.println("Could not delete data to database : deleteFromRestaurant : " + e.getMessage());
+        }
+    }
+    public ArrayList<Restaurant> getRestaurant(int idKey, String whichId, boolean isForAll, String like) {
         ArrayList<Restaurant> restaurants = new ArrayList<>();
         try {
             Statement statement = connection.createStatement();
             ResultSet resultSet;
-            if (!isForAll)
+            if (!like.equals(""))
+                resultSet = statement.executeQuery("SELECT * FROM Restaurant WHERE name LIKE '%" + like + "%' OR foodType LIKE '%" + like + "%';");
+            else if (!isForAll)
                 resultSet = statement.executeQuery("SELECT * FROM Restaurant Where " + whichId + " = " + idKey + " ORDER BY name, id;");
             else
                 resultSet = statement.executeQuery("SELECT * FROM Restaurant ORDER BY name, id;");
@@ -830,9 +803,9 @@ public class Sql {
                 int id = resultSet.getInt("id");
                 String name = resultSet.getString("name");
                 User owner = User.getUserById(resultSet.getInt("ownerId"));
-                ArrayList<FoodType> types = Functions.stringToEnum(resultSet.getString("type"));
+                ArrayList<FoodType> foodTypes = Functions.stringToEnum(resultSet.getString("foodType"));
                 int postCost = resultSet.getInt("postCost");
-                restaurants.add(new Restaurant(id, owner, name, types, postCost));
+                restaurants.add(new Restaurant(id, owner, name, foodTypes, postCost));
             }
             resultSet.close();
             statement.close();
@@ -842,25 +815,31 @@ public class Sql {
             return restaurants;
         }
     }
-    public ArrayList<Food> getFood(int idKey, String whichId, boolean isForAll) {
+    public ArrayList<Food> getFood(int idKey, String whichId, boolean isForAll, String like) {
         ArrayList<Food> foods = new ArrayList<>();
         try {
             Statement statement = connection.createStatement();
             ResultSet resultSet;
-            if (!isForAll)
-                resultSet = statement.executeQuery("SELECT * FROM Food Where " + whichId + " = " + idKey + " ORDER BY type, name, id;");
+            if (!like.equals("")) {
+                if (isForAll)
+                    resultSet = statement.executeQuery("SELECT * FROM Food WHERE name LIKE '%" + like + "%' OR foodType LIKE '%" + like + "%';");
+                else
+                    resultSet = statement.executeQuery("SELECT * FROM Food WHERE " + whichId + " = " + idKey + " AND (name LIKE '%" + like + "%' OR foodType LIKE '%" + like + "%');");
+            }
+            else if (!isForAll)
+                resultSet = statement.executeQuery("SELECT * FROM Food Where " + whichId + " = " + idKey + " ORDER BY foodType, name, id;");
             else
-                resultSet = statement.executeQuery("SELECT * FROM Food ORDER BY type, name, id;");
+                resultSet = statement.executeQuery("SELECT * FROM Food ORDER BY foodType, name, id;");
             while (resultSet.next()) {
                 int id = resultSet.getInt("id");
                 int restaurantId = resultSet.getInt("restaurantId");
                 String name = resultSet.getString("name");
                 int price = resultSet.getInt("price");
-                String type = resultSet.getString("type");
+                String foodType = resultSet.getString("foodType");
                 int discountPercent = resultSet.getInt("discountPercent");
                 long discountTime = resultSet.getLong("discountTime");
                 String isActive = resultSet.getString("isActive");
-                foods.add(new Food(id, restaurantId, name, price, type, discountPercent, discountTime, isActive));
+                foods.add(new Food(id, restaurantId, name, price, foodType, discountPercent, discountTime, isActive));
             }
             resultSet.close();
             statement.close();
@@ -868,6 +847,34 @@ public class Sql {
         } catch (SQLException e) {
             System.out.println("Could not select data from database : getRestaurant : " + e.getMessage());
             return foods;
+        }
+    }
+    public ArrayList<Comment> getComment(int idKey, String whichId, boolean isForAll) {
+        ArrayList<Comment> comments = new ArrayList<>();
+        try {
+            Statement statement = connection.createStatement();
+            ResultSet resultSet;
+            if (!isForAll)
+                resultSet = statement.executeQuery("SELECT * FROM Comment Where " + whichId + " = " + idKey + " ORDER BY replyId, id;");
+            else
+                resultSet = statement.executeQuery("SELECT * FROM Comment ORDER BY replyId, id;");
+            while (resultSet.next()) {
+                int id = resultSet.getInt("id");
+                int userId = resultSet.getInt("userId");
+                int restaurantId = resultSet.getInt("restaurantId");
+                int foodId = resultSet.getInt("foodId");
+                String comment = resultSet.getString("comment");
+                int rate = resultSet.getInt("rate");
+                int replyId = resultSet.getInt("replyId");
+                long addingTime = resultSet.getLong("addingTime");
+                comments.add(new Comment(id, userId, foodId, restaurantId, replyId, rate, comment, addingTime));
+            }
+            resultSet.close();
+            statement.close();
+            return comments;
+        } catch (SQLException e) {
+            System.out.println("Could not select data from database : getRestaurant : " + e.getMessage());
+            return comments;
         }
     }
 }

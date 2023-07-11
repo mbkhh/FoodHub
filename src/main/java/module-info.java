@@ -1,8 +1,8 @@
 module com.example.foodhub {
     requires javafx.controls;
     requires javafx.fxml;
-    requires java.sql;
     requires javafx.media;
+    requires java.sql;
     exports FoodHub;
     exports FoodHub.Control;
     opens FoodHub to javafx.fxml;

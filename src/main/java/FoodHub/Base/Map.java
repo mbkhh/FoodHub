@@ -97,7 +97,7 @@ public class Map {
         System.out.println("------------------------------");
         System.out.format(leftAlignHeaderFormat,"Node1","Node2","Weight");
         System.out.println("------------------------------");
-        
+
         for (Branch branch : branches) {
             System.out.format(leftAlignFormat,branch.node1,branch.node2,branch.weight);
         }

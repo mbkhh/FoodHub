@@ -1,8 +1,8 @@
 package FoodHub.Base;
-import java.util.Date;
-import java.text.SimpleDateFormat;
 import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 public class Order {
     public int id;
@@ -93,7 +93,7 @@ public class Order {
             printOrders(te);
             System.out.println();
             if(!te.get(0).discription.isEmpty()) System.out.println("discription: "+te.get(0).discription);
-            
+
             System.out.println("Restaurant name: "+te.get(0).restaurant.name);
             System.out.println("\nFoods info:");
             ArrayList<Cart> cart = Main.sql.getCart(user.id, orderId);
@@ -109,7 +109,7 @@ public class Order {
             System.out.println("There is no order registered with this ID for you");
         else
         {
-            
+
             System.out.println("Path lenght: "+te.get(0).pathLength);
             System.out.println("Estiamted total time: "+te.get(0).estimatedTime);
             System.out.println("Path: "+te.get(0).path);
@@ -257,8 +257,8 @@ public class Order {
             int totalPrice = 0;
             int totalDiscount = 0;
             for (int i = 0; i < te.size(); i++) {
-                totalPrice += te.get(i).food.getPrice(i)[0] * te.get(i).count;
-                totalDiscount += te.get(i).food.getPrice(i)[1] * te.get(i).count;
+                totalPrice += te.get(i).food.getPrice()[0] * te.get(i).count;
+                totalDiscount += (te.get(i).food.getPrice()[0] - te.get(i).food.getPrice()[1]) * te.get(i).count;
             }
             totalPrice += te.get(0).food.restaurant.postCost;
             if(totalPrice > user.balance)

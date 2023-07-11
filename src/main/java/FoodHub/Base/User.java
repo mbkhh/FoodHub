@@ -31,34 +31,34 @@ public class User {
 
     static boolean addUser(ArrayList<String> registerRequirments)
     {
-       
-       
+
+
         if(registerRequirments.size()==1)
         {
             int type=Integer.parseInt(registerRequirments.get(0));
             if(type!=1 && type!=2 && type!=3)
             {
-            System.out.println("Invalid type ! There isn't any type related to this number"); 
-            return false;  
+                System.out.println("Invalid type ! There isn't any type related to this number");
+                return false;
             }
             else return true;
 
         }
         else if (registerRequirments.size()==2)
         {
-            if(MainParham.sql.getUser(registerRequirments.get(1))!= null)
+            if(Main.sql.getUser(registerRequirments.get(1))!= null)
             {
                 System.out.println("Invalid username! Username is already in use!");
                 return false;
             }
-           else if(registerRequirments.get(1).length() < 4)
+            else if(registerRequirments.get(1).length() < 4)
             {
                 System.out.println("Invalid username! Username at least must be 4 characters!");
                 return false;
             }
             else
-            return true;
-            
+                return true;
+
         }
         else if(registerRequirments.size()==3)
         {
@@ -73,7 +73,7 @@ public class User {
                 return false;
             }
             else return true;
-          
+
         }
         else if(registerRequirments.size()==4)
         {
@@ -91,17 +91,17 @@ public class User {
         }
         else if(registerRequirments.size()==8)
         {   if(Integer.parseInt(registerRequirments.get(7)) >=1  && Integer.parseInt(registerRequirments.get(7)) <= 1000 )
-            {
-            
-            MainParham.sql.InsertToUser(registerRequirments.get(1), registerRequirments.get(2), registerRequirments.get(3), registerRequirments.get(4), registerRequirments.get(5), Integer.parseInt(registerRequirments.get(0)),Integer.parseInt(registerRequirments.get(6)));
-            MainParham.sql.InsertToAddress(MainParham.sql.getUser(registerRequirments.get(1)).id,0,Integer.parseInt(registerRequirments.get(7)));
+        {
+
+            Main.sql.InsertToUser(registerRequirments.get(1), registerRequirments.get(2), registerRequirments.get(3), registerRequirments.get(4), registerRequirments.get(5), Integer.parseInt(registerRequirments.get(0)),Integer.parseInt(registerRequirments.get(6)));
+            Main.sql.InsertToAddress(Main.sql.getUser(registerRequirments.get(1)).id,0,Integer.parseInt(registerRequirments.get(7)));
             System.out.println("User added successfully");
             return true;
-            }
-            else
-            {   System.out.println("Invalid address!Address must be a number between 1 to 1000");
-                return false;
-            }
+        }
+        else
+        {   System.out.println("Invalid address!Address must be a number between 1 to 1000");
+            return false;
+        }
         }
 
         else return false;
@@ -181,10 +181,10 @@ public class User {
     }
     static void increaseBalance (int increase)
     {
-      Main.sql.updateUserBalance(currentUser.id, increase+Main.sql.getNewBalance(currentUser.id));
-      User.currentUser.balance += increase;
-      System.out.println("The account has been charged successfully");
-      
+        Main.sql.updateUserBalance(currentUser.id, increase+Main.sql.getNewBalance(currentUser.id));
+        User.currentUser.balance += increase;
+        System.out.println("The account has been charged successfully");
+
     }
 
     public static void reductionBalance(int reduction)
@@ -192,7 +192,7 @@ public class User {
         User.currentUser.balance -= reduction;
         Main.sql.updateUserBalance(currentUser.id, User.currentUser.balance);
     }
-    
+
     static int getBalance()
     {
         int balance=Main.sql.getNewBalance(currentUser.id);
