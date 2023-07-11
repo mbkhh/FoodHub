@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="200.0" prefWidth="200.0" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml/1 " fx:controller="FoodHub.Control.PanelColumn">
+   <children>
+      <Button fx:id="foodType" alignment="CENTER" layoutY="-1.0" mnemonicParsing="false" onAction="#select" prefHeight="200.0" prefWidth="200.0" styleClass="TableButton" stylesheets="@style.css" />
+   </children>
+</AnchorPane>

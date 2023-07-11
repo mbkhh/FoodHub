@@ -17,6 +17,7 @@ import java.util.ArrayList;
 import java.util.Date;
 
 public class OrderController {
+    @FXML
     public VBox OrderList;
     public static OrderController orderController;
     public static void show() throws IOException
