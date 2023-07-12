@@ -133,6 +133,10 @@ public class CartController {
         FoodHub.Base.Main.sql.deleteFromCart(id);
         reload();
     }
+    public void back() throws IOException
+    {
+        Panel.show();
+    }
     public void reload()
     {
         System.out.println(foodMenu.getChildren());

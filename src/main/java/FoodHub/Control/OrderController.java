@@ -49,6 +49,6 @@ public class OrderController {
 
     public void back() throws IOException
     {
-        CartController.show();
+        Panel.show();
     }
 }

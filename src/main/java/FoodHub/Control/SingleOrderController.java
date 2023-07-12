@@ -70,8 +70,8 @@ public class SingleOrderController {
     public  void showMap() throws IOException
     {
         ArrayList<Order> te = FoodHub.Base.Main.sql.getAllOrderById(id ,User.currentUser.id);
-        MapController.show("UserSingle",id);
-        MapController.mapController.markPath(te.get(0).path);
+        MapController.show("UserSingle",id,te.get(0).path);
+        //MapController.mapController.markPath(te.get(0).path);
     }
     public void back() throws IOException
     {

@@ -6,8 +6,8 @@ public class Sql {
     public Sql() {
         try {
             Class.forName("org.sqlite.JDBC");
-            connection = DriverManager.getConnection("jdbc:sqlite:D:\\Desktop\\Programing\\Snap-Food\\Databases\\test.db");
-//            connection = DriverManager.getConnection("jdbc:sqlite:Databases\\test.db");
+ //           connection = DriverManager.getConnection("jdbc:sqlite:D:\\Desktop\\Programing\\Snap-Food\\Databases\\test.db");
+            connection = DriverManager.getConnection("jdbc:sqlite:src\\main\\resources\\FoodHub\\Databases\\test.db");
 //            connection.setAutoCommit(false);
         } catch (Exception e) {
             System.out.println("Database connection error : " + e.getMessage());
@@ -288,7 +288,7 @@ public class Sql {
         ArrayList<Order> ans = new ArrayList<Order>();
         try {
             Statement stm = connection.createStatement();
-            ResultSet rs = stm.executeQuery( "SELECT * FROM `Order` WHERE `userId` ="+userId+" ;" );
+            ResultSet rs = stm.executeQuery( "SELECT * FROM `Order` WHERE `userId` ="+userId+" ORDER BY `id` DESC ;" );
             while ( rs.next() ) {
                 int id = rs.getInt("id");
                 int restaurantId = rs.getInt("restaurantId");

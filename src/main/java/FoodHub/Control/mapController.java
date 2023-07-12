@@ -2,6 +2,7 @@ package FoodHub.Control;
 
 import FoodHub.Base.Branch;
 import FoodHub.Base.Functions;
+import FoodHub.Base.Traffic;
 import FoodHub.Main;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -25,16 +26,22 @@ public class MapController {
     int id;
     public static MapController mapController;
     boolean isPressed = false;
+    String path;
     double startX;
     double startY;
     double startHValue;
     double startVValue;
-    public static void show(String source, int id) throws IOException
+    public static void show(String source, int id ,String path) throws IOException
     {
         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("map.fxml"));
+        MapController map = new MapController();
+        map.id=id;
+        map.source = source;
+        map.path = path;
+        fxmlLoader.setController(map);
+        //((MapController)fxmlLoader.getController()).id = id;
+        //((MapController)fxmlLoader.getController()).source = source;
         Scene scene = new Scene(fxmlLoader.load(), Main.primaryWidth, Main.primaryHeight);
-        ((MapController)fxmlLoader.getController()).id = id;
-        ((MapController)fxmlLoader.getController()).source = source;
         Main.primaryStage.setTitle("Map");
         Main.primaryStage.setScene(scene);
         Main.primaryStage.show();
@@ -51,13 +58,33 @@ public class MapController {
         //mapPane.getChildren().addAll(c1,c2,l1);
         main.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
         main.setVbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
+        String[] p = path.split(" - ");
+        for (int i = 0 ; i < p.length - 1 ; i++)
+        {
+            System.out.println(p[i]);
+            int loc1[] = FoodHub.Base.Main.sql.getNodeXY(Functions.parseInt(p[i]));
+            int loc2[] = FoodHub.Base.Main.sql.getNodeXY(Functions.parseInt(p[i+1]));
+            Line l = new Line(loc1[0],loc1[1],loc2[0],loc2[1]);
+            l.setStyle("-fx-stroke: #0f0;");
+            l.setStrokeWidth(13);
+            mapPane.getChildren().add(l);
+        }
+
         ArrayList<Branch> all = FoodHub.Base.Main.sql.getAllBranch();
         for (Branch b: all)
         {
             int loc1[] = FoodHub.Base.Main.sql.getNodeXY(b.node1);
             int loc2[] = FoodHub.Base.Main.sql.getNodeXY(b.node2);
             Line l = new Line(loc1[0],loc1[1],loc2[0],loc2[1]);
-            l.setStyle("-fx-stroke: #aaa;");
+            double percent = (double)(Main.traffic.branches.get(b.id).toNode1 + Main.traffic.branches.get(b.id).toNode2)/Main.traffic.branches.get(b.id).capactiy;
+            System.out.println(b.node1 + "  " + b.node2 + "   => " +  percent);
+            if(percent <= .2)
+                l.setStyle("-fx-stroke: #00f;");
+            else if (percent >.2 && percent < .6)
+                l.setStyle("-fx-stroke: #f80;");
+            else
+                l.setStyle("-fx-stroke: #f00;");
+            //l.setStyle("-fx-stroke: #aaa;");
             l.setStrokeWidth(6);
             mapPane.getChildren().add(l);
         }
@@ -81,9 +108,9 @@ public class MapController {
             int loc1[] = FoodHub.Base.Main.sql.getNodeXY(Functions.parseInt(p[i]));
             int loc2[] = FoodHub.Base.Main.sql.getNodeXY(Functions.parseInt(p[i+1]));
             Line l = new Line(loc1[0],loc1[1],loc2[0],loc2[1]);
-            l.setStyle("-fx-stroke: #00f;");
+            l.setStyle("-fx-stroke: #0f0;");
             l.setStrokeWidth(6);
-            mapPane.getChildren().add(l);
+            //mapPane.getChildren().add(l);
         }
         System.out.println(p.length);
     }

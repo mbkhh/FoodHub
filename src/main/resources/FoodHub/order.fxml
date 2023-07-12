@@ -58,7 +58,7 @@
                               </HBox>
                               <HBox prefHeight="100.0" spacing="30.0">
                                  <children>
-                                    <Button mnemonicParsing="false" prefHeight="27.0" prefWidth="129.0"  onAction="#showMap" styleClass="TableButton" text="Show Path in Map" />
+                                    <Button mnemonicParsing="false" prefHeight="27.0" prefWidth="150.0"  onAction="#showMap" styleClass="TableButton" text="Show Path in Map" />
                                     <Label fx:id="addressLBL" styleClass="OrderInfoLable" text="Path: 85-58-52-52-28-55-55-25-5-996-52-888-521-533" />
                                  </children>
                                  <padding>

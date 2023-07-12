@@ -51,7 +51,7 @@
                   <TextField fx:id="discountCodeTXT" />
                   <HBox prefHeight="100.0" prefWidth="200.0" spacing="20.0">
                      <children>
-                        <Button fx:id="backBTN" mnemonicParsing="false" prefWidth="120.0" style="-fx-font-size: 23;" styleClass="TableButton" text="Back" />
+                        <Button fx:id="backBTN" mnemonicParsing="false" onAction="#back" prefWidth="120.0" style="-fx-font-size: 23;" styleClass="TableButton" text="Back" />
                         <Button fx:id="confirmBTN" mnemonicParsing="false" onAction="#confirm" prefWidth="120.0" style="-fx-font-size: 23;" styleClass="TableButton" text="Confirm" />
                      </children>
                      <padding>
