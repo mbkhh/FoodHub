@@ -154,7 +154,7 @@ public class Order {
             System.out.println("Order updated successfully");
         }
     }
-    public  void CompleteOrder(User user, int orderId)
+    public static void CompleteOrder(User user, int orderId)
     {
         ArrayList<Order> te = Main.sql.getOrderByIdAndDelivery(orderId,user.id);
         if(te.size() == 0)

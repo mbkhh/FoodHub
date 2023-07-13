@@ -8,7 +8,8 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1000.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="FoodHub.MainApplication.control.RestaurantOwnerPanel">
+
+<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1000.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="FoodHub.MainApplication.control.RestaurantPanel">
    <children>
       <VBox prefHeight="700.0" prefWidth="700.0">
          <HBox.margin>
@@ -51,7 +52,6 @@
                <children>
                   <Label alignment="CENTER" prefHeight="43.0" prefWidth="71.0" styleClass="CartDataLable" text="Name:" />
                   <Label fx:id="name" prefHeight="33.0" prefWidth="136.0" styleClass="CartDataLable" />
-                  <Button mnemonicParsing="false" onAction="#editName" prefHeight="40.0" prefWidth="40.0" text="Edit" />
                </children>
             </HBox>
             <HBox alignment="CENTER_LEFT" prefHeight="70.0" prefWidth="384.0" spacing="10.0">
@@ -61,7 +61,6 @@
                <children>
                   <Label alignment="CENTER" prefHeight="43.0" prefWidth="87.0" styleClass="CartDataLable" text="Address:" />
                   <Label fx:id="address" prefHeight="33.0" prefWidth="124.0" styleClass="CartDataLable" />
-                  <Button mnemonicParsing="false" onAction="#editAddress" prefHeight="40.0" prefWidth="40.0" text="Edit" />
                </children>
             </HBox>
             <HBox alignment="CENTER_LEFT" prefHeight="70.0" prefWidth="384.0" spacing="10.0">
@@ -71,7 +70,6 @@
                <children>
                   <Label alignment="CENTER" prefHeight="43.0" prefWidth="99.0" styleClass="CartDataLable" text="Post Cost:" />
                   <Label fx:id="postCost" prefHeight="34.0" prefWidth="110.0" styleClass="CartDataLable" />
-                  <Button mnemonicParsing="false" onAction="#editPostCost" prefHeight="40.0" prefWidth="40.0" text="Edit" />
                </children>
             </HBox>
             <VBox prefHeight="135.0" prefWidth="281.0">
@@ -79,7 +77,6 @@
                   <HBox alignment="CENTER_LEFT" prefHeight="56.0" prefWidth="281.0" spacing="10.0">
                      <children>
                         <Label prefHeight="34.0" prefWidth="225.0" styleClass="CartDataLable" text="Food Types:" />
-                        <Button mnemonicParsing="false" onAction="#editFoodTypes" prefHeight="40.0" prefWidth="40.0" text="Edit" />
                      </children>
                   </HBox>
                   <Label alignment="TOP_LEFT" prefHeight="70.0" prefWidth="281.0" styleClass="CartDataLable" text="xfgccccccccccccccccccccccccccccccccccccccccccj" />

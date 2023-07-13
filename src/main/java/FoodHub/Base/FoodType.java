@@ -1,5 +1,6 @@
 package FoodHub.Base;
 public enum FoodType {
+    ALL("ALL"),
     IRANIAN("IRANIAN"),
     KEBAB("KEBAB"),
     FAST_FOOD("FAST_FOOD"),

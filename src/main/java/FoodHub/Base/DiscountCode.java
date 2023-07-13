@@ -14,7 +14,7 @@ public class DiscountCode {
         this.code = code;
         this.percent=percent;
     }
-    public void getUserDiscountCodes(User user)
+    public static void getUserDiscountCodes(User user)
     {
         ArrayList<DiscountCode> te = Main.sql.getAllDiscountCodeOfUser(user.id);
         if(te.size() == 0)

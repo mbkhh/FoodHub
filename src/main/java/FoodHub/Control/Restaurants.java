@@ -18,7 +18,7 @@ public class Restaurants {
     public static Restaurants restaurant;
     public static ArrayList<Restaurant> restaurants;
     public static void show(String search) throws IOException {
-        restaurants = Main.sql.getRestaurant(0, "", true, search);
+        restaurants = Main.sql.getRestaurant(0, "", true, (!search.equals("ALL")) ? search : "");
         FXMLLoader loader = new FXMLLoader(MainApplication.class.getResource("Restaurants.fxml"));
         Scene scene = new Scene(loader.load());
         MainApplication.primaryStage.setScene(scene);

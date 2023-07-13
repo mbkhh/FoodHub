@@ -1,14 +1,74 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Tooltip?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="FoodHub.Control.RestaurantOwnerPanelRow"
-            prefHeight="400.0" prefWidth="600.0">
 
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="80.0" prefWidth="686.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Button mnemonicParsing="false" onAction="#activaty" prefHeight="79.0" prefWidth="686.0">
+         <graphic>
+            <HBox alignment="CENTER_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="71.0" prefWidth="670.0" spacing="5.0" stylesheets="@style.css">
+               <children>
+                  <Button fx:id="name" mnemonicParsing="false" onAction="#editFoodName">
+                     <graphic>
+                        <Label prefHeight="30.0" prefWidth="120.0" styleClass="TableLable">
+                           <tooltip>
+                              <Tooltip text="Tap to Edit" />
+                           </tooltip>
+                        </Label>
+                     </graphic>
+                  </Button>
+                  <Button fx:id="type" mnemonicParsing="false" onAction="#editFoodType">
+                     <graphic>
+                        <Label prefHeight="30.0" prefWidth="120.0" styleClass="TableLable">
+                           <tooltip>
+                              <Tooltip text="Tap to Edit" />
+                           </tooltip>
+                        </Label>
+                     </graphic>
+                  </Button>
+                  <Button mnemonicParsing="false">
+                     <graphic>
+                        <Label prefHeight="30.0" prefWidth="120.0" styleClass="TableLable">
+                           <tooltip>
+                              <Tooltip text="Tap to Edit" />
+                           </tooltip>
+                        </Label>
+                     </graphic>
+                  </Button>
+                  <Button mnemonicParsing="false">
+                     <graphic>
+                        <Label prefHeight="30.0" prefWidth="101.0" styleClass="TableLable">
+                           <tooltip>
+                              <Tooltip text="Tap to Edit" />
+                           </tooltip>
+                        </Label>
+                     </graphic>
+                  </Button>
+                  <Button fx:id="activity" mnemonicParsing="false" prefHeight="25.0" prefWidth="59.0" text="Active">
+                     <tooltip>
+                        <Tooltip text="Tap to Change Activity" />
+                     </tooltip>
+                  </Button>
+                  <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="54.0" text="Delete">
+                     <tooltip>
+                        <Tooltip text="Tap to Delete the Food" />
+                     </tooltip>
+                  </Button>
+               </children>
+               <padding>
+                  <Insets bottom="10.0" top="10.0" />
+               </padding>
+            </HBox>
+         </graphic>
+         <tooltip>
+            <Tooltip fx:id="activity" text="Tap to See the Comments" />
+         </tooltip>
+      </Button>
+   </children>
 </AnchorPane>
