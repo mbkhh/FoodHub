@@ -3,6 +3,7 @@ package FoodHub;
 import FoodHub.Base.*;
 import FoodHub.Control.*;
 import javafx.application.Application;
+import javafx.application.Platform;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -27,10 +28,10 @@ public class MainApplication extends Application {
         RestaurantOrder.show(1);
        // OwnerPanel.show();
 //        Restaurants.show("shit");
-//        primaryStage.setOnCloseRequest(e -> {
-//            Platform.exit();
-//            traffic.isRunning = false;
-//        });
+        primaryStage.setOnCloseRequest(e -> {
+            Platform.exit();
+            traffic.isRunning = false;
+        });
         //CartController.show();
 //        OrderController.show();
 //        MapController.show();
