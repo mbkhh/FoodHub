@@ -1,5 +1,7 @@
 package FoodHub.Base;
 
+import FoodHub.Main;
+
 public class Branch {
     public int id;
     public int node1;

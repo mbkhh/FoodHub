@@ -1,5 +1,7 @@
 package FoodHub.Base;
 
+import FoodHub.Main;
+
 public class Address {
     public int id;
     User user;

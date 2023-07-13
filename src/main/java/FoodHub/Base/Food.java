@@ -1,4 +1,6 @@
 package FoodHub.Base;
+import FoodHub.Main;
+
 import java.util.ArrayList;
 import java.util.Date;
 

@@ -1,4 +1,6 @@
 package FoodHub.Base;
+import FoodHub.Main;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
@@ -89,7 +91,7 @@ public class Map {
         }
         return -1;
     }
-    static void showMap()
+    public static void showMap()
     {
         ArrayList<Branch> branches = Main.sql.getAllBranch();
         String leftAlignFormat = "| %-5d | %-5d | %-10d |%n";

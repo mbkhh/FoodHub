@@ -2,6 +2,7 @@ package FoodHub.Control;
 
 import FoodHub.Base.Branch;
 import FoodHub.Base.Functions;
+import FoodHub.Main;
 import FoodHub.MainApplication;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -61,19 +62,19 @@ public class MapController {
         for (int i = 0 ; i < p.length - 1 ; i++)
         {
             System.out.println(p[i]);
-            int loc1[] = FoodHub.Base.Main.sql.getNodeXY(Functions.parseInt(p[i]));
-            int loc2[] = FoodHub.Base.Main.sql.getNodeXY(Functions.parseInt(p[i+1]));
+            int loc1[] = Main.sql.getNodeXY(Functions.parseInt(p[i]));
+            int loc2[] = Main.sql.getNodeXY(Functions.parseInt(p[i+1]));
             Line l = new Line(loc1[0],loc1[1],loc2[0],loc2[1]);
             l.setStyle("-fx-stroke: #0f0;");
             l.setStrokeWidth(13);
             mapPane.getChildren().add(l);
         }
 
-        ArrayList<Branch> all = FoodHub.Base.Main.sql.getAllBranch();
+        ArrayList<Branch> all = Main.sql.getAllBranch();
         for (Branch b: all)
         {
-            int loc1[] = FoodHub.Base.Main.sql.getNodeXY(b.node1);
-            int loc2[] = FoodHub.Base.Main.sql.getNodeXY(b.node2);
+            int loc1[] = Main.sql.getNodeXY(b.node1);
+            int loc2[] = Main.sql.getNodeXY(b.node2);
             Line l = new Line(loc1[0],loc1[1],loc2[0],loc2[1]);
             double percent = (double)(MainApplication.traffic.branches.get(b.id).toNode1 + MainApplication.traffic.branches.get(b.id).toNode2)/ MainApplication.traffic.branches.get(b.id).capactiy;
             System.out.println(b.node1 + "  " + b.node2 + "   => " +  percent);
@@ -87,7 +88,7 @@ public class MapController {
             l.setStrokeWidth(6);
             mapPane.getChildren().add(l);
         }
-        ArrayList<int[]> te = FoodHub.Base.Main.sql.getAllNodes();
+        ArrayList<int[]> te = Main.sql.getAllNodes();
         for (int a[]:te)
         {
             Circle c = new Circle(a[1],a[2],25,Color.RED);
@@ -104,8 +105,8 @@ public class MapController {
         for (int i = 0 ; i < p.length - 1 ; i++)
         {
             System.out.println(p[i]);
-            int loc1[] = FoodHub.Base.Main.sql.getNodeXY(Functions.parseInt(p[i]));
-            int loc2[] = FoodHub.Base.Main.sql.getNodeXY(Functions.parseInt(p[i+1]));
+            int loc1[] = Main.sql.getNodeXY(Functions.parseInt(p[i]));
+            int loc2[] = Main.sql.getNodeXY(Functions.parseInt(p[i+1]));
             Line l = new Line(loc1[0],loc1[1],loc2[0],loc2[1]);
             l.setStyle("-fx-stroke: #0f0;");
             l.setStrokeWidth(6);

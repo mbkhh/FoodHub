@@ -2,6 +2,7 @@ package FoodHub.Control;
 
 import FoodHub.Base.Order;
 import FoodHub.Base.User;
+import FoodHub.Main;
 import FoodHub.MainApplication;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -32,7 +33,7 @@ public class OrderController {
     public void initialize() throws IOException
     {
         orderController = this;
-        ArrayList<Order> te = FoodHub.Base.Main.sql.getAllOrderOfUser(User.currentUser.id);
+        ArrayList<Order> te = Main.sql.getAllOrderOfUser(User.currentUser.id);
         for(Order order: te)
         {
             FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("userOrderRow.fxml"));

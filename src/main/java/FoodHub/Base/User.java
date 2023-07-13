@@ -1,4 +1,6 @@
 package FoodHub.Base;
+import FoodHub.Main;
+
 import java.util.ArrayList;
 /**
  * User
@@ -29,7 +31,7 @@ public class User {
     }
 
 
-    static boolean addUser(ArrayList<String> registerRequirments)
+    public static boolean addUser(ArrayList<String> registerRequirments)
     {
 
 
@@ -110,7 +112,7 @@ public class User {
         User ans = Main.sql.getUser(id);
         return ans;
     }
-    static void loginUser (String username , String password) {
+    public static void loginUser (String username , String password) {
         String ans;
         boolean get = true;
         if (Main.sql.getUser(username) == null) {
@@ -151,7 +153,7 @@ public class User {
             System.out.println("User logged in successfully");
         }
     }
-    static boolean checkCurrentUser() {
+    public static boolean checkCurrentUser() {
         if(currentUser==null)
             return false;
         else {
@@ -159,7 +161,7 @@ public class User {
             return true;
         }
     }
-    static boolean checkCurrentUser2() {
+    public static boolean checkCurrentUser2() {
         if(currentUser!=null)
             return false;
         else {
@@ -167,11 +169,11 @@ public class User {
             return true;
         }
     }
-    static void logoutUser () {
+    public static void logoutUser () {
         currentUser=null;
         System.out.println("User logged out successfully");
     }
-    static void deleteAccount (String username , String password) {
+    public static void deleteAccount (String username , String password) {
         User ans = Main.sql.getUser(username,password);
         if(ans==null)
             System.out.println("error");
@@ -179,7 +181,7 @@ public class User {
             Main.sql.deleteFromUser(ans.id);
         }
     }
-    static void increaseBalance (int increase)
+    public static void increaseBalance (int increase)
     {
         Main.sql.updateUserBalance(currentUser.id, increase+Main.sql.getNewBalance(currentUser.id));
         User.currentUser.balance += increase;
@@ -193,7 +195,7 @@ public class User {
         Main.sql.updateUserBalance(currentUser.id, User.currentUser.balance);
     }
 
-    static int getBalance()
+    public static int getBalance()
     {
         int balance=Main.sql.getNewBalance(currentUser.id);
         return balance;

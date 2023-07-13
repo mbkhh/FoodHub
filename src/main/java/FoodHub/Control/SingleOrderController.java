@@ -3,6 +3,7 @@ package FoodHub.Control;
 import FoodHub.Base.Cart;
 import FoodHub.Base.Order;
 import FoodHub.Base.User;
+import FoodHub.Main;
 import FoodHub.MainApplication;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -27,7 +28,7 @@ public class SingleOrderController {
     {
         System.out.println(id);
         //singleOrderController = this;
-        ArrayList<Order> te = FoodHub.Base.Main.sql.getAllOrderById(id ,User.currentUser.id);
+        ArrayList<Order> te = Main.sql.getAllOrderById(id ,User.currentUser.id);
         mainTitleLBL.setText("Order "+id);
         orderDiscountLBL.setText("Discount: "+te.get(0).totalDiscount);
         orderTotalLBL.setText("Total Price: "+te.get(0).totalprice);
@@ -39,7 +40,7 @@ public class SingleOrderController {
         discriptionLBL.setText("Discription: "+te.get(0).discription);
         addressLBL.setText("Path: "+te.get(0).path);
 
-        ArrayList<Cart> tes = FoodHub.Base.Main.sql.getCart(User.currentUser.id, id);
+        ArrayList<Cart> tes = Main.sql.getCart(User.currentUser.id, id);
         for(Cart cart: tes)
         {
             FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("cartRow.fxml"));
@@ -68,7 +69,7 @@ public class SingleOrderController {
     }
     public  void showMap() throws IOException
     {
-        ArrayList<Order> te = FoodHub.Base.Main.sql.getAllOrderById(id ,User.currentUser.id);
+        ArrayList<Order> te = Main.sql.getAllOrderById(id ,User.currentUser.id);
         MapController.show("UserSingle",id,te.get(0).path);
         //MapController.mapController.markPath(te.get(0).path);
     }

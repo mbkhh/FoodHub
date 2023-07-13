@@ -1,6 +1,7 @@
 package FoodHub.Control;
 
 import FoodHub.Base.*;
+import FoodHub.Main;
 import FoodHub.MainApplication;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -42,7 +43,7 @@ public class CartController {
             HBox row2 = FXMLLoader.load(MainApplication.class.getResource("cartRow.fxml"));
             foodMenu.getChildren().add(row2);
         }*/
-        ArrayList<Cart> te = FoodHub.Base.Main.sql.getCart(User.currentUser.id, 0);
+        ArrayList<Cart> te = Main.sql.getCart(User.currentUser.id, 0);
         for(Cart cart: te)
         {
             FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("cartRow.fxml"));
@@ -66,7 +67,7 @@ public class CartController {
     }
     public void confirm()
     {
-        ArrayList<Cart> te = FoodHub.Base.Main.sql.getCart(User.currentUser.id, 0) ;
+        ArrayList<Cart> te = Main.sql.getCart(User.currentUser.id, 0) ;
         if(te.size() == 0){
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setContentText("No food in cart!");
@@ -94,11 +95,11 @@ public class CartController {
                 int CodePrice = 0;
                 if (!code.isEmpty())
                 {
-                    ArrayList<DiscountCode>  discountCode = FoodHub.Base.Main.sql.getDiscountCodeOfUser(User.currentUser.id,code);
+                    ArrayList<DiscountCode>  discountCode = Main.sql.getDiscountCodeOfUser(User.currentUser.id,code);
                     if(discountCode.size() != 0)
                     {
                         CodePrice = totalPrice*discountCode.get(0).percent/100;
-                        FoodHub.Base.Main.sql.deleteFromDiscountCode(discountCode.get(0).id);
+                        Main.sql.deleteFromDiscountCode(discountCode.get(0).id);
                     }
                     else
                     {
@@ -110,13 +111,13 @@ public class CartController {
                 }
                 System.out.println(System.currentTimeMillis());
                 Vertex x = Map.findPath(resturantAddress.node, userAddress.node);
-                FoodHub.Base.Main.sql.InsertToOrder(User.currentUser.id, te.get(0).food.restaurant.id, 0, x.getPath(), x.pathLength, x.pathLength*100, System.currentTimeMillis(), totalPrice-CodePrice, totalDiscount+CodePrice, OrderStatus.Registered, discription);
-                int lastId = FoodHub.Base.Main.sql.getOrderLastId();
-                FoodHub.Base.Main.sql.finalizeCart(User.currentUser.id, lastId);
+                Main.sql.InsertToOrder(User.currentUser.id, te.get(0).food.restaurant.id, 0, x.getPath(), x.pathLength, x.pathLength*100, System.currentTimeMillis(), totalPrice-CodePrice, totalDiscount+CodePrice, OrderStatus.Registered, discription);
+                int lastId = Main.sql.getOrderLastId();
+                Main.sql.finalizeCart(User.currentUser.id, lastId);
                 User.reductionBalance(totalPrice-CodePrice);
-                ArrayList<Order> tes =  FoodHub.Base.Main.sql.getAllOrderOfUser(User.currentUser.id);
+                ArrayList<Order> tes =  Main.sql.getAllOrderOfUser(User.currentUser.id);
                 if(tes.size() == 3)
-                    FoodHub.Base.Main.sql.InsertToDiscountCode(User.currentUser.id, "3ORDER", 10  );
+                    Main.sql.InsertToDiscountCode(User.currentUser.id, "3ORDER", 10  );
                 Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
                 alert.setContentText("Order with id "+lastId + " added successfully.");
                 alert.show();
@@ -129,7 +130,7 @@ public class CartController {
     }
     public void remove(int id)
     {
-        FoodHub.Base.Main.sql.deleteFromCart(id);
+        Main.sql.deleteFromCart(id);
         reload();
     }
     public void back() throws IOException

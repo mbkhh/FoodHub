@@ -1,4 +1,6 @@
 package FoodHub.Base;
+import FoodHub.Main;
+
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -68,7 +70,7 @@ public class Order {
         }
         System.out.println("----------------------------------------------------------------------------------------------------------------------------------------");
     }
-    static void editOrder(int time, String status, User user, int orderId)
+    public static void editOrder(int time, String status, User user, int orderId)
     {
         ArrayList<Order> te = Main.sql.getAllOrderById2(orderId ,Restaurant.getRestaurantByOwnerId(user.id).id);
         if(te.size() == 0)
@@ -82,7 +84,7 @@ public class Order {
             System.out.println("Order edited successfully");
         }
     }
-    static void printOrder(User user, int orderId)
+    public static void printOrder(User user, int orderId)
     {
         ArrayList<Order> te = Main.sql.getAllOrderById(orderId ,user.id);
         if(te.size() == 0)
@@ -102,7 +104,7 @@ public class Order {
 
         }
     }
-    static void showBestPath(User user, int orderId)
+    public static void showBestPath(User user, int orderId)
     {
         ArrayList<Order> te = Main.sql.getAllOrderById(orderId ,user.id);
         if(te.size() == 0)
@@ -115,7 +117,7 @@ public class Order {
             System.out.println("Path: "+te.get(0).path);
         }
     }
-    static void showBestPathDelivery(User user, int orderId)
+    public static void showBestPathDelivery(User user, int orderId)
     {
         ArrayList<Order> te = Main.sql.getOrderByIdAndDelivery(orderId ,user.id);
         if(te.size() == 0)
@@ -130,7 +132,7 @@ public class Order {
             System.out.println("Path to costumer: "+te.get(0).path);
         }
     }
-    static void acceptOrder(User user, int orderId)
+    public static void acceptOrder(User user, int orderId)
     {
         ArrayList<Order> te = Main.sql.getFreeOrderById(orderId);
         if(te.size() == 0)
@@ -141,7 +143,7 @@ public class Order {
             System.out.println("Order Accepted successfully");
         }
     }
-    static void recieveOrder(User user, int orderId)
+    public static void recieveOrder(User user, int orderId)
     {
         ArrayList<Order> te = Main.sql.getOrderByIdAndDelivery(orderId,user.id);
         if(te.size() == 0)
@@ -152,7 +154,7 @@ public class Order {
             System.out.println("Order updated successfully");
         }
     }
-    static void CompleteOrder(User user, int orderId)
+    public  void CompleteOrder(User user, int orderId)
     {
         ArrayList<Order> te = Main.sql.getOrderByIdAndDelivery(orderId,user.id);
         if(te.size() == 0)
@@ -163,7 +165,7 @@ public class Order {
             System.out.println("Order updated successfully");
         }
     }
-    static void showFreeOrders()
+    public static void showFreeOrders()
     {
         ArrayList<Order> te = Main.sql.getFreeOrder();
         if(te.size() == 0)
@@ -187,7 +189,7 @@ public class Order {
             System.out.println("----------------------------------------------------------------------------------------------------------------------------------------------");
         }
     }
-    static void showEstimatedTimeOfOrder(User user)
+    public static void showEstimatedTimeOfOrder(User user)
     {
         ArrayList<Order> te = Main.sql.getAllOrderOfUser(user.id);
         if(te.size() == 0)
@@ -203,7 +205,7 @@ public class Order {
         }
 
     }
-    static void printOrderHistory(User user)
+    public static void printOrderHistory(User user)
     {
         ArrayList<Order> te = Main.sql.getAllOrderOfUser(user.id);
         if(te.size() == 0)
@@ -211,7 +213,7 @@ public class Order {
         else
             printOrders(te);
     }
-    static void getRestaurantOpenOrder(User user)
+    public static void getRestaurantOpenOrder(User user)
     {
         ArrayList<Order> te = openOrders(Restaurant.getRestaurantByOwnerId(user.id).id);
         if(te.size() == 0)
@@ -221,7 +223,7 @@ public class Order {
             printOrders2(te);
         }
     }
-    static void getRestaurantAllOrder(User user)
+    public static void getRestaurantAllOrder(User user)
     {
         ArrayList<Order> te = AllOrders(Restaurant.getRestaurantByOwnerId(user.id).id);
         if(te.size() == 0)
@@ -231,7 +233,7 @@ public class Order {
             printOrders2(te);
         }
     }
-    static void printOrderRestaurant(User user, int orderId)
+    public static void printOrderRestaurant(User user, int orderId)
     {
         ArrayList<Order> te = Main.sql.getAllOrderById2(orderId ,Restaurant.getRestaurantByOwnerId(user.id).id);
         if(te.size() == 0)
@@ -249,7 +251,7 @@ public class Order {
 
         }
     }
-    static void confirmOrder(User user) {
+    public static void confirmOrder(User user) {
         ArrayList<Cart> te = Main.sql.getCart(user.id, 0) ;
         if(te.size() == 0)
             System.out.println("there is nothing in your cart!");

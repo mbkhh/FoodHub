@@ -20,7 +20,7 @@ public class MainApplication extends Application {
 //        stage.setTitle("Hello!");
 //        stage.setScene(scene);
 //        stage.show();
-        FoodHub.Base.Main.sql=new Sql();
+        Main.sql=new Sql();
 //        traffic = new Traffic();
 //        traffic.start();
         User.currentUser = User.getUserById(1);
