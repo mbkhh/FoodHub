@@ -94,7 +94,7 @@ public class Order {
             System.out.println();
             if(!te.get(0).discription.isEmpty()) System.out.println("discription: "+te.get(0).discription);
 
-            System.out.println("Restaurant name: "+te.get(0).restaurant.name);
+            System.out.println("Restaurants name: "+te.get(0).restaurant.name);
             System.out.println("\nFoods info:");
             ArrayList<Cart> cart = Main.sql.getCart(user.id, orderId);
             Cart.printCart(cart);
@@ -173,7 +173,7 @@ public class Order {
             String leftAlignFormat = "| %-5d | %-25s | %-15s | %-25s | %-20s | %-20d | %-10d |%n";
             String leftAlignHeaderFormat = "| %-5s | %-25s | %-15s | %-25s | %-20s | %-20s | %-10s |%n";
             System.out.println("----------------------------------------------------------------------------------------------------------------------------------------------");
-            System.out.format(leftAlignHeaderFormat,"Id","User Name" , "User Address","Add time","Restaurant Name","Restaurant Address","Post Cost");
+            System.out.format(leftAlignHeaderFormat,"Id","User Name" , "User Address","Add time","Restaurants Name","Restaurants Address","Post Cost");
             System.out.println("----------------------------------------------------------------------------------------------------------------------------------------------");
             for (int i = 0; i < te.size(); i++) {
                 // System.out.println(cart.get(i).food.name + "\t" +  cart.get(i).cost + "\t" +  cart.get(i).count + "\t" +  "0" + "\t" +  cart.get(i).cost*cart.get(i).count);
