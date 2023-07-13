@@ -7,50 +7,45 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="80.0" prefWidth="686.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="80.0" prefWidth="686.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="FoodHub.Control.RestaurantOwnerPanelRow">
    <children>
-      <Button mnemonicParsing="false" onAction="#activaty" prefHeight="79.0" prefWidth="686.0">
+      <Button mnemonicParsing="false" onAction="#comment" prefHeight="79.0" prefWidth="686.0">
          <graphic>
             <HBox alignment="CENTER_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="71.0" prefWidth="670.0" spacing="5.0" stylesheets="@style.css">
                <children>
-                  <Button fx:id="name" mnemonicParsing="false" onAction="#editFoodName">
+                  <Button mnemonicParsing="false" onAction="#editName">
                      <graphic>
-                        <Label prefHeight="30.0" prefWidth="120.0" styleClass="TableLable">
-                           <tooltip>
-                              <Tooltip text="Tap to Edit" />
-                           </tooltip>
-                        </Label>
+                        <Label fx:id="name" prefHeight="30.0" prefWidth="120.0" styleClass="TableLable" />
                      </graphic>
+                     <tooltip>
+                        <Tooltip text="Tap to Edit" />
+                     </tooltip>
                   </Button>
-                  <Button fx:id="type" mnemonicParsing="false" onAction="#editFoodType">
+                  <Button mnemonicParsing="false" onAction="#editType">
                      <graphic>
-                        <Label prefHeight="30.0" prefWidth="120.0" styleClass="TableLable">
-                           <tooltip>
-                              <Tooltip text="Tap to Edit" />
-                           </tooltip>
-                        </Label>
+                        <Label fx:id="type" prefHeight="30.0" prefWidth="120.0" styleClass="TableLable" />
                      </graphic>
+                     <tooltip>
+                        <Tooltip text="Tap to Edit" />
+                     </tooltip>
                   </Button>
-                  <Button mnemonicParsing="false">
+                  <Button fx:id="price" mnemonicParsing="false" onAction="#editPrice">
                      <graphic>
-                        <Label prefHeight="30.0" prefWidth="120.0" styleClass="TableLable">
-                           <tooltip>
-                              <Tooltip text="Tap to Edit" />
-                           </tooltip>
-                        </Label>
+                        <Label fx:id="price" prefHeight="30.0" prefWidth="120.0" styleClass="TableLable" />
                      </graphic>
+                     <tooltip>
+                        <Tooltip text="Tap to Edit" />
+                     </tooltip>
                   </Button>
-                  <Button mnemonicParsing="false">
+                  <Button mnemonicParsing="false" onAction="#editDiscount">
                      <graphic>
-                        <Label prefHeight="30.0" prefWidth="101.0" styleClass="TableLable">
-                           <tooltip>
-                              <Tooltip text="Tap to Edit" />
-                           </tooltip>
-                        </Label>
+                        <Label fx:id="discount" prefHeight="30.0" prefWidth="101.0" styleClass="TableLable" />
                      </graphic>
+                     <tooltip>
+                        <Tooltip text="Tap to Edit" />
+                     </tooltip>
                   </Button>
-                  <Button fx:id="activity" mnemonicParsing="false" prefHeight="25.0" prefWidth="59.0" text="Active">
+                  <Button fx:id="activity" mnemonicParsing="false" onAction="#changeActivity" prefHeight="25.0" prefWidth="59.0" text="Active">
                      <tooltip>
                         <Tooltip text="Tap to Change Activity" />
                      </tooltip>

@@ -20,6 +20,7 @@ public class OwnerPanel {
         Scene scene = new Scene(loader.load());
         MainApplication.primaryStage.setScene(scene);
         MainApplication.primaryStage.show();
+        MainApplication.scene = "OwnerPanel";
     }
     @FXML
     public void initialize() throws IOException {

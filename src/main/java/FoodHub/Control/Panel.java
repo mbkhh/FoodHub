@@ -22,6 +22,7 @@ public class Panel {
         Scene scene = new Scene(loader.load());
         MainApplication.primaryStage.setScene(scene);
         MainApplication.primaryStage.show();
+        MainApplication.scene = "Panel";
     }
     @FXML
     public void initialize() throws IOException {

@@ -9,6 +9,7 @@ import java.io.IOException;
 
 public class MainApplication extends Application {
     public static Stage primaryStage;
+    public static String scene;
     public static final int primaryWidth = 1000;
     public static final int primaryHeight = 700;
     public static Traffic traffic;
