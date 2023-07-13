@@ -6,8 +6,8 @@ public class Sql {
     public Sql() {
         try {
             Class.forName("org.sqlite.JDBC");
-            connection = DriverManager.getConnection("jdbc:sqlite:D:\\Desktop\\Programing\\FoodHub\\src\\main\\resources\\FoodHub\\Databases\\test.db");
-//            connection = DriverManager.getConnection("jdbc:sqlite:src\\main\\resources\\FoodHub\\Databases\\test.db");
+//            connection = DriverManager.getConnection("jdbc:sqlite:D:\\Desktop\\Programing\\FoodHub\\src\\main\\resources\\FoodHub\\Databases\\test.db");
+            connection = DriverManager.getConnection("jdbc:sqlite:src\\main\\resources\\FoodHub\\Databases\\test.db");
 //            connection.setAutoCommit(false);
         } catch (Exception e) {
             System.out.println("Database connection error : " + e.getMessage());
@@ -340,6 +340,35 @@ public class Sql {
             return ans;
         }
     }
+    public ArrayList<Order> getAllOrderById(int orderId) {
+        ArrayList<Order> ans = new ArrayList<Order>();
+        try {
+            Statement stm = connection.createStatement();
+            ResultSet rs = stm.executeQuery( "SELECT * FROM `Order` WHERE `id`="+orderId+" ;" );
+            while ( rs.next() ) {
+                int id = rs.getInt("id");
+                int userId = rs.getInt("userId");
+                int restaurantId = rs.getInt("restaurantId");
+                int deliveryId = rs.getInt("deliveryId");
+                String path = rs.getString("path");
+                int pathLength = rs.getInt("pathLength");
+                int estimatedTime = rs.getInt("estimatedTotalTime");
+                long addTime = rs.getLong("addTime");
+                int totalprice = rs.getInt("totalprice");
+                int totalDiscount = rs.getInt("totalDiscount");
+                String status = rs.getString("status");
+                String discription= rs.getString("discription");
+
+                ans.add(new Order(id, userId, restaurantId, deliveryId, path, pathLength, estimatedTime, addTime, totalprice, totalDiscount, status, discription));
+            }
+            rs.close();
+            stm.close();
+            return ans;
+        } catch (SQLException e) {
+            System.out.println("Could not select data from database : getAllOrderOfUser : "+e.getMessage());
+            return ans;
+        }
+    }
     public ArrayList<Order> getFreeOrder() {
         ArrayList<Order> ans = new ArrayList<Order>();
         try {
@@ -486,7 +515,7 @@ public class Sql {
         ArrayList<Order> ans = new ArrayList<Order>();
         try {
             Statement stm = connection.createStatement();
-            ResultSet rs = stm.executeQuery( "SELECT * FROM `Order` WHERE `restaurantId` ="+restaurantId+" ;" );
+            ResultSet rs = stm.executeQuery( "SELECT * FROM `Order` WHERE `restaurantId` ="+restaurantId+" ORDER BY id DESC ;" );
             while ( rs.next() ) {
                 int id = rs.getInt("id");
                 int userId = rs.getInt("userId");

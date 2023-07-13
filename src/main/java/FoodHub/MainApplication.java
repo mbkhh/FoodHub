@@ -21,10 +21,11 @@ public class MainApplication extends Application {
 //        stage.setScene(scene);
 //        stage.show();
         Main.sql=new Sql();
-//        traffic = new Traffic();
-//        traffic.start();
+        traffic = new Traffic();
+        traffic.start();
         User.currentUser = User.getUserById(1);
-        OwnerPanel.show();
+        RestaurantOrder.show(1);
+       // OwnerPanel.show();
 //        Restaurants.show("shit");
 //        primaryStage.setOnCloseRequest(e -> {
 //            Platform.exit();

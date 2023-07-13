@@ -159,6 +159,10 @@ public class MapController {
         {
             SingleOrderController.show(id);
         }
+        else if(source.equals("RestaurantSingle"))
+        {
+            RestaurantSingleOrder.show(id);
+        }
     }
 
 }
