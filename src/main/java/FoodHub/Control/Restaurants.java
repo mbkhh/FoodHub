@@ -1,5 +1,7 @@
 package FoodHub.Control;
 import FoodHub.Base.*;
+import FoodHub.MainApplication;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -16,19 +18,31 @@ public class Restaurants {
     public static ArrayList<Restaurant> restaurants;
     public static void show(String search) throws IOException {
         restaurants = Main.sql.getRestaurant(0, "", true, search);
-        FXMLLoader loader = new FXMLLoader(Main.class.getResource("Restaurants.fxml"));
-        Scene scene = new Scene(loader.load(), FoodHub.Main.primaryWidth, FoodHub.Main.primaryHeight);
-        FoodHub.Main.primaryStage.setScene(scene);
-        FoodHub.Main.primaryStage.show();
+        FXMLLoader loader = new FXMLLoader(MainApplication.class.getResource("Restaurants.fxml"));
+        Scene scene = new Scene(loader.load());
+        MainApplication.primaryStage.setScene(scene);
+        MainApplication.primaryStage.show();
     }
     @FXML
     public void initialize() throws IOException {
         restaurant = this;
-        for (Restaurant rowRestaurant : restaurants) {
-            FXMLLoader loader = new FXMLLoader(Main.class.getResource("RestaurantsRow.fxml"));
+        for (Restaurant temp : restaurants) {
+            FXMLLoader loader = new FXMLLoader(MainApplication.class.getResource("RestaurantsRow.fxml"));
             AnchorPane row = loader.load();
-            RestaurantRow restaurantRow = loader.getController();
-            restaurantRow.setData(rowRestaurant.id, rowRestaurant.name, rowRestaurant.foodTypesToString(), rowRestaurant.postCost, Address.getAddress(0, rowRestaurant.id).node, Comment.getComment());
+            row.setId("Restaurant_" + temp.id);
+            RestaurantsRow restaurantsRow = loader.getController();
+            double average = Comment.averageRate(Main.sql.getComment(temp.id, "restaurantId", false));
+            restaurantsRow.setData(temp.id, temp.name, temp.foodTypesToString(), Integer.toString(temp.postCost), Integer.toString(Address.getAddress(0, temp.id).node), (average > 0) ? String.valueOf(average) : "");
+            box.getChildren().add(row);
         }
+    }
+    public void balance(ActionEvent event) {
+
+    }
+    public void cart(ActionEvent event) throws IOException {
+        CartController.show();
+    }
+    public void orders(ActionEvent event) throws IOException {
+        OrderController.show();
     }
 }

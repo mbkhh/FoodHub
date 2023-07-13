@@ -1,10 +1,9 @@
 package FoodHub.Control;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.SelectionMode;
-
-public class RestaurantRow {
+public class OwnerPanelRow {
     @FXML
     public Label name, foodType, postCost, address, rate;
     int restaurantId;
@@ -19,5 +18,4 @@ public class RestaurantRow {
         this.rate.setText(rate);
         this.restaurantId = restaurantId;
     }
-
 }

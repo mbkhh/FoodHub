@@ -1,9 +1,8 @@
 package FoodHub.Control;
 
-import FoodHub.Base.Cart;
 import FoodHub.Base.Order;
 import FoodHub.Base.User;
-import FoodHub.Main;
+import FoodHub.MainApplication;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -22,11 +21,11 @@ public class OrderController {
     public static OrderController orderController;
     public static void show() throws IOException
     {
-        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("userOrder.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), Main.primaryWidth, Main.primaryHeight);
-        Main.primaryStage.setTitle("Orders");
-        Main.primaryStage.setScene(scene);
-        Main.primaryStage.show();
+        FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("userOrder.fxml"));
+        Scene scene = new Scene(fxmlLoader.load(), MainApplication.primaryWidth, MainApplication.primaryHeight);
+        MainApplication.primaryStage.setTitle("Orders");
+        MainApplication.primaryStage.setScene(scene);
+        MainApplication.primaryStage.show();
     }
 
     @FXML
@@ -36,7 +35,7 @@ public class OrderController {
         ArrayList<Order> te = FoodHub.Base.Main.sql.getAllOrderOfUser(User.currentUser.id);
         for(Order order: te)
         {
-            FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("userOrderRow.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("userOrderRow.fxml"));
             HBox row = fxmlLoader.load();
             row.setId("order_"+order.id);
             UserOrderRow control = fxmlLoader.getController();

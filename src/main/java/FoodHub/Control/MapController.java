@@ -2,8 +2,7 @@ package FoodHub.Control;
 
 import FoodHub.Base.Branch;
 import FoodHub.Base.Functions;
-import FoodHub.Base.Traffic;
-import FoodHub.Main;
+import FoodHub.MainApplication;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -33,7 +32,7 @@ public class MapController {
     double startVValue;
     public static void show(String source, int id ,String path) throws IOException
     {
-        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("map.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("map.fxml"));
         MapController map = new MapController();
         map.id=id;
         map.source = source;
@@ -41,10 +40,10 @@ public class MapController {
         fxmlLoader.setController(map);
         //((MapController)fxmlLoader.getController()).id = id;
         //((MapController)fxmlLoader.getController()).source = source;
-        Scene scene = new Scene(fxmlLoader.load(), Main.primaryWidth, Main.primaryHeight);
-        Main.primaryStage.setTitle("Map");
-        Main.primaryStage.setScene(scene);
-        Main.primaryStage.show();
+        Scene scene = new Scene(fxmlLoader.load(), MainApplication.primaryWidth, MainApplication.primaryHeight);
+        MainApplication.primaryStage.setTitle("Map");
+        MainApplication.primaryStage.setScene(scene);
+        MainApplication.primaryStage.show();
     }
 
     @FXML
@@ -76,7 +75,7 @@ public class MapController {
             int loc1[] = FoodHub.Base.Main.sql.getNodeXY(b.node1);
             int loc2[] = FoodHub.Base.Main.sql.getNodeXY(b.node2);
             Line l = new Line(loc1[0],loc1[1],loc2[0],loc2[1]);
-            double percent = (double)(Main.traffic.branches.get(b.id).toNode1 + Main.traffic.branches.get(b.id).toNode2)/Main.traffic.branches.get(b.id).capactiy;
+            double percent = (double)(MainApplication.traffic.branches.get(b.id).toNode1 + MainApplication.traffic.branches.get(b.id).toNode2)/ MainApplication.traffic.branches.get(b.id).capactiy;
             System.out.println(b.node1 + "  " + b.node2 + "   => " +  percent);
             if(percent <= .2)
                 l.setStyle("-fx-stroke: #00f;");

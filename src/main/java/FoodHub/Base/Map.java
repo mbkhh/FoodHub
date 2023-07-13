@@ -27,7 +27,7 @@ public class Map {
     }
     public static Vertex findPath(int node1, int node2) {
         ArrayList<Branch> all = Main.sql.getAllBranch();
-        //System.out.println("search start!");
+        //System.out.println("searchText start!");
         ArrayList<Integer> indexed = new ArrayList<Integer>();
         ArrayList<Vertex> list = new ArrayList<Vertex>();
         list.add(new Vertex(node1));

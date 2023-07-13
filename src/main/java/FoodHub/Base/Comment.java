@@ -56,7 +56,7 @@ public class Comment {
         String leftAlignHeaderFormat2 = "| %-4s | %-6s | %-17s | %-127s | %-14s |%n";
         String dashedLine1 = "--------------------------------------------";
         String dashedLine2 = "----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------";
-        System.out.println("topic:");
+        System.out.println(topic);
         System.out.println(dashedLine1);
         System.out.format(leftAlignHeaderFormat1," Id","UserId" ,"   addingTime","rate");
         System.out.println (dashedLine1);
@@ -66,13 +66,25 @@ public class Comment {
             sum += rating.rate;
         }
         System.out.println(dashedLine1);
-        System.out.println("the average of ratings is: " + (double) ((int) ((double) sum / ratings.size() * 100)) / 100);
+        double average = averageRate(ratings);
+        if (average != 0)
+            System.out.println("the average of ratings is: " + average);
+        else
+            System.out.println("there's no rating for this " + ((isForFood) ? "food" : "restaurant"));
         System.out.println(dashedLine2);
         System.out.format(leftAlignHeaderFormat2," Id","UserId" ,"   addingTime","                                                         comment", "replyToComment");
         System.out.println (dashedLine2);
         for (Comment comment : comments)
             System.out.format(leftAlignFormat2, comment.id, comment.user.id, Functions.simpleDateFormat.format(comment.addingTime), comment.Comment, (comment.replyComment == null) ? "" : comment.replyComment.id);
         System.out.println(dashedLine2);
+    }
+    public static double averageRate(ArrayList<Comment> rates) {
+        int sum = 0;
+        for (Comment rate : rates)
+            sum += rate.rate;
+        if (rates.size() > 0)
+            return (double) ((int) ((double) sum / rates.size() * 100)) / 100;
+        return 0;
     }
     public static void printComment(int id, String whichId) {
         ArrayList<Comment>[] comments = sortedComment(Main.sql.getComment(id, whichId, false));

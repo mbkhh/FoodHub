@@ -274,7 +274,7 @@ public class Main {
                 System.out.print("what are you searching for (food type or food): ");
                 command = scanner.nextLine();
                 if (command.matches("\\w+")) {
-                    Food.printFood(sql.getFood(0, "", true, command), "your search results:");
+                    Food.printFood(sql.getFood(0, "", true, command), "your searchText results:");
                 } else
                     System.out.println("invalid type");
             }
@@ -282,7 +282,7 @@ public class Main {
                 System.out.print("what are you searching for (food type or restaurant): ");
                 command = scanner.nextLine();
                 if (command.matches("\\w+")) {
-                    Restaurant.printRestaurant(sql.getRestaurant(0, "", true, command), "your search results:");
+                    Restaurant.printRestaurant(sql.getRestaurant(0, "", true, command), "your searchText results:");
                 } else
                     System.out.println("invalid type");
             }
@@ -431,7 +431,7 @@ public class Main {
                     System.out.print("what are you searching for (food type or food): ");
                     command = scanner.nextLine();
                     if (command.matches("\\w+")) {
-                        Food.printFood(sql.getFood(Restaurant.currentRestaurant.id, "restaurantId", false, command), "your search results:");
+                        Food.printFood(sql.getFood(Restaurant.currentRestaurant.id, "restaurantId", false, command), "your searchText results:");
                     } else
                         System.out.println("invalid type");
                 }

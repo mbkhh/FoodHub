@@ -1,7 +1,7 @@
 package FoodHub.Control;
 
 import FoodHub.Base.*;
-import FoodHub.Main;
+import FoodHub.MainApplication;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -11,7 +11,6 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
-import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -24,11 +23,11 @@ public class CartController {
     public static CartController cartController;
     public static void show() throws IOException
     {
-         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("cart.fxml"));
-         Scene scene = new Scene(fxmlLoader.load(), Main.primaryWidth, Main.primaryHeight);
-         Main.primaryStage.setTitle("Cart");
-         Main.primaryStage.setScene(scene);
-         Main.primaryStage.show();
+         FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("cart.fxml"));
+         Scene scene = new Scene(fxmlLoader.load(), MainApplication.primaryWidth, MainApplication.primaryHeight);
+         MainApplication.primaryStage.setTitle("Cart");
+         MainApplication.primaryStage.setScene(scene);
+         MainApplication.primaryStage.show();
     }
 
     @FXML
@@ -40,13 +39,13 @@ public class CartController {
         int totalprice=0;
         int postCost = 0;
         /*for (int i = 0; i <8; i++) {
-            HBox row2 = FXMLLoader.load(Main.class.getResource("cartRow.fxml"));
+            HBox row2 = FXMLLoader.load(MainApplication.class.getResource("cartRow.fxml"));
             foodMenu.getChildren().add(row2);
         }*/
         ArrayList<Cart> te = FoodHub.Base.Main.sql.getCart(User.currentUser.id, 0);
         for(Cart cart: te)
         {
-            FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("cartRow.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("cartRow.fxml"));
             HBox row = fxmlLoader.load();
             row.setId("cart_"+cart.id);
             CartRow control = fxmlLoader.getController();

@@ -1,10 +1,9 @@
 package FoodHub.Control;
 
 import FoodHub.Base.Cart;
-import FoodHub.Base.Map;
 import FoodHub.Base.Order;
 import FoodHub.Base.User;
-import FoodHub.Main;
+import FoodHub.MainApplication;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -43,7 +42,7 @@ public class SingleOrderController {
         ArrayList<Cart> tes = FoodHub.Base.Main.sql.getCart(User.currentUser.id, id);
         for(Cart cart: tes)
         {
-            FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("cartRow.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("cartRow.fxml"));
             HBox row = fxmlLoader.load();
             row.setId("cart_"+cart.id);
             for (int i = 0; i < row.getChildren().size(); i++)
@@ -58,14 +57,14 @@ public class SingleOrderController {
 
     public static void show(int id) throws IOException
     {
-        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("order.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("order.fxml"));
         SingleOrderController.singleOrderController = new SingleOrderController();
         SingleOrderController.singleOrderController.id = id;
         fxmlLoader.setController(SingleOrderController.singleOrderController);
-        Scene scene = new Scene(fxmlLoader.load(), Main.primaryWidth, Main.primaryHeight);
-        Main.primaryStage.setTitle("Order "+id);
-        Main.primaryStage.setScene(scene);
-        Main.primaryStage.show();
+        Scene scene = new Scene(fxmlLoader.load(), MainApplication.primaryWidth, MainApplication.primaryHeight);
+        MainApplication.primaryStage.setTitle("Order "+id);
+        MainApplication.primaryStage.setScene(scene);
+        MainApplication.primaryStage.show();
     }
     public  void showMap() throws IOException
     {
