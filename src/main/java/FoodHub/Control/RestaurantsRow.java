@@ -4,11 +4,13 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 
+import java.io.IOException;
+
 public class RestaurantsRow {
     @FXML
     public Label name, foodType, postCost, address, rate;
     int restaurantId;
-    public void select(ActionEvent event) {
+    public void select(ActionEvent event) throws IOException {
         Restaurant.setCurrentRestaurant(restaurantId);
         RestaurantPanel.show();
     }

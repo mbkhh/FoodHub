@@ -41,9 +41,9 @@ public class RestaurantOwnerPanelRow {
         Food.editFood(foodId, "isActive", (activity.getText().equals("Inactive")) ? "no" : "yes", 0, 0);
     }
     public void delete(ActionEvent event) {
-        Alert alert;
-        Restaurant.deleteRestaurant();
-        = new Alert(Alert.AlertType.CONFIRMATION);
-        alert.setHeaderText("");
+//        Alert alert;
+//        Restaurant.deleteRestaurant();
+//        = new Alert(Alert.AlertType.CONFIRMATION);
+//        alert.setHeaderText("");
     }
 }

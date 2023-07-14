@@ -16,6 +16,7 @@ public class Main {
         String command;
         String[] commands;
         ArrayList<String> info = new ArrayList<>();
+
         //Map.InsertMapFromFile();
         //Map.findPath(127, 414);
         //test
@@ -524,7 +525,7 @@ public class Main {
                     }
                 }
             }
-            
+
             else
                 System.out.println("invalid command");
         } while (!command.equals("end"));

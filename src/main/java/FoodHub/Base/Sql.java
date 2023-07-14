@@ -800,10 +800,10 @@ public class Sql {
             System.out.println("Could not Insert data to database : insertToRestaurant : " + e.getMessage());
         }
     }
-    public void insertToComment(int restaurantId, int foodId, int userId, String comment, int rate, int replyId, long addingTime) {
+    public void insertToComment(int restaurantId, int foodId, int userId, String comment, int rate, int replyId, long addTime) {
         try {
             Statement statement = connection.createStatement();
-            statement.executeUpdate("Insert INTO Comment (restaurantId, foodId, userId, comment, rate, replyId, addingTime) VALUES (" + restaurantId + ", '" + foodId + "', " + userId + ", '" + comment + "', " + rate + ", " + replyId + ", '" + addingTime + "');");
+            statement.executeUpdate("Insert INTO Comment (restaurantId, foodId, userId, comment, rate, replyId, addTime) VALUES (" + restaurantId + ", '" + foodId + "', " + userId + ", '" + comment + "', " + rate + ", " + replyId + ", '" + addTime + "');");
             statement.close();
         } catch (SQLException e) {
             System.out.println("Could not Insert data to database : insertToRestaurant : " + e.getMessage());
@@ -941,7 +941,7 @@ public class Sql {
                 String comment = resultSet.getString("comment");
                 int rate = resultSet.getInt("rate");
                 int replyId = resultSet.getInt("replyId");
-                long addingTime = resultSet.getLong("addingTime");
+                long addingTime = resultSet.getLong("addTime");
                 comments.add(new Comment(id, userId, foodId, restaurantId, replyId, rate, comment, addingTime));
             }
             resultSet.close();
