@@ -182,6 +182,15 @@ public class Sql {
             System.out.println("Could not delete data to database : deleteFromCartByFoodId : "+e.getMessage());
         }
     }
+    public void deleteFromOrderByRestaurantId(int restaurantId ) {
+        try {
+            Statement stm = connection.createStatement();
+            stm.executeUpdate( "DELETE FROM Order WHERE `restaurantId` = "+restaurantId+";" );
+            stm.close();
+        } catch (SQLException e) {
+            System.out.println("Could not delete data to database : deleteFromOrderByRestaurantId : "+e.getMessage());
+        }
+    }
     public ArrayList<Cart> getCart(int FoodId, int UserId , int OrderId) {
         ArrayList<Cart> ans = new ArrayList<Cart>();
         try {
