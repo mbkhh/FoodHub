@@ -58,10 +58,11 @@ public class MapController {
         //mapPane.getChildren().addAll(c1,c2,l1);
         main.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
         main.setVbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
+        System.out.println(path);
         String[] p = path.split(" - ");
         for (int i = 0 ; i < p.length - 1 ; i++)
         {
-            System.out.println(p[i]);
+            //System.out.println(p[i]);
             int loc1[] = Main.sql.getNodeXY(Functions.parseInt(p[i]));
             int loc2[] = Main.sql.getNodeXY(Functions.parseInt(p[i+1]));
             Line l = new Line(loc1[0],loc1[1],loc2[0],loc2[1]);
@@ -77,7 +78,7 @@ public class MapController {
             int loc2[] = Main.sql.getNodeXY(b.node2);
             Line l = new Line(loc1[0],loc1[1],loc2[0],loc2[1]);
             double percent = (double)(MainApplication.traffic.branches.get(b.id).toNode1 + MainApplication.traffic.branches.get(b.id).toNode2)/ MainApplication.traffic.branches.get(b.id).capactiy;
-            System.out.println(b.node1 + "  " + b.node2 + "   => " +  percent);
+            //System.out.println(b.node1 + "  " + b.node2 + "   => " +  percent);
             if(percent <= .2)
                 l.setStyle("-fx-stroke: #00f;");
             else if (percent >.2 && percent < .6)
@@ -104,13 +105,13 @@ public class MapController {
         String[] p = path.split(" - ");
         for (int i = 0 ; i < p.length - 1 ; i++)
         {
-            System.out.println(p[i]);
+            //System.out.println(p[i]);
             int loc1[] = Main.sql.getNodeXY(Functions.parseInt(p[i]));
             int loc2[] = Main.sql.getNodeXY(Functions.parseInt(p[i+1]));
             Line l = new Line(loc1[0],loc1[1],loc2[0],loc2[1]);
-            l.setStyle("-fx-stroke: #0f0;");
+            l.setStyle("-fx-stroke: #fc03db;");
             l.setStrokeWidth(6);
-            //mapPane.getChildren().add(l);
+            mapPane.getChildren().add(l);
         }
         System.out.println(p.length);
     }
@@ -162,6 +163,10 @@ public class MapController {
         else if(source.equals("RestaurantSingle"))
         {
             RestaurantSingleOrder.show(id);
+        }
+        else if(source.equals("ServiceSingle"))
+        {
+            ServiceSingleOrder.show(id);
         }
     }
 

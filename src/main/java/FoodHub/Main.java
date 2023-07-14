@@ -374,7 +374,7 @@ public class Main {
             }
 
             if (Restaurant.currentRestaurant != null) {
-                else if (command.matches("change\\s+food\\s+types\\s+to\\s+[\\w,]+")) {
+                if (command.matches("change\\s+food\\s+types\\s+to\\s+[\\w,]+")) {
                     if (Restaurant.currentRestaurant.id == User.currentUser.id) {
                         if (Order.openOrders(Restaurant.currentRestaurant.id).size() == 0) {
                             System.out.println("Are you that you want to change your food types? all food in your menu will be deleted");

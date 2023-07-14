@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.HBox?>
+
+<HBox prefHeight="100.0" stylesheets="@../../style.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="FoodHub.Control.ServiceOpenOrderRow">
+    <children>
+        <Label fx:id="idLBL" alignment="CENTER" prefWidth="55.0" styleClass="TableLable" text="78" />
+        <Label fx:id="usernameLBL" alignment="CENTER" prefWidth="200.0" styleClass="TableLable" text="2000/12/25 23:55:55" />
+        <Label fx:id="userAddressLBL" alignment="CENTER" prefWidth="120.0" styleClass="TableLable" text="10000" />
+        <Label fx:id="restaurantNameLBL" alignment="CENTER" prefWidth="230.0" styleClass="TableLable" text="1000000" />
+        <Label fx:id="restaurantAddressLBL" alignment="CENTER" prefWidth="120.0" styleClass="TableLable" text="Accepted" />
+        <Label fx:id="postCostLBL" alignment="CENTER" prefWidth="150.0" styleClass="TableLable" text="53:25" />
+        <Button mnemonicParsing="false" onAction="#accept" prefWidth="100.0" styleClass="TableButton" text="Accept" />
+    </children>
+    <padding>
+        <Insets left="10.0" top="28.0" />
+    </padding>
+</HBox>

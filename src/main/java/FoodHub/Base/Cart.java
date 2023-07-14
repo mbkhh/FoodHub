@@ -34,7 +34,10 @@ public class Cart {
         else {
             ArrayList<Cart> te = Main.sql.getCart(food.id, user.id, 0) ;
             if(te.size() != 0) {
-                Main.sql.deleteFromCart(te.get(0).id);
+                if(te.get(0).count <= 1)
+                    Main.sql.deleteFromCart(te.get(0).id);
+                else
+                    Main.sql.EditCart(te.get(0).id, te.get(0).food.price, te.get(0).count-1);
                 System.out.println("Food removed from cart successfully");
             }
             else

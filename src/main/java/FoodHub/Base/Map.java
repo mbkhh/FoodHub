@@ -36,11 +36,11 @@ public class Map {
 
         while (list.get(0).nodeName != node2) {
             //System.out.println("on vertex: "+list.get(0).nodeName + "   " + list.get(0).pathLenght);
-            //ArrayList<Branch> connected = Main.sql.getConnectedBranch(list.get(0).nodeName);
-            ArrayList<Branch> connected = getConnectedBranches(list.get(0).nodeName, all);
-            // for (int i = 0; i < connected.size(); i++) {
-            //     System.out.println(connected.get(i).node1 + "    "  + connected.get(i).node2 + "     " + connected.get(i).weight);
-            // }
+            ArrayList<Branch> connected = Main.sql.getConnectedBranch(list.get(0).nodeName);
+            //ArrayList<Branch> connected = getConnectedBranches(list.get(0).nodeName, all);
+//             for (int i = 0; i < connected.size(); i++) {
+//                 System.out.println(connected.get(i).node1 + "    "  + connected.get(i).node2 + "     " + connected.get(i).weight);
+//             }
             for (int i = 0; i < connected.size(); i++) {
                 if(connected.get(i).node1 == list.get(0).nodeName && !indexed.contains(connected.get(i).node2))
                 {
@@ -48,7 +48,7 @@ public class Map {
                     if(index == -1)
                         list.add(new Vertex(list.get(0),connected.get(i).weight, connected.get(i).node2));
                     else{
-                        if(list.get(0).pathLength + connected.get(i).weight > list.get(index).pathLength)
+                        if(list.get(0).pathLength + connected.get(i).weight < list.get(index).pathLength)
                             list.set(index, new Vertex(list.get(0),connected.get(i).weight, connected.get(i).node2));
                     }
 
@@ -59,7 +59,7 @@ public class Map {
                     if(index == -1)
                         list.add(new Vertex(list.get(0),connected.get(i).weight, connected.get(i).node1));
                     else{
-                        if(list.get(0).pathLength + connected.get(i).weight > list.get(index).pathLength)
+                        if(list.get(0).pathLength + connected.get(i).weight < list.get(index).pathLength)
                             list.set(index, new Vertex(list.get(0),connected.get(i).weight, connected.get(i).node1));
                     }
                 }
@@ -68,13 +68,14 @@ public class Map {
             list.remove(0);
 
             for (int i = 0; i < list.size(); i++) {
-                for (int j = i; j < list.size(); j++) {
-                    if(j!=list.size()-1 && list.get(j+1).pathLength < list.get(j).pathLength)
+                for (int j = i; j < list.size()-1; j++) {
+                    if( list.get(j+1).pathLength < list.get(j).pathLength)
                     {
                         Collections.swap(list, j+1, j);
                     }
                 }
             }
+            //Collections.reverse(list);
         }
         //System.out.println("path finded - path detail:");
         //for (int i = 0; i < list.get(0).nodes.length; i++) {

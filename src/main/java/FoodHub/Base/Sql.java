@@ -173,6 +173,15 @@ public class Sql {
             System.out.println("Could not delete data to database : deleteFromCart : "+e.getMessage());
         }
     }
+    public void deleteFromCartByFoodId(int foodId ) {
+        try {
+            Statement stm = connection.createStatement();
+            stm.executeUpdate( "DELETE FROM Cart WHERE `foodId` = "+foodId+";" );
+            stm.close();
+        } catch (SQLException e) {
+            System.out.println("Could not delete data to database : deleteFromCartByFoodId : "+e.getMessage());
+        }
+    }
     public ArrayList<Cart> getCart(int FoodId, int UserId , int OrderId) {
         ArrayList<Cart> ans = new ArrayList<Cart>();
         try {
@@ -432,6 +441,34 @@ public class Sql {
         try {
             Statement stm = connection.createStatement();
             ResultSet rs = stm.executeQuery( "SELECT * FROM `Order` WHERE `deliveryId`="+deliveryId+" AND id="+orderId+";" );
+            while ( rs.next() ) {
+                int id = rs.getInt("id");
+                int userId = rs.getInt("userId");
+                int restaurantId = rs.getInt("restaurantId");
+                String path = rs.getString("path");
+                int pathLength = rs.getInt("pathLength");
+                int estimatedTime = rs.getInt("estimatedTotalTime");
+                long addTime = rs.getLong("addTime");
+                int totalprice = rs.getInt("totalprice");
+                int totalDiscount = rs.getInt("totalDiscount");
+                String status = rs.getString("status");
+                String discription= rs.getString("discription");
+
+                ans.add(new Order(id, userId, restaurantId, deliveryId, path, pathLength, estimatedTime, addTime, totalprice, totalDiscount, status, discription));
+            }
+            rs.close();
+            stm.close();
+            return ans;
+        } catch (SQLException e) {
+            System.out.println("Could not select data from database : getAllOrderOfUser : "+e.getMessage());
+            return ans;
+        }
+    }
+    public ArrayList<Order> getOrderDelivery(int deliveryId) {
+        ArrayList<Order> ans = new ArrayList<Order>();
+        try {
+            Statement stm = connection.createStatement();
+            ResultSet rs = stm.executeQuery( "SELECT * FROM `Order` WHERE `deliveryId`="+deliveryId+";" );
             while ( rs.next() ) {
                 int id = rs.getInt("id");
                 int userId = rs.getInt("userId");
