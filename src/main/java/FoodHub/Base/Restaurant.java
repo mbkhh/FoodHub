@@ -47,8 +47,12 @@ public class Restaurant {
     public Address getRestaurantAddress() {
         return Address.getAddress(0, id);
     }
-    public boolean editRestaurantAddress(int node) {
-        return Main.sql.editAddress(getRestaurantAddress().id, -1, id, node);
+    public static boolean editRestaurantAddress(int id, int node) {
+        if (Main.sql.editAddress(getRestaurant(id).getRestaurantAddress().id, -1, id, node)) {
+            currentRestaurant = getRestaurant(id);
+            return true;
+        }
+        return false;
     }
     public static Restaurant getRestaurantByOwnerId(int id) {
         return Main.sql.getRestaurant(id, "ownerId", false, "").get(0);
@@ -61,10 +65,10 @@ public class Restaurant {
         if (restaurants.size() == 0)
             System.out.println("You don't have any restaurant");
         else if (restaurants.size() == 1) {
-            printRestaurant(restaurants, "Yours restaurant:");
+            printRestaurant(restaurants, "Your restaurant:");
             currentRestaurant = restaurants.get(0);
         } else
-            printRestaurant(restaurants, "Yours restaurants:");
+            printRestaurant(restaurants, "Your restaurants:");
     }
     public static void printAllRestaurants() {
         printRestaurant(Main.sql.getRestaurant(0, "", true, ""), "These are all of the restaurants:");
@@ -89,12 +93,14 @@ public class Restaurant {
         }
         return false;
     }
-    public void editFoodType(String foodType) {
+    public static void editFoodType(int id, String foodType) {
+        Restaurant restaurant = getRestaurant(id);
         ArrayList<Food> foods = Main.sql.getFood(id, "restaurantId", false, "");
-        Main.sql.editRestaurant(id, owner.id, name, foodType, postCost);
+        Main.sql.editRestaurant(id, restaurant.owner.id, restaurant.name, foodType, restaurant.postCost);
         Main.sql.deleteFromComment(id, "restaurantId");
         for (Food food : foods)
             Main.sql.deleteFromComment(food.id, "foodId");
         Main.sql.deleteFromFood(id, "restaurantId");
+        currentRestaurant = getRestaurant(id);
     }
 }

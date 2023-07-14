@@ -4,6 +4,7 @@ import FoodHub.Main;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 
 public class Comment {
     public int id;
@@ -43,10 +44,10 @@ public class Comment {
         }
         return false;
     }
-    public static boolean editComment(int id, int data1, String data2) {
+    public static boolean editComment(int id, String data1, int data2) {
         Comment comment = getComment(id);
-        if (comment != null && comment.user.id == User.currentUser.id) {
-            Main.sql.editComment(id, data2, data1, new Date().getTime());
+        if (comment != null) {
+            Main.sql.editComment(id, data1, data2);
             return true;
         }
         return false;
@@ -127,5 +128,9 @@ public class Comment {
             }
         }
         return true;
+    }
+    public static HashMap<Integer, Integer> rating(int userId) {
+        HashMap<Integer, Integer> rating = new HashMap<>();
+        Main.sql.
     }
 }

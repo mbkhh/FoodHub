@@ -43,6 +43,7 @@ public class Food {
         }
         if (food != null) {
             Main.sql.editFood(id, food.restaurant.id, food.name, food.price, food.foodType.getFoodType(), food.discountPercent, food.discountTime.getTime(), (food.isActive) ? "yes" : "no");
+            currentFood = getFood(id);
             return true;
         }
         return false;

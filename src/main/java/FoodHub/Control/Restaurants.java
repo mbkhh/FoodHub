@@ -18,7 +18,7 @@ public class Restaurants {
     public static Restaurants restaurant;
     public static ArrayList<Restaurant> restaurants;
     public static void show(String search) throws IOException {
-        restaurants = Main.sql.getRestaurant(0, "", true, (!search.equals("ALL")) ? search : "");
+        restaurants = Address.findNearRestaurant(Main.sql.getRestaurant(0, "", true, (!search.equals("ALL")) ? search : ""), User.currentUser.id);
         FXMLLoader loader = new FXMLLoader(MainApplication.class.getResource("Restaurants.fxml"));
         Scene scene = new Scene(loader.load());
         MainApplication.primaryStage.setScene(scene);

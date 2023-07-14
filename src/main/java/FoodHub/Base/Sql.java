@@ -827,10 +827,10 @@ public class Sql {
             System.out.println("Could not update data to database : editRestaurant : " + e.getMessage());
         }
     }
-    public void editComment(int id, String comment, int rate, long addingTime) {
+    public void editComment(int id, String comment, int rate) {
         try {
             Statement statement = connection.createStatement();
-            statement.executeUpdate( "UPDATE Food SET comment = '" + comment + "', rate = " + rate + ", addingTime = " + addingTime + " WHERE id = " + id + ";" );
+            statement.executeUpdate( "UPDATE Food SET comment = '" + comment + "', rate = " + rate + " WHERE id = " + id + ";" );
             statement.close();
         } catch (SQLException e) {
             System.out.println("Could not update data to database : editRestaurant : " + e.getMessage());
