@@ -4,6 +4,9 @@ import FoodHub.Base.*;
 import FoodHub.Control.*;
 import javafx.application.Application;
 import javafx.application.Platform;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -23,16 +26,20 @@ public class MainApplication extends Application {
 //        stage.setScene(scene);
 //        stage.show();
         Main.sql=new Sql();
-        traffic = new Traffic();
-        traffic.start();
+//        traffic = new Traffic();
+//        traffic.start();
         User.currentUser = User.getUserById(1);
-        RestaurantOrder.show(1);
+        FXMLLoader loader = new FXMLLoader(MainApplication.class.getResource("RestaurantOwnerPanelRow.fxml"));
+        Scene root = new Scene(loader.load());
+        primaryStage.setScene(root);
+        primaryStage.show();
+//        RestaurantOrder.show(1);
        // OwnerPanel.show();
 //        Restaurants.show("shit");
-        primaryStage.setOnCloseRequest(e -> {
-            Platform.exit();
-            traffic.isRunning = false;
-        });
+//        primaryStage.setOnCloseRequest(e -> {
+//            Platform.exit();
+//            traffic.isRunning = false;
+//        });
         //CartController.show();
 //        OrderController.show();
 //        MapController.show();

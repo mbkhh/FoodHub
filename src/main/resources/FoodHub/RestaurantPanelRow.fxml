@@ -1,14 +1,39 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import com.gluonhq.charm.glisten.control.Icon?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Tooltip?>
+<?import javafx.scene.layout.HBox?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="FoodHub.Control.RestaurantPanelRow"
-            prefHeight="400.0" prefWidth="600.0">
-
-</AnchorPane>
+<HBox alignment="CENTER_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="71.0" prefWidth="682.0" spacing="5.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="FoodHub.Control.RestaurantPanelRow">
+   <children>
+      <Label fx:id="name" prefHeight="30.0" prefWidth="100.0" styleClass="TableLable" />
+      <Label fx:id="type" prefHeight="30.0" prefWidth="100.0" styleClass="TableLable" />
+      <Label fx:id="price" prefHeight="30.0" prefWidth="100.0" styleClass="TableLable" />
+      <Label fx:id="discount" prefHeight="30.0" prefWidth="101.0" styleClass="TableLable" />
+      <Button mnemonicParsing="false" onAction="#comment" prefWidth="80.0" style="-fx-background-color: ddd;">
+         <graphic>
+            <Label fx:id="rate" alignment="CENTER" prefHeight="30.0" prefWidth="101.0" styleClass="TableLable" />
+         </graphic>
+         <tooltip>
+            <Tooltip text="Tap to See the Comments" />
+         </tooltip>
+      </Button>
+      <Button minWidth="50.0" mnemonicParsing="false" onAction="#remove" prefHeight="41.0" prefWidth="50.0" style="-fx-background-color: ddd;">
+         <graphic>
+            <Icon content="REMOVE" style="-fx-background-color: 111;" />
+         </graphic>
+      </Button>
+      <Button minWidth="50.0" mnemonicParsing="false" onAction="#add" prefHeight="41.0" prefWidth="50.0" style="-fx-background-color: ddd;">
+         <graphic>
+            <Icon content="ADD" prefHeight="26.0" prefWidth="0.0" style="-fx-background-color: 111;" />
+         </graphic>
+      </Button>
+      <Label fx:id="number" prefHeight="43.0" prefWidth="43.0" styleClass="TableLable" text="99" />
+   </children>
+   <padding>
+      <Insets left="5.0" />
+   </padding>
+</HBox>

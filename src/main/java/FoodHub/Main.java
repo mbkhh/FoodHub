@@ -23,28 +23,7 @@ public class Main {
             command = scanner.nextLine();
             command.trim();
             commands = command.split(" ");
-            if (command.matches("return")) {
-                if (User.currentUser != null) {
-                    if (Restaurant.currentRestaurant != null) {
-                        if (Food.currentFood != null) {
-                            if (Comment.currentComment != null) {
-
-                            } else {
-
-                            }
-                        } else if (Comment.currentComment != null) {
-
-                        } else if (Cart.currentCart != null) {
-                            //TODO bagher
-                        } else {
-                            Restaurant.printRestaurant(Restaurant.currentRestaurant.id);
-                            Restaurant.currentRestaurant = null;
-                        }
-                    } else
-                        User.logoutUser();
-                }
-            }
-            else if (command.matches("(?i)add\\s+food\\s+with\\s+id\\s+\\d+\\s+to\\s+cart\\s*")) {
+            if (command.matches("(?i)add\\s+food\\s+with\\s+id\\s+\\d+\\s+to\\s+cart\\s*")) {
                 if (User.currentUser == null)
                     continue;
                 Cart.addToCart(Functions.parseInt(command.split(" ")[4]), User.currentUser);
@@ -225,84 +204,176 @@ public class Main {
             else if (command.matches("(?i)logout+\\s*") && !User.checkCurrentUser2()) {
                 User.logoutUser();
             }
-            else if (command.matches("add\\s+restaurant")) {
-                System.out.print("enter the owner id: ");
-                command = scanner.nextLine();
-                if (command.matches("\\w+")) {
-                    int ownerId = Integer.parseInt(command);
-                    if (User.getUserById(ownerId) != null) {
-                        System.out.print("enter the name: ");
-                        command = scanner.nextLine();
-                        if (command.matches("\\w+")) {
-                            String name = command;
-                            System.out.print("enter the post cost: ");
+
+            if (User.currentUser != null) {
+                if (Restaurant.currentRestaurant != null) {
+                    if (Food.currentFood != null) {
+                        if (Comment.currentComment != null) {
+                            if (command.matches("return")) {
+
+                            }
+                        }
+                        else {
+                            if (command.matches("return")) {
+
+                            }
+                        }
+                    }
+                    else if (Comment.currentComment != null) {
+                        if (command.matches("return")) {
+
+                        }
+                    }
+                    else {
+                        if (command.matches("search\\s+food")) {
+                            System.out.print("what are you searching for (food type or food): ");
                             command = scanner.nextLine();
                             if (command.matches("\\w+")) {
-                                int postCost = Integer.parseInt(command);
-                                System.out.print("enter the food type(s) with a ',' between them if they're two or more without any white space: ");
-                                command = scanner.nextLine();
-                                if (command.matches("[\\w,]+")) {
-                                    String foodType = command;
-                                    if (Restaurant.addRestaurant(ownerId, name, postCost, foodType))
-                                        System.out.println("The restaurant was successfully added");
-                                } else
-                                    System.out.println("Invalid food type type");
+                                Food.printFood(sql.getFood(Restaurant.currentRestaurant.id, "restaurantId", false, command), "your searchText results:");
                             } else
-                                System.out.println("Invalid post cost type");
+                                System.out.println("invalid type");
+                        }
+                        else if (command.matches("show\\s+restaurant\\s+location")) {
+                            System.out.println(Restaurant.currentRestaurant.getRestaurantAddress().node);
+                        }
+                        else if (command.matches("show\\s+food\\s+types\\s+")) {
+                            System.out.println(Restaurant.currentRestaurant.foodTypesToString());
+                        }
+                        else if (command.matches("select\\s+food\\s+with\\s+id\\s+\\d+")) {
+                            if (Food.setCurrentFood(Integer.parseInt(commands[4]))) {
+                                System.out.println("You entered restaurant successfully");
+                                Comment.printComment(Food.currentFood.id, "foodId");
+                            }
+                            else
+                                System.out.println("There wasn't any food with this id");
+                        }
+                        else if (User.currentUser.id == Restaurant.currentRestaurant.owner.id) {
+                            if (command.matches("return")) {
+                                
+                            }
+                        }
+                        else {
+                            if (command.matches("return")) {
+
+                            }
+                            else if (command.matches("add\\s+a\\s+comment\\s+to\\s+this\\s+restaurant")) {
+                                if (User.currentUser.type == 1) {
+                                    System.out.print("please enter your comment here: ");
+                                    command = scanner.nextLine();
+                                    if (command.matches("[\\w.,]+")) {
+                                        String comment = command;
+                                        Comment.addComment(User.currentUser.id, 0, Restaurant.currentRestaurant.id, 0, 0, comment, new Date().getTime());
+                                    } else
+                                        System.out.println("invalid comment type");
+                                } else
+                                    System.out.println("you don't have access to add comments to the restaurants.");
+                            }
+                            else if (command.matches("edit\\s+my\\s+comment\\s+with\\s+id\\s+\\d+\\s+to\\s+the\\s+restaurant")) {
+                                Comment comment = Comment.getComment(Integer.parseInt(commands[5]));
+                                if (comment != null && comment.food.id == 0 && comment.rate == 0) {
+                                    command = editComment(command, commands, comment);
+                                } else
+                                    System.out.println("there's no comment with this id.");
+                            }
+                            else if (command.matches("add\\s+a\\s+rate\\s+to\\s+this\\s+restaurant")) {
+                                if (User.currentUser.type == 1) {
+                                    if (Comment.isUnique(User.currentUser.id, Restaurant.currentRestaurant.id, "restaurantId")) {
+                                        System.out.print("please enter your rating between 1 to 5: ");
+                                        command = scanner.nextLine();
+                                        if (command.matches("[1-5]")) {
+                                            int rate = Integer.parseInt(command);
+                                            Comment.addComment(User.currentUser.id, 0, Restaurant.currentRestaurant.id, 0, rate, "", new Date().getTime());
+                                        } else
+                                            System.out.println("invalid rating type");
+                                    } else
+                                        System.out.println("you've rotten for this restaurant before.");
+                                } else
+                                    System.out.println("you don't have access to rete the restaurants.");
+                            }
+                            else if (command.matches("edit\\s+my\\s+rate\\s+with\\s+id\\s+\\d+\\s+to\\s+the\\s+restaurant")) {
+                                Comment comment = Comment.getComment(Integer.parseInt(commands[5]));
+                                if (comment != null && comment.food.id == 0 && comment.rate != 0) {
+                                    command = editRate(command, commands, comment);
+                                } else
+                                    System.out.println("there's no rating with this id.");
+                            }
+                        }
+                    }
+                }
+                else {
+                    if (command.matches("return")) {
+                        User.logoutUser();
+                    }
+                    else if (command.matches("search\\s+food")) {
+                        System.out.print("what are you searching for (food type or food): ");
+                        command = scanner.nextLine();
+                        if (command.matches("\\w+")) {
+                            Food.printFood(sql.getFood(0, "", true, command), "your searchText results:");
                         } else
-                            System.out.println("Invalid name type");
-                    } else
-                        System.out.println("There wasn't a user with this id");
-                } else
-                    System.out.println("Invalid owner id type");
+                            System.out.println("invalid type");
+                    }
+                    else if (command.matches("search\\s+restaurant")) {
+                        System.out.print("what are you searching for (food type or restaurant): ");
+                        command = scanner.nextLine();
+                        if (command.matches("\\w+")) {
+                            Restaurant.printRestaurant(sql.getRestaurant(0, "", true, command), "your searchText results:");
+                        } else
+                            System.out.println("invalid type");
+                    }
+                    else if (command.matches("select\\s+restaurant\\s+with\\s+id\\s+\\d+")) {
+                        if (Restaurant.setCurrentRestaurant(Integer.parseInt(commands[4]))) {
+                            System.out.println("You entered restaurant successfully");
+                            Comment.printComment(Restaurant.currentRestaurant.id, "restaurantId");
+                            Food.printFood(Restaurant.currentRestaurant.id);
+                        } else
+                            System.out.println("There wasn't any restaurant with this id");
+                    }
+                    else if (User.currentUser.type == 2) {
+                        if (command.matches("add\\s+restaurant")) {
+                            System.out.print("enter the owner id: ");
+                            command = scanner.nextLine();
+                            if (command.matches("\\w+")) {
+                                int ownerId = Integer.parseInt(command);
+                                if (User.getUserById(ownerId) != null) {
+                                    System.out.print("enter the name: ");
+                                    command = scanner.nextLine();
+                                    if (command.matches("\\w+")) {
+                                        String name = command;
+                                        System.out.print("enter the post cost: ");
+                                        command = scanner.nextLine();
+                                        if (command.matches("\\w+")) {
+                                            int postCost = Integer.parseInt(command);
+                                            System.out.print("enter the food type(s) with a ',' between them if they're two or more without any white space: ");
+                                            command = scanner.nextLine();
+                                            if (command.matches("[\\w,]+")) {
+                                                String foodType = command;
+                                                if (Restaurant.addRestaurant(ownerId, name, postCost, foodType))
+                                                    System.out.println("The restaurant was successfully added");
+                                            } else
+                                                System.out.println("Invalid food type type");
+                                        } else
+                                            System.out.println("Invalid post cost type");
+                                    } else
+                                        System.out.println("Invalid name type");
+                                } else
+                                    System.out.println("There wasn't a user with this id");
+                            } else
+                                System.out.println("Invalid owner id type");
+                        }
+                        else if (command.matches("delete\\s+restaurant\\s+with\\s+id\\s+\\d+")) {
+                            if (User.currentUser.id == Restaurant.getRestaurant(Integer.parseInt(commands[4])).id) {
+                                if (Restaurant.deleteRestaurant(Integer.parseInt(commands[4])))
+                                    System.out.println("successful");
+                                else
+                                    System.out.println("there wasn't any restaurant with this id");
+                            } else
+                                System.out.println("You don't have an access to delete this restaurant");
+                        }
+                    }
+                }
             }
-            else if (command.matches("delete\\s+restaurant\\s+with\\s+id\\s+\\d+")) {
-                if (User.currentUser.id == Restaurant.getRestaurant(Integer.parseInt(commands[4])).id) {
-                    if (Restaurant.deleteRestaurant(Integer.parseInt(commands[4])))
-                        System.out.println("successful");
-                    else
-                        System.out.println("there wasn't any restaurant with this id");
-                } else
-                    System.out.println("You don't have an access to delete this restaurant");
-            }
-            else if (command.matches("select\\s+restaurant\\s+with\\s+id\\s+\\d+")) {
-                if (Restaurant.setCurrentRestaurant(Integer.parseInt(commands[4]))) {
-                    System.out.println("You entered restaurant successfully");
-                    Comment.printComment(Restaurant.currentRestaurant.id, "restaurantId");
-                    Food.printFood(Restaurant.currentRestaurant.id);
-                } else
-                    System.out.println("There wasn't any restaurant with this id");
-            }
-            else if (command.matches("search\\s+food")) {
-                System.out.print("what are you searching for (food type or food): ");
-                command = scanner.nextLine();
-                if (command.matches("\\w+")) {
-                    Food.printFood(sql.getFood(0, "", true, command), "your searchText results:");
-                } else
-                    System.out.println("invalid type");
-            }
-            else if (command.matches("search\\s+restaurant")) {
-                System.out.print("what are you searching for (food type or restaurant): ");
-                command = scanner.nextLine();
-                if (command.matches("\\w+")) {
-                    Restaurant.printRestaurant(sql.getRestaurant(0, "", true, command), "your searchText results:");
-                } else
-                    System.out.println("invalid type");
-            }
+
             if (Restaurant.currentRestaurant != null) {
-                if (command.matches("show\\s+restaurant\\s+location")) {
-                    System.out.println(Restaurant.currentRestaurant.getRestaurantAddress().node);
-                }
-                else if (command.matches("change\\s+restaurant\\s+address\\s+to\\s+node\\s+\\d+")) {
-                    if (Restaurant.currentRestaurant.id == User.currentUser.id) {
-                        if (Restaurant.currentRestaurant.editRestaurantAddress(Integer.parseInt(commands[5])))
-                            System.out.println("Address changed successfully");
-                    } else
-                        System.out.println("You don't have an access to change this");
-                }
-                else if (command.matches("show\\s+food\\s+types\\s+")) {
-                    System.out.println(Restaurant.currentRestaurant.foodTypesToString());
-                }
                 else if (command.matches("change\\s+food\\s+types\\s+to\\s+[\\w,]+")) {
                     if (Restaurant.currentRestaurant.id == User.currentUser.id) {
                         if (Order.openOrders(Restaurant.currentRestaurant.id).size() == 0) {
@@ -314,6 +385,28 @@ public class Main {
                             }
                         } else
                             System.out.println("You have open orders and can't change the food types of your restaurant before you finish your jobs");
+                    } else
+                        System.out.println("You don't have an access to change this");
+                }
+                else if (command.matches("add\\s+a\\s+reply\\s+to\\s+the\\s+comment\\s+of\\s+this\\s+restaurant\\s+with\\s+id\\s+\\d+")) {
+                    if (User.currentUser.type == 2) {
+                        if (Comment.getComment(Integer.parseInt(commands[11])) != null) {
+                            System.out.print("please enter your reply here: ");
+                            command = scanner.nextLine();
+                            if (command.matches("[\\w.,]+")) {
+                                String comment = command;
+                                Comment.addComment(User.currentUser.id, 0, Restaurant.currentRestaurant.id, Integer.parseInt(commands[11]), 0, comment, new Date().getTime());
+                            } else
+                                System.out.println("invalid reply type.");
+                        } else
+                            System.out.println("there's no comment with this id.");
+                    } else
+                        System.out.println("you don't have access to add reply to the restaurants.");
+                }
+                else if (command.matches("change\\s+restaurant\\s+address\\s+to\\s+node\\s+\\d+")) {
+                    if (Restaurant.currentRestaurant.id == User.currentUser.id) {
+                        if (Restaurant.currentRestaurant.editRestaurantAddress(Integer.parseInt(commands[5])))
+                            System.out.println("Address changed successfully");
                     } else
                         System.out.println("You don't have an access to change this");
                 }
@@ -359,84 +452,12 @@ public class Main {
                     } else
                         System.out.println("you don't have an access to add food");
                 }
-                else if (command.matches("select\\s+food\\s+with\\s+id\\s+\\d+")) {
-                    if (Food.setCurrentFood(Integer.parseInt(commands[4]))) {
-                        System.out.println("You entered restaurant successfully");
-                        Comment.printComment(Food.currentFood.id, "foodId");
-                    }
-                    else
-                        System.out.println("There wasn't any food with this id");
-                }
-                else if (command.matches("add\\s+a\\s+rate\\s+to\\s+this\\s+restaurant")) {
-                    if (User.currentUser.type == 1) {
-                        if (Comment.isUnique(User.currentUser.id, Restaurant.currentRestaurant.id, "restaurantId")) {
-                            System.out.print("please enter your rating between 1 to 5: ");
-                            command = scanner.nextLine();
-                            if (command.matches("[1-5]")) {
-                                int rate = Integer.parseInt(command);
-                                Comment.addComment(User.currentUser.id, 0, Restaurant.currentRestaurant.id, 0, rate, "", new Date().getTime());
-                            } else
-                                System.out.println("invalid rating type");
-                        } else
-                            System.out.println("you've rotten for this restaurant before.");
-                    } else
-                        System.out.println("you don't have access to rete the restaurants.");
-                }
-                else if (command.matches("add\\s+a\\s+comment\\s+to\\s+this\\s+restaurant")) {
-                    if (User.currentUser.type == 1) {
-                        System.out.print("please enter your comment here: ");
-                        command = scanner.nextLine();
-                        if (command.matches("[\\w.,]+")) {
-                            String comment = command;
-                            Comment.addComment(User.currentUser.id, 0, Restaurant.currentRestaurant.id, 0, 0, comment, new Date().getTime());
-                        } else
-                            System.out.println("invalid comment type");
-                    } else
-                        System.out.println("you don't have access to add comments to the restaurants.");
-                }
-                else if (command.matches("add\\s+a\\s+reply\\s+to\\s+the\\s+comment\\s+of\\s+this\\s+restaurant\\s+with\\s+id\\s+\\d+")) {
-                    if (User.currentUser.type == 2) {
-                        if (Comment.getComment(Integer.parseInt(commands[11])) != null) {
-                            System.out.print("please enter your reply here: ");
-                            command = scanner.nextLine();
-                            if (command.matches("[\\w.,]+")) {
-                                String comment = command;
-                                Comment.addComment(User.currentUser.id, 0, Restaurant.currentRestaurant.id, Integer.parseInt(commands[11]), 0, comment, new Date().getTime());
-                            } else
-                                System.out.println("invalid reply type.");
-                        } else
-                            System.out.println("there's no comment with this id.");
-                    } else
-                        System.out.println("you don't have access to add reply to the restaurants.");
-                }
                 else if (command.matches("edit\\s+my\\s+reply\\s+with\\s+id\\s+\\d+\\s+to\\s+the\\s+comment\\s+of\\s+my\\s+restaurant")) {
                     Comment comment = Comment.getComment(Integer.parseInt(commands[5]));
                     if (comment != null && comment.food.id == 0 && comment.replyComment != null) {
                         command = editReply(command, commands, comment);
                     } else
                         System.out.println("there's no reply with this id.");
-                }
-                else if (command.matches("edit\\s+my\\s+comment\\s+with\\s+id\\s+\\d+\\s+to\\s+the\\s+restaurant")) {
-                    Comment comment = Comment.getComment(Integer.parseInt(commands[5]));
-                    if (comment != null && comment.food.id == 0 && comment.rate == 0) {
-                        command = editComment(command, commands, comment);
-                    } else
-                        System.out.println("there's no comment with this id.");
-                }
-                else if (command.matches("edit\\s+my\\s+rating\\s+with\\s+id\\s+\\d+\\s+to\\s+the\\s+restaurant")) {
-                    Comment comment = Comment.getComment(Integer.parseInt(commands[5]));
-                    if (comment != null && comment.food.id == 0 && comment.rate != 0) {
-                        command = editRating(command, commands, comment);
-                    } else
-                        System.out.println("there's no rating with this id.");
-                }
-                else if (command.matches("search\\s+food")) {
-                    System.out.print("what are you searching for (food type or food): ");
-                    command = scanner.nextLine();
-                    if (command.matches("\\w+")) {
-                        Food.printFood(sql.getFood(Restaurant.currentRestaurant.id, "restaurantId", false, command), "your searchText results:");
-                    } else
-                        System.out.println("invalid type");
                 }
                 if (Food.currentFood != null) {
                     if (command.matches("delete\\s+food\\s+with\\s+id\\s+\\d+")) {
@@ -568,7 +589,7 @@ public class Main {
                     else if (command.matches("edit\\s+my\\s+rating\\s+with\\s+id\\s+\\d+to\\s+the\\s+food")) {
                         Comment comment = Comment.getComment(Integer.parseInt(commands[5]));
                         if (comment != null && comment.restaurant.id == 0 && comment.rate != 0) {
-                            command = editRating(command, commands, comment);
+                            command = editRate(command, commands, comment);
                         } else
                             System.out.println("there's no rating with this id.");
                     }
@@ -605,17 +626,17 @@ public class Main {
             System.out.println("You cannot edit comments that you not write.");
         return command;
     }
-    private static String editRating(String command, String[] commands, Comment comment) {
+    private static String editRate(String command, String[] commands, Comment comment) {
         if (comment.user.id == User.currentUser.id) {
             int id = Integer.parseInt(commands[5]);
-            System.out.print("enter a new rating to replace the old one: ");
+            System.out.print("enter a new rate to replace the old one: ");
             command = scanner.nextLine();
             if (command.matches("[1-5]")) {
                 Comment.editComment(id, Integer.parseInt(command), "");
             } else
-                System.out.println("invalid rating type.");
+                System.out.println("invalid rate type.");
         } else
-            System.out.println("You cannot edit rating that you not write.");
+            System.out.println("You cannot edit rate that you not write.");
         return command;
     }
 }
