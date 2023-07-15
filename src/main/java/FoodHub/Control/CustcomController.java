@@ -140,8 +140,8 @@ boolean hasreply=false;
     }
 
     @FXML
-    void backkk(ActionEvent event) {
-        System.out.println("back");
+    void backkk(ActionEvent event)throws IOException {
+        RestaurantPanel.show();
     }
 
 

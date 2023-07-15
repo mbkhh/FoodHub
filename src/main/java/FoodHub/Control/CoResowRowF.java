@@ -93,7 +93,9 @@ public class CoResowRowF {
     }
     @FXML
     void deletePress(ActionEvent event) throws IOException {
-
+        System.out.println("delete");
+        Main.sql.deleteFromComment(comid,"id");
+        CoResownerFController.show();
     }
 
     @FXML

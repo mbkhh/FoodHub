@@ -36,8 +36,6 @@
       </ScrollPane>
       <HBox alignment="CENTER" prefHeight="69.0" prefWidth="981.0" spacing="150.0">
          <children>
-            <Button mnemonicParsing="false" onAction="#openOrders" prefHeight="30.0" text="Open Orders" />
-            <Button mnemonicParsing="false" onAction="#allOrders" prefHeight="30.0" text="All Orders" />
             <Button mnemonicParsing="false" onAction="#addRestaurant" prefHeight="30.0" text="Add Restaurant" />
          </children>
          <padding>

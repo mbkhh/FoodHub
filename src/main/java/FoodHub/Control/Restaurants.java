@@ -38,8 +38,8 @@ public class Restaurants {
             box.getChildren().add(row);
         }
     }
-    public void balance(ActionEvent event) {
-
+    public void balance(ActionEvent event) throws IOException{
+        ChargeController.show();
     }
     public void cart(ActionEvent event) throws IOException {
         CartController.show();

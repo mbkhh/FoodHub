@@ -48,30 +48,30 @@ public class AddFood {
         foodTypeBox.getChildren().add(choiceFoodType);
     }
     public void add(ActionEvent event) {
-        Alert alert = new Alert(Alert.AlertType.ERROR);
-        alert.setTitle("Error");
-        alert.setHeaderText("Invalid type input.");
-        if (!name.getText().matches("\\w+")) {
-            alert.setTitle("the name type must have more that one word include letters and numbers and '_'");
-            alert.show();
-        }
-        else {
-            alert.setAlertType(Alert.AlertType.CONFIRMATION);
-            alert.setTitle("confirm");
-            alert.setHeaderText("The new food will add.");
-            alert.setContentText("Are you sure?");
-            if (alert.showAndWait().get() == ButtonType.OK) {
-                ArrayList<FoodType> foodTypes = new ArrayList<>();
-                for (int i = 0; i < checkFoodType.getItems().size(); i++)
-                    if (checkFoodType.getCheckModel().isChecked(i))
-                        foodTypes.add(FoodType.stringToFoodType(checkFoodType.getCheckModel().getItem(i)));
-                Food.addFood(Restaurant.currentRestaurant.id, name.getText(), price.getValue(), choiceFoodType.getItems().);
-                Restaurant.addRestaurant(User.currentUser.id, name.getText(), postCost.getValue(), Restaurant.foodTypesToString(foodTypes, false), address.getValue());
-                Main.sql.editRestaurant(Restaurant.currentRestaurant.id, Restaurant.currentRestaurant.owner.id, name.getText(), Restaurant.foodTypesToString(foodTypes, false), postCost.getValue());
-                Restaurant.editRestaurantAddress(Restaurant.currentRestaurant.id, address.getValue());
-                RestaurantOwnerPanel.show();
-            }
-        }
+//        Alert alert = new Alert(Alert.AlertType.ERROR);
+//        alert.setTitle("Error");
+//        alert.setHeaderText("Invalid type input.");
+//        if (!name.getText().matches("\\w+")) {
+//            alert.setTitle("the name type must have more that one word include letters and numbers and '_'");
+//            alert.show();
+//        }
+//        else {
+//            alert.setAlertType(Alert.AlertType.CONFIRMATION);
+//            alert.setTitle("confirm");
+//            alert.setHeaderText("The new food will add.");
+//            alert.setContentText("Are you sure?");
+//            if (alert.showAndWait().get() == ButtonType.OK) {
+//                ArrayList<FoodType> foodTypes = new ArrayList<>();
+//                for (int i = 0; i < checkFoodType.getItems().size(); i++)
+//                    if (checkFoodType.getCheckModel().isChecked(i))
+//                        foodTypes.add(FoodType.stringToFoodType(checkFoodType.getCheckModel().getItem(i)));
+//                Food.addFood(Restaurant.currentRestaurant.id, name.getText(), price.getValue(), choiceFoodType.getItems().);
+//                Restaurant.addRestaurant(User.currentUser.id, name.getText(), postCost.getValue(), Restaurant.foodTypesToString(foodTypes, false), address.getValue());
+//                Main.sql.editRestaurant(Restaurant.currentRestaurant.id, Restaurant.currentRestaurant.owner.id, name.getText(), Restaurant.foodTypesToString(foodTypes, false), postCost.getValue());
+//                Restaurant.editRestaurantAddress(Restaurant.currentRestaurant.id, address.getValue());
+//                RestaurantOwnerPanel.show();
+//            }
+//        }
 
     }
 

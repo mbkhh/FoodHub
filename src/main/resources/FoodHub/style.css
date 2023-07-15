@@ -22,3 +22,10 @@
 .TableButton:pressed{
     -fx-background-color:#00131c;
 }
+.Title{
+    -fx-font-size: 53;
+    -fx-font-family: Gabriola;
+}
+.OrderInfoLable{
+    -fx-font-size: 22;
+}

@@ -44,6 +44,9 @@ public class MainApplication extends Application {
         User.currentUser = User.getUserById(1);
 //        primaryStage.getIcons().add(new Image(getClass().getResourceAsStream("logo.png")));
         ServiceOrder.show();
+        //User.currentUser = User.getUserById(1);
+        primaryStage.getIcons().add(new Image(getClass().getResourceAsStream("logo.png")));
+        LoginController.show();
 //        RestaurantOrder.show(1);
        // OwnerPanel.show();
 //        Restaurants.show("shit");

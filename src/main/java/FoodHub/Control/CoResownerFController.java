@@ -47,7 +47,7 @@ public class CoResownerFController {
     public void initialize() throws IOException {
         System.out.println("sdfadsf");
         sumRate=0;
-        ArrayList<Comment> comentz = Main.sql.getComment(Food.currentFood.id,"foodId",true);
+        ArrayList<Comment> comentz = Main.sql.getComment(0,"foodId",true);
         ArrayList<Comment> comentz2= new ArrayList<>();
         for(Comment com: comentz)
         {
@@ -114,8 +114,8 @@ public class CoResownerFController {
     }
 
     @FXML
-    void backkk(ActionEvent event) {
-        System.out.println("back");
+    void backkk(ActionEvent event) throws IOException{
+        RestaurantOwnerPanel.show();
     }
 
     public static void show() throws IOException

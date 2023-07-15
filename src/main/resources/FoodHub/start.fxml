@@ -31,7 +31,7 @@
                 <Font name="Gabriola" size="27.0" />
             </font>
         </Button>
-        <Label id="panee" fx:id="loginLAbel" onMouseClicked="#logStage" prefHeight="34.0" prefWidth="232.0" stylesheets="@style1.css" text="Already have an account?" GridPane.columnIndex="1" GridPane.rowIndex="2">
+        <Label fx:id="loginLAbel" onMouseClicked="#logStage" prefHeight="34.0" prefWidth="232.0" stylesheets="@style1.css" text="Already have an account?" GridPane.columnIndex="1" GridPane.rowIndex="2">
             <GridPane.margin>
                 <Insets left="95.0" top="75.0" />
             </GridPane.margin>
