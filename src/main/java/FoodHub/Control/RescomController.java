@@ -4,6 +4,7 @@ import FoodHub.Base.Food;
 import FoodHub.Base.Restaurant;
 import FoodHub.Base.User;
 import FoodHub.Main;
+import FoodHub.MainApplication;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -45,7 +46,7 @@ public class RescomController {
         System.out.println("sdfadsf");
         sumRate=0;
         Resnamee.setText(Restaurant.currentRestaurant.name);
-        ArrayList<Comment> comentz = FoodHub.Base.Main.sql.getComment(Restaurant.currentRestaurant.id, "restaurantId",false);
+        ArrayList<Comment> comentz = Main.sql.getComment(Restaurant.currentRestaurant.id, "restaurantId",false);
 
 
 
@@ -55,20 +56,20 @@ public class RescomController {
             FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("commentRowR.fxml"));
             VBox row = fxmlLoader.load();
             CommentRowR control = fxmlLoader.getController();
-            control.setData( com.user.username, com.rate, com.addingTime.getTime(), com.Comment, com.id);
+            control.setData( com.user.username, com.rate, com.addTime.getTime(), com.Comment, com.id);
             sumRate += com.rate;
             if (User.currentUser.username.equals(com.user.username)) {
                 control.serEditvisible();
             }
 
-            ArrayList<Comment> reply = FoodHub.Base.Main.sql.getComment(com.id, "replyId", false);
+            ArrayList<Comment> reply = Main.sql.getComment(com.id, "replyId", false);
 
             if (reply.size() != 0) {
                 hasreply = true;
                 FXMLLoader fxmlLoader2 = new FXMLLoader(Main.class.getResource("replyRowR.fxml"));
                 VBox row2 = fxmlLoader2.load();
                 ReplyrowR control2 = fxmlLoader2.getController();
-                control2.setData(reply.get(0).Comment, reply.get(0).addingTime.getTime(), reply.get(0).id);
+                control2.setData(reply.get(0).Comment, reply.get(0).addTime.getTime(), reply.get(0).id);
                 commentmenu.getChildren().addAll(row, row2);
                 control2.setdelunvisible();
             }
@@ -122,9 +123,9 @@ public class RescomController {
     {
 
         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("rescomMenu.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), Main.primaryWidth, Main.primaryHeight);
-        Main.primaryStage.setTitle("Hello!");
-        Main.primaryStage.setScene(scene);
-        Main.primaryStage.show();
+        Scene scene = new Scene(fxmlLoader.load(), MainApplication.primaryWidth, MainApplication.primaryHeight);
+        MainApplication.primaryStage.setTitle("Hello!");
+        MainApplication.primaryStage.setScene(scene);
+        MainApplication.primaryStage.show();
     }
 }

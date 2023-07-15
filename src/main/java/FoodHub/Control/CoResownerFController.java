@@ -5,6 +5,7 @@ import FoodHub.Base.Food;
 import FoodHub.Base.Restaurant;
 import FoodHub.Base.User;
 import FoodHub.Main;
+import FoodHub.MainApplication;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -46,7 +47,7 @@ public class CoResownerFController {
     public void initialize() throws IOException {
         System.out.println("sdfadsf");
         sumRate=0;
-        ArrayList<Comment> comentz = FoodHub.Base.Main.sql.getComment(Food.currentFood.id,"foodId",true);
+        ArrayList<Comment> comentz = Main.sql.getComment(Food.currentFood.id,"foodId",true);
         ArrayList<Comment> comentz2= new ArrayList<>();
         for(Comment com: comentz)
         {
@@ -56,11 +57,11 @@ public class CoResownerFController {
                     FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("coResowRowF.fxml"));
                     VBox row = fxmlLoader.load();
                     CoResowRowF control = fxmlLoader.getController();
-                    control.setData(com.food.name, com.user.username, com.rate, com.addingTime.getTime(), com.Comment, com.id);
+                    control.setData(com.food.name, com.user.username, com.rate, com.addTime.getTime(), com.Comment, com.id);
                     sumRate += com.rate;
                     comentz2.add(com);
                     control.canreply();
-                    ArrayList<Comment> reply = FoodHub.Base.Main.sql.getComment(com.id,"replyId",false);
+                    ArrayList<Comment> reply = Main.sql.getComment(com.id,"replyId",false);
 
                     if(reply.size()!=0)
                     {
@@ -68,7 +69,7 @@ public class CoResownerFController {
                         FXMLLoader fxmlLoader2 = new FXMLLoader(Main.class.getResource("replyRow.fxml"));
                         VBox row2 = fxmlLoader2.load();
                         Replyrow control2 = fxmlLoader2.getController();
-                        control2.setData(reply.get(0).Comment,reply.get(0).addingTime.getTime(),reply.get(0).id);
+                        control2.setData(reply.get(0).Comment,reply.get(0).addTime.getTime(),reply.get(0).id);
                         commentmenu.getChildren().addAll(row,row2);
                         control.cannotReply();
                     }
@@ -121,10 +122,10 @@ public class CoResownerFController {
     {
 
         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("coResownerF.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), Main.primaryWidth, Main.primaryHeight);
-        Main.primaryStage.setTitle("Hello!");
-        Main.primaryStage.setScene(scene);
-        Main.primaryStage.show();
+        Scene scene = new Scene(fxmlLoader.load(), MainApplication.primaryWidth, MainApplication.primaryHeight);
+        MainApplication.primaryStage.setTitle("Hello!");
+        MainApplication.primaryStage.setScene(scene);
+        MainApplication.primaryStage.show();
     }
 
 }

@@ -1,5 +1,6 @@
 package FoodHub.Control;
 
+import FoodHub.Main;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
@@ -32,7 +33,7 @@ public class ReplyrowR {
     @FXML
     void deletePress(ActionEvent event) throws IOException {
         System.out.println(comid);
-        FoodHub.Base.Main.sql.deleteFromComment(comid,"id");
+        Main.sql.deleteFromComment(comid,"id");
         CoResownerRController.show();
     }
     public void setdelunvisible()

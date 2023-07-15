@@ -1,5 +1,6 @@
 package FoodHub.Control;
 
+import FoodHub.Main;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -86,7 +87,7 @@ public class CoResowRowR {
     @FXML
     void deletePress(ActionEvent event) throws IOException {
         System.out.println("delete");
-        FoodHub.Base.Main.sql.deleteFromComment(comid,"id");
+        Main.sql.deleteFromComment(comid,"id");
         CoResownerRController.show();
     }
 

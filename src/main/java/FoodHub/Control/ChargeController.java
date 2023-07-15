@@ -2,6 +2,7 @@ package FoodHub.Control;
 
 import FoodHub.Base.User;
 import FoodHub.Main;
+import FoodHub.MainApplication;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -71,10 +72,10 @@ public class ChargeController {
     public static void show() throws IOException
     {
         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("charge.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), Main.primaryWidth, Main.primaryHeight);
-        Main.primaryStage.setTitle("Hello!");
-        Main.primaryStage.setScene(scene);
-        Main.primaryStage.show();
+        Scene scene = new Scene(fxmlLoader.load(), MainApplication.primaryWidth, MainApplication.primaryHeight);
+        MainApplication.primaryStage.setTitle("Hello!");
+        MainApplication.primaryStage.setScene(scene);
+        MainApplication.primaryStage.show();
     }
 
 }

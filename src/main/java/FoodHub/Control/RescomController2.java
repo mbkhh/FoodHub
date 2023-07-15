@@ -97,7 +97,7 @@ public class RescomController2 {
         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("customerCommentR.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), MainApplication.secondaryWidth, MainApplication.secondaryHeight);
         MainApplication.primaryStage.setTitle("Comment Box!");
-        Main.primaryStage.setScene(scene);
-        Main.primaryStage.show();
+        MainApplication.primaryStage.setScene(scene);
+        MainApplication.primaryStage.show();
     }
 }

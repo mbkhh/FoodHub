@@ -5,6 +5,7 @@ import FoodHub.Base.Comment;
 import FoodHub.Base.Food;
 import FoodHub.Base.User;
 import FoodHub.Main;
+import FoodHub.MainApplication;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.fxml.FXML;
@@ -58,7 +59,7 @@ boolean hasreply=false;
         System.out.println("sdfadsf");
         sumRate=0;
         Foodnamee.setText(Food.currentFood.name);
-        ArrayList<Comment> comentz = FoodHub.Base.Main.sql.getComment(Food.currentFood.id,"foodId",false);
+        ArrayList<Comment> comentz = Main.sql.getComment(Food.currentFood.id,"foodId",false);
 
         for(Comment com: comentz)
         {
@@ -66,14 +67,14 @@ boolean hasreply=false;
             FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("commentRow.fxml"));
             VBox row = fxmlLoader.load();
             CommentRow control = fxmlLoader.getController();
-            control.setData(com.food.name,com.user.username,com.rate,com.addingTime.getTime(),com.Comment,com.id);
+            control.setData(com.food.name,com.user.username,com.rate,com.addTime.getTime(),com.Comment,com.id);
             sumRate+=com.rate;
             if(User.currentUser.username.equals(com.user.username))
             {
                 control.serEditvisible();
             }
 
-            ArrayList<Comment> reply = FoodHub.Base.Main.sql.getComment(com.id,"replyId",false);
+            ArrayList<Comment> reply = Main.sql.getComment(com.id,"replyId",false);
 
             if(reply.size()!=0)
             {
@@ -81,7 +82,7 @@ boolean hasreply=false;
                 FXMLLoader fxmlLoader2 = new FXMLLoader(Main.class.getResource("replyRow.fxml"));
                 VBox row2 = fxmlLoader2.load();
                 Replyrow control2 = fxmlLoader2.getController();
-                control2.setData(reply.get(0).Comment,reply.get(0).addingTime.getTime(),reply.get(0).id);
+                control2.setData(reply.get(0).Comment,reply.get(0).addTime.getTime(),reply.get(0).id);
                 commentmenu.getChildren().addAll(row,row2);
                 control2.setdelunvisible();
             }
@@ -148,9 +149,9 @@ boolean hasreply=false;
     {
 
         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("commentMenu.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), Main.primaryWidth, Main.primaryHeight);
-        Main.primaryStage.setTitle("Hello!");
-        Main.primaryStage.setScene(scene);
-        Main.primaryStage.show();
+        Scene scene = new Scene(fxmlLoader.load(), MainApplication.primaryWidth, MainApplication.primaryHeight);
+        MainApplication.primaryStage.setTitle("Hello!");
+        MainApplication.primaryStage.setScene(scene);
+        MainApplication.primaryStage.show();
     }
 }

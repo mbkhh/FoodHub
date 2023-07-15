@@ -1,9 +1,9 @@
 package FoodHub.Control;
 
 import FoodHub.Base.Functions;
-import FoodHub.Base.MainParham;
 import FoodHub.Base.User;
 import FoodHub.Main;
+import FoodHub.MainApplication;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.fxml.FXML;
@@ -158,19 +158,19 @@ public class LoginController{
 //        Main.primaryStage.show();
 
         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("register.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), Main.primaryWidth, Main.primaryHeight);
-        Main.primaryStage.setTitle("Hello!");
-        Main.primaryStage.setScene(scene);
-        Main.primaryStage.show();
+        Scene scene = new Scene(fxmlLoader.load(), MainApplication.primaryWidth, MainApplication.primaryHeight);
+        MainApplication.primaryStage.setTitle("Hello!");
+        MainApplication.primaryStage.setScene(scene);
+        MainApplication.primaryStage.show();
 
     }
 
     public void logStage(Event e) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("login.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), Main.primaryWidth, Main.primaryHeight);
-        Main.primaryStage.setTitle("Hello!");
-        Main.primaryStage.setScene(scene);
-        Main.primaryStage.show();
+        Scene scene = new Scene(fxmlLoader.load(), MainApplication.primaryWidth, MainApplication.primaryHeight);
+        MainApplication.primaryStage.setTitle("Hello!");
+        MainApplication.primaryStage.setScene(scene);
+        MainApplication.primaryStage.show();
     }
     String username,password,fullname,address,secA,secQ,type;
     ArrayList <String> info = new ArrayList<>();
@@ -216,12 +216,12 @@ public class LoginController{
         questionMark.setVisible(true);
         secAnswer.setVisible(true);
         secQues.setVisible(true);
-        secQues.setText(FoodHub.Base.Main.sql.getUser(username).securityQuestion);
+        secQues.setText(Main.sql.getUser(username).securityQuestion);
     }
     public void loginhandler2(Event e) {
-        if (!secAnswer.getText().equals(FoodHub.Base.Main.sql.getUser(username).securityAnswer)) {
+        if (!secAnswer.getText().equals(Main.sql.getUser(username).securityAnswer)) {
             wrongSecAns.setVisible(true);
-        } else if(secAnswer.getText().equals(FoodHub.Base.Main.sql.getUser(username).securityAnswer)) {
+        } else if(secAnswer.getText().equals(Main.sql.getUser(username).securityAnswer)) {
             wrongSecAns.setVisible(false);
         }
     }
@@ -263,7 +263,6 @@ public class LoginController{
                 info.add(regAddress.getText());
                 info.add(calAns.getText());
                 System.out.println(ans);
-
                 String regregreg = User.addUser(info, Integer.toString(ans));
 
                 switch (regregreg) {
@@ -397,10 +396,10 @@ public class LoginController{
     public static void show() throws IOException
     {
         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("start.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), Main.primaryWidth, Main.primaryHeight);
-        Main.primaryStage.setTitle("Hello!");
-        Main.primaryStage.setScene(scene);
-        Main.primaryStage.show();
+        Scene scene = new Scene(fxmlLoader.load(), MainApplication.primaryWidth, MainApplication.primaryHeight);
+        MainApplication.primaryStage.setTitle("Hello!");
+        MainApplication.primaryStage.setScene(scene);
+        MainApplication.primaryStage.show();
     }
 
 

@@ -68,7 +68,7 @@ public class EditController {
         String x =myarea.getText();
         System.out.println(x);
         System.out.println(score);
-        Comment.editComment(comid,score,x);
+        Comment.editComment(comid,x,score);
         CustcomController.show();
     }
     @FXML
