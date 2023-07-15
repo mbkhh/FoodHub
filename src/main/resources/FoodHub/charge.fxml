@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane prefHeight="700.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="FoodHub.Control.ChargeController">
+   <children>
+      <VBox prefHeight="700.0" prefWidth="1000.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <Button fx:id="Chargeme" mnemonicParsing="false" onAction="#parseMethod" style="-fx-background-color: #ff8c00;" text="Charge">
+               <VBox.margin>
+                  <Insets left="480.0" top="400.0" />
+               </VBox.margin>
+            </Button>
+            <TextField fx:id="howmuch" onKeyPressed="#Entertext" prefHeight="25.0" prefWidth="168.0" promptText="number+ENTER">
+               <VBox.margin>
+                  <Insets left="420.0" right="400.0" top="20.0" />
+               </VBox.margin>
+            </TextField>
+            <Label fx:id="myResult" prefHeight="22.0" prefWidth="163.0" style="-fx-border-color: #000000;" text="Label" visible="false">
+               <VBox.margin>
+                  <Insets left="425.0" top="-100.0" />
+               </VBox.margin>
+               <font>
+                  <Font name="Gabriola" size="17.0" />
+               </font>
+            </Label>
+            <Button fx:id="showBalance" alignment="CENTER" mnemonicParsing="false" onAction="#parseMethod" style="-fx-background-color: #ff8c00;" text="Balance">
+               <VBox.margin>
+                  <Insets left="480.0" top="-150.0" />
+               </VBox.margin>
+            </Button>
+            <Label fx:id="balancer" prefHeight="22.0" prefWidth="239.0" style="-fx-border-color: #000000;" text="Label" visible="false">
+               <VBox.margin>
+                  <Insets left="390.0" top="-50.0" />
+               </VBox.margin>
+               <font>
+                  <Font name="Gabriola" size="17.0" />
+               </font>
+            </Label>
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>

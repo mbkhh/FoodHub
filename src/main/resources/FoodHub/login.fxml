@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1000" prefWidth="700" styleClass="SecBackground" stylesheets="@style1.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="FoodHub.Control.LoginController">
+    <left>
+        <AnchorPane prefHeight="283.0" prefWidth="266.0" BorderPane.alignment="CENTER">
+            <children>
+                <ImageView fitHeight="160.0" fitWidth="258.0" layoutX="14.0" layoutY="293.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="547.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="293.0">
+                    <image>
+                        <Image url="@../Pictures/logo(signin).png" />
+                    </image>
+                </ImageView>
+            </children>
+        </AnchorPane>
+    </left>
+    <center>
+        <AnchorPane prefHeight="688.0" prefWidth="434.0" BorderPane.alignment="CENTER_LEFT">
+            <children>
+                <ImageView fx:id="luck" fitHeight="80.0" fitWidth="61.0" layoutX="38.0" layoutY="185.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../Pictures/password.png" />
+                    </image>
+                </ImageView>
+                <ImageView fx:id="humanhead" fitHeight="94.0" fitWidth="78.0" layoutX="29.0" layoutY="104.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../Pictures/username.png" />
+                    </image>
+                </ImageView>
+                <TextField fx:id="loginUsername" layoutX="104.0" layoutY="126.0" prefHeight="25.0" prefWidth="164.0" promptText="Please enter your username" AnchorPane.bottomAnchor="840.0" AnchorPane.leftAnchor="104.0" AnchorPane.rightAnchor="160.0" AnchorPane.topAnchor="126.0" />
+                <TextField fx:id="loginPassword" layoutX="104.0" layoutY="203.0" prefHeight="25.0" prefWidth="164.0" promptText="Please enter your password" AnchorPane.bottomAnchor="763.0" AnchorPane.leftAnchor="104.0" AnchorPane.rightAnchor="160.0" AnchorPane.topAnchor="203.0" />
+                <ImageView fx:id="loginpress" fitHeight="59.0" fitWidth="168.0" layoutX="95.0" layoutY="271.0" onMouseClicked="#loginhandler" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="680.8605117797852" AnchorPane.leftAnchor="95.0" AnchorPane.rightAnchor="165.0" AnchorPane.topAnchor="271.0">
+                    <image>
+                        <Image url="@../Pictures/login.png" />
+                    </image>
+                </ImageView>
+            <Label fx:id="wrongUsername" layoutX="99.0" layoutY="161.0" prefHeight="17.0" prefWidth="252.0" text="Invalid username! Username doesn't exist!" textFill="WHITE" visible="false" AnchorPane.bottomAnchor="807.0" AnchorPane.leftAnchor="99.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="161.0">
+               <font>
+                  <Font name="Gabriola" size="18.0" />
+               </font>
+            </Label>
+            <Label fx:id="wrongPass" layoutX="97.0" layoutY="234.0" prefHeight="23.0" prefWidth="268.0" text="Invalid password! Password is incorrect!" textFill="WHITE" visible="false" AnchorPane.bottomAnchor="734.0" AnchorPane.leftAnchor="97.0" AnchorPane.rightAnchor="7.0" AnchorPane.topAnchor="234.0">
+               <font>
+                  <Font name="Gabriola" size="18.0" />
+               </font>
+            </Label>
+            <Label fx:id="recoverPass" layoutX="142.0" layoutY="356.0" onMouseClicked="#recoveryHandler" prefHeight="23.0" prefWidth="324.0" text="Did you forget your password?Click here" textFill="#1a0339" visible="false" AnchorPane.bottomAnchor="612.0" AnchorPane.leftAnchor="142.0" AnchorPane.rightAnchor="-38.0" AnchorPane.topAnchor="356.0">
+               <font>
+                  <Font name="Arabic Typesetting" size="27.0" />
+               </font>
+            </Label>
+            <ImageView fx:id="questionMark" fitHeight="79.0" fitWidth="84.0" layoutX="29.0" layoutY="147.0" pickOnBounds="true" preserveRatio="true" visible="false">
+               <image>
+                  <Image url="@../Pictures/question.png" />
+               </image>
+            </ImageView>
+            <TextField fx:id="secAnswer" layoutX="123.0" layoutY="174.0" promptText="Write the answer here" visible="false" />
+            <Label fx:id="secQues" layoutX="93.0" layoutY="96.0" prefHeight="43.0" prefWidth="251.0" text="LABEL" visible="false">
+               <font>
+                  <Font name="Gabriola" size="32.0" />
+               </font>
+            </Label>
+            <Label fx:id="wrongSecAns" layoutX="115.0" layoutY="211.0" text="Incorrect answer!" visible="false">
+               <font>
+                  <Font name="Gabriola" size="24.0" />
+               </font>
+            </Label>
+            <ImageView fx:id="okpress" fitHeight="101.0" fitWidth="91.0" layoutX="115.0" layoutY="265.0" onMousePressed="#loginhandler2" pickOnBounds="true" preserveRatio="true" visible="false">
+               <image>
+                  <Image url="@../Pictures/press.png" />
+               </image>
+            </ImageView>
+            </children>
+         <BorderPane.margin>
+            <Insets top="260.0" />
+         </BorderPane.margin>
+        </AnchorPane>
+    </center>
+</BorderPane>

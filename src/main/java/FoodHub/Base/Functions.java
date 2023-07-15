@@ -13,6 +13,14 @@ public class Functions {
         }
         return ans;
     }
+    public static double avarage(ArrayList<Integer> t)
+    {
+        int sum = 0;
+        for (Integer integer : t) {
+            sum += integer;
+        }
+        return (double)sum/(double)t.size();
+    }
     public static int parseInt(String i) {
         int ans = 0;
         try {

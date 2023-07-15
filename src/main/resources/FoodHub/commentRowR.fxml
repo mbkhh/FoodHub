@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="136.0" prefWidth="600.0" style="-fx-background-color: #000000;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="FoodHub.Control.CommentRowR">
+   <children>
+      <HBox prefHeight="158.0" prefWidth="600.0" style="-fx-background-color: #FFFFFF;">
+         <children>
+            <VBox prefHeight="131.0" prefWidth="340.0" spacing="17.0">
+               <children>
+                  <Label fx:id="usernameLa" text="Label" />
+                  <HBox prefHeight="42.0" prefWidth="228.0" spacing="6.0">
+                     <children>
+                        <ImageView fx:id="im1" fitHeight="30.0" fitWidth="30.0" opacity="0.5" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../Pictures/star.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fx:id="im2" fitHeight="30.0" fitWidth="30.0" opacity="0.5" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../Pictures/star.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fx:id="im3" fitHeight="30.0" fitWidth="30.0" opacity="0.5" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../Pictures/star.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fx:id="im4" fitHeight="30.0" fitWidth="30.0" opacity="0.5" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../Pictures/star.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fx:id="im5" fitHeight="30.0" fitWidth="30.0" opacity="0.5" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../Pictures/star.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </HBox>
+                  <Label fx:id="timeLa" text="Label" />
+               </children>
+            </VBox>
+            <Label fx:id="ComLa" prefHeight="116.0" prefWidth="322.0" text="Comment" wrapText="true" />
+            <VBox fx:id="editVbox" prefHeight="200.0" prefWidth="100.0" visible="false">
+               <children>
+                  <Region prefHeight="103.0" prefWidth="40.0" />
+                  <Button mnemonicParsing="false" onAction="#editPress" prefHeight="25.0" prefWidth="45.0" styleClass="TableButton" stylesheets="@style.css" text="edit" />
+               </children>
+            </VBox>
+         </children>
+      </HBox>
+   </children>
+   <padding>
+      <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+   </padding>
+</VBox>

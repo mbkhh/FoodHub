@@ -1,0 +1,88 @@
+.first-color {
+    background: #feffdb;
+}
+
+.second-color {
+    background: #ffc60b;
+}
+
+.third-color {
+    background: #ff8b00;
+}
+
+.fourth-color {
+    background: #444444;
+}
+.fifth-color
+{
+    background: #fc3d03;
+}
+
+.MainButton{
+    -fx-background-color :#ff8b00;
+    -fx-font-family :Gabriola;
+    -fx-font-size : 18 px;
+    -fx-font-weight:bold;
+    -fx-text-fill : #FFF;
+}
+.SecButton
+{
+    -fx-background-color :#000;
+    -fx-font-family :Gabriola;
+    -fx-font-size : 18 px;
+    -fx-font-weight:bold;
+    -fx-text-fill : #FFF;
+}
+
+.ThirButton
+{
+    -fx-background-color :#fc3d03;
+    -fx-font-family :Gabriola;
+    -fx-font-size : 18 px;
+    -fx-font-weight:bold;
+    -fx-text-fill : #000;
+}
+
+
+#panee{
+    -fx-background-repeat: stretch;
+    -fx-background-size: 900 506;
+    -fx-background-position: center center;
+    -fx-effect: dropshadow(three-pass-box, black, 30, 0.5, 0, 0);
+}
+
+
+.MainTitle{
+    -fx-font-family :Georgia;
+    -fx-font-size: 29;
+   -fx-border-color: #444444;
+
+}
+
+.Border1{
+    -fx-border-color: #444444;
+}
+
+.MainBackground{
+    -fx-background-color :#000;
+}
+.SecBackground{
+    -fx-background-color :#ffc60b;
+}
+.ThiBackground{
+    -fx-background-color :#feffdb;
+}
+
+
+.LongLabelFont{
+    -fx-font-family :Georgia;
+    -fx-font-size : 12 px;
+    -fx-text-fill : #000;
+}
+
+.SmallLabel1{
+    -fx-background-color :#000;
+    -fx-font-family :Times New Roman;
+    -fx-font-size : 11 px;
+    -fx-text-fill : #FFF;
+}

@@ -145,7 +145,7 @@ public class Comment {
             if (rating.rate != 0) {
                 if (rating.food != null) {
                     if (ratingHistory.containsKey(rating.food.restaurant.id))
-                        ratingHistory.get(rating.restaurant.id).add(rating.rate);
+                        ratingHistory.get(rating.food.restaurant.id).add(rating.rate);
                     else {
                         ratingHistory.put(rating.food.restaurant.id, new ArrayList<>());
                         ratingHistory.get(rating.food.restaurant.id).add(rating.rate);

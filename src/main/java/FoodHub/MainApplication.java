@@ -6,6 +6,8 @@ import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.image.Image;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
@@ -28,30 +30,25 @@ public class MainApplication extends Application {
         Main.sql=new Sql();
 //        traffic = new Traffic();
 //        traffic.start();
-        User.currentUser = User.getUserById(1);
-        Restaurant.setCurrentRestaurant(1);
-        AddRestaurant.show();
 //        RestaurantPanel.show();
 ////        OwnerPanel.show();
 //        EditRestaurant.show();
 //        RestaurantOwnerPanel.show();
-//        FXMLLoader loader = new FXMLLoader(MainApplication.class.getResource("RestaurantOwnerPanelRow.fxml"));
-//        Scene root = new Scene(loader.load());
-//        primaryStage.setScene(root);
-//        primaryStage.show();
-//        ServiceOrder.show();
+        traffic = new Traffic();
+        traffic.start();
+        Offer offer = new Offer();
+        offer.start();
+        User.currentUser = User.getUserById(1);
+        primaryStage.getIcons().add(new Image(getClass().getResourceAsStream("logo.png")));
+        ServiceOrder.show();
 //        RestaurantOrder.show(1);
        // OwnerPanel.show();
 //        Restaurants.show("shit");
-//        primaryStage.setOnCloseRequest(e -> {
-//            Platform.exit();
-//            traffic.isRunning = false;
-//        });
-        //CartController.show();
-//        OrderController.show();
-//        MapController.show();
-//        MapController.mapController.markPath("1 - 2 - 6 - 7 - 8 - 9 - 11 - ");
-//        MapController.mapController.markPath("1 - 3 - 4 - 5 - ");
+        primaryStage.setOnCloseRequest(e -> {
+            Platform.exit();
+            traffic.isRunning = false;
+            offer.isRunning = false;
+        });
     }
 
     public static void main(String[] args) {
