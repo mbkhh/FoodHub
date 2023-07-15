@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="700.0" prefWidth="1000.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml/1" fx:controller="FoodHub.Control.Panel">
+<AnchorPane prefHeight="700.0" prefWidth="1000.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="FoodHub.Control.Panel">
    <children>
       <HBox alignment="CENTER" prefHeight="120.0" prefWidth="1000.0" spacing="20.0">
          <children>
@@ -24,7 +24,7 @@
       </HBox>
       <VBox layoutY="150.0" prefHeight="400.0" prefWidth="1000.0">
          <children>
-            <Label prefHeight="62.0" prefWidth="1000.0" styleClass="Title" text="FOOD TYPES" />
+            <Label prefHeight="62.0" prefWidth="1000.0" styleClass="Title" text=" FOOD TYPES" />
             <ScrollPane fitToHeight="true" prefHeight="339.0" prefWidth="1001.0">
                <content>
                   <HBox fx:id="box" alignment="CENTER_LEFT" prefHeight="128.0" prefWidth="1002.0" spacing="30.0">

@@ -129,7 +129,7 @@ public class Comment {
         }
         return true;
     }
-    //TODO use FoodHub.Base.Comment.averageRate
+    //TODO you can use FoodHub.Base.Comment.averageRate
     //this hashMap value is all the ratings of restaurant
     public static HashMap<Integer, ArrayList<Integer>> ratingHistory(int userId) {
         HashMap<Integer, ArrayList<Integer>> ratingHistory = new HashMap<>();

@@ -47,4 +47,7 @@ public class Restaurants {
     public void orders(ActionEvent event) throws IOException {
         OrderController.show();
     }
+    public void back(ActionEvent event) throws IOException {
+        Panel.show();
+    }
 }

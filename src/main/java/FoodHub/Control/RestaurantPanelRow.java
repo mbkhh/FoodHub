@@ -15,21 +15,12 @@ public class RestaurantPanelRow {
         this.name.setText(name);
         this.type.setText(type);
         this.price.setText(String.valueOf(price));
-        this.discount.setText(String.valueOf(discount));
-        this.rate.setText(String.valueOf(rate));
+        this.discount.setText((discount > 0) ? String.valueOf(discount) : "");
+        this.rate.setText((rate > 0) ? String.valueOf(rate) : "");
     }
 
     public void comment(ActionEvent event) {
 
-    }
-    public void remove(ActionEvent event) {
-        if (!number.getText().equals("")) {
-            if (number.getText().equals("1"))
-                number.setText("");
-            else
-                number.setText(String.valueOf(Integer.parseInt(number.getText()) - 1));
-            Cart.removeFromCart(foodId, User.currentUser);
-        }
     }
     public void add(ActionEvent event) {
         if (number.getText().equals(""))
@@ -37,5 +28,14 @@ public class RestaurantPanelRow {
         else
             number.setText(String.valueOf(Integer.parseInt(number.getText()) + 1));
         Cart.addToCart(foodId, User.currentUser);
+    }
+    public void subtract(ActionEvent event) {
+        if (!number.getText().equals("")) {
+            if (number.getText().equals("1"))
+                number.setText("");
+            else
+                number.setText(String.valueOf(Integer.parseInt(number.getText()) - 1));
+            Cart.removeFromCart(foodId, User.currentUser);
+        }
     }
 }

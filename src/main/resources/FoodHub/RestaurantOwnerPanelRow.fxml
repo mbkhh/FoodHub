@@ -7,62 +7,29 @@
 <?import javafx.scene.layout.HBox?>
 
 <HBox alignment="CENTER_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="71.0" prefWidth="670.0" spacing="5.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="FoodHub.Control.RestaurantOwnerPanelRow">
-   <children>
-      <Button mnemonicParsing="false" onAction="#editName" prefWidth="100.0">
-         <graphic>
-            <Label fx:id="name" prefHeight="30.0" prefWidth="120.0" styleClass="TableLable" />
-         </graphic>
-         <tooltip>
-            <Tooltip text="Tap to Edit" />
-         </tooltip>
-      </Button>
-      <Button mnemonicParsing="false" onAction="#editType" prefWidth="100.0">
-         <graphic>
-            <Label fx:id="type" prefHeight="30.0" prefWidth="120.0" styleClass="TableLable" />
-         </graphic>
-         <tooltip>
-            <Tooltip text="Tap to Edit" />
-         </tooltip>
-      </Button>
-      <Button mnemonicParsing="false" onAction="#editPrice" prefWidth="100.0">
-         <graphic>
-            <Label fx:id="price" prefHeight="30.0" prefWidth="120.0" styleClass="TableLable" />
-         </graphic>
-         <tooltip>
-            <Tooltip text="Tap to Edit" />
-         </tooltip>
-      </Button>
-      <Button mnemonicParsing="false" onAction="#editDiscount" prefWidth="100.0">
-         <graphic>
-            <Label fx:id="discount" prefHeight="30.0" prefWidth="101.0" styleClass="TableLable" />
-         </graphic>
-         <tooltip>
-            <Tooltip text="Tap to Edit" />
-         </tooltip>
-      </Button>
-      <Button mnemonicParsing="false" onAction="#comment" prefWidth="100.0">
-         <graphic>
-            <Label fx:id="rate" prefHeight="30.0" prefWidth="101.0" styleClass="TableLable" />
-         </graphic>
-         <tooltip>
-            <Tooltip text="Tap to See the Comments" />
-         </tooltip>
-      </Button>
-      <Button fx:id="activity" mnemonicParsing="false" onAction="#changeActivity" prefHeight="25.0" prefWidth="59.0" text="Active">
-         <tooltip>
-            <Tooltip text="Tap to Change Activity" />
-         </tooltip>
-      </Button>
-      <Button mnemonicParsing="false" onAction="#delete" prefHeight="25.0" prefWidth="54.0" text="Delete">
+    <children>
+          <Label fx:id="name" prefHeight="30.0" prefWidth="100.0" styleClass="TableLable" />
+          <Label fx:id="type" prefHeight="30.0" prefWidth="100.0" styleClass="TableLable" />
+          <Label fx:id="price" prefHeight="30.0" prefWidth="100.0" styleClass="TableLable" />
+          <Label fx:id="discount" prefHeight="30.0" prefWidth="100.0" styleClass="TableLable" />
+          <Label fx:id="rate" prefHeight="31.0" prefWidth="53.0" styleClass="TableLable" />
+        <Button minWidth="47.0" mnemonicParsing="false" onAction="#comments" prefHeight="38.0" prefWidth="100.0" styleClass="TableButton" text="Comments">
+            <tooltip>
+                <Tooltip text="Tap to See Comments" />
+            </tooltip>
+        </Button>
+        <Button fx:id="activity" minWidth="53.0" mnemonicParsing="false" onAction="#changeActivity" prefHeight="38.0" prefWidth="82.0" styleClass="TableButton" text="InActive">
+            <tooltip>
+                <Tooltip text="Tap to Change Activity" />
+            </tooltip>
+        </Button>
+      <Button minWidth="47.0" mnemonicParsing="false" onAction="#delete" prefHeight="36.0" prefWidth="77.0" styleClass="TableButton" text="Delete">
          <tooltip>
             <Tooltip text="Tap to Delete the Food" />
          </tooltip>
       </Button>
-   </children>
-   <padding>
-      <Insets bottom="5.0" left="5.0" top="5.0" />
-   </padding>
-   <opaqueInsets>
-      <Insets />
-   </opaqueInsets>
+    </children>
+    <opaqueInsets>
+        <Insets />
+    </opaqueInsets>
 </HBox>

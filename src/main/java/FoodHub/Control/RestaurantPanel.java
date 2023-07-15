@@ -39,10 +39,16 @@ public class RestaurantPanel {
             FXMLLoader loader = new FXMLLoader(MainApplication.class.getResource("RestaurantPanelRow.fxml"));
             HBox hBox = loader.load();
             RestaurantPanelRow restaurantPanelRow = loader.getController();
-            restaurantPanelRow.setData(food.id, food.name, food.foodType.getFoodType(), food.price, food.getPrice()[1], Comment.averageRate(Main.sql.getComment(food.id, "foodId", false)));
+            restaurantPanelRow.setData(food.id, food.name, food.foodType.getFoodType(), food.getPrice()[0], food.getPrice()[0] - food.getPrice()[1], Comment.averageRate(Main.sql.getComment(food.id, "foodId", false)));
             hBox.setId("food_" + food.id);
             box.getChildren().add(hBox);
         }
+        name.setText(Restaurant.currentRestaurant.name);
+        address.setText(String.valueOf(Restaurant.currentRestaurant.getRestaurantAddress().node));
+        foodType.setText(Restaurant.currentRestaurant.foodTypesToString());
+        postCost.setText(String.valueOf(Restaurant.currentRestaurant.postCost));
+        double averageRate = Comment.averageRate(Main.sql.getComment(Restaurant.currentRestaurant.id, "restaurantId", false));
+        rating.setText((averageRate > 0) ? String.valueOf(averageRate) : "");
     }
     public void comments(ActionEvent event) {
 
@@ -55,5 +61,9 @@ public class RestaurantPanel {
     }
     public void order(ActionEvent event) throws IOException {
         OrderController.show();
+    }
+    public void back(ActionEvent event) throws IOException {
+        Restaurant.currentRestaurant = null;
+        Panel.show();
     }
 }

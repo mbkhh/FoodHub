@@ -222,29 +222,29 @@ public class Main {
                                 if (Food.editFood(Integer.parseInt(commands[5]), "name", commands[7], 0, 0))
                                     System.out.println("successful");
                                 else
-                                    System.out.println("there wasn't any food with this id");
+                                    System.out.println("you have open orders.");
                             }
                             else if (command.matches("change\\s+food\\s+price\\s+with\\s+id\\s+\\d+\\s+to\\s+\\w+")) {
                                 if (Food.editFood(Integer.parseInt(commands[5]), "price", "", Integer.parseInt(commands[7]), 0))
                                     System.out.println("successful");
                                 else
-                                    System.out.println("there wasn't any food with this id");
+                                    System.out.println("you have open orders.");
                             }
                             else if (command.matches("activate\\s+food\\s+with\\s+id\\s+\\d+")) {
                                 if (Food.editFood(Integer.parseInt(commands[4]), "isActive", "yes", 0, 0))
                                     System.out.println("successful");
                                 else
-                                    System.out.println("there wasn't any food with this id");
+                                    System.out.println("you have open orders.");
                             }
                             else if (command.matches("diactivate\\s+food\\s+with\\s+id\\s+\\d+")) {
                                 if (Food.editFood(Integer.parseInt(commands[4]), "isActive", "no", 0, 0))
                                     System.out.println("successful");
                                 else
-                                    System.out.println("there wasn't any food with this id");
+                                    System.out.println("you have open orders.");
                             }
                             else if (command.matches("set\\s+disscount\\s+for\\s+foods\\s+with\\s+id\\s+\\d+")) {
-                                if (Food.getFood(Integer.parseInt(commands[6])) != null) {
-                                    int id = Integer.parseInt(commands[6]);
+                                int id = Integer.parseInt(commands[6]);
+                                if (Order.openOrders(id).size() == 0) {
                                     if (Food.getFood(id).discountPercent == 0) {
                                         System.out.print("enter the discount percent between 0 to 50");
                                         command = scanner.nextLine();
@@ -262,7 +262,7 @@ public class Main {
                                     } else
                                         System.out.println("You already have an discount offer for this food");
                                 } else
-                                    System.out.println("there wasn't any food with this id");
+                                    System.out.println("you have open orders.");
                             }
                             else if (command.matches("add\\s+a\\s+reply\\s+to\\s+the\\s+comment\\s+with\\s+id\\s+\\d+")) {
                                 if (Comment.getComment(Integer.parseInt(commands[8])) != null && Comment.getComment(Integer.parseInt(commands[8])).replyComment == null && Comment.getComment(Integer.parseInt(commands[8])).rate == 0) {
@@ -350,11 +350,13 @@ public class Main {
                                         System.out.println("the food types was changed successfully");
                                     }
                                 } else
-                                    System.out.println("You have open orders and can't change the food types of your restaurant before you finish your jobs");
+                                    System.out.println("You have open orders and can't change the food types of your restaurant before finish your jobs");
                             }
                             else if (command.matches("change\\s+restaurant\\s+address\\s+to\\s+node\\s+\\d+")) {
                                 if (Restaurant.editRestaurantAddress(Restaurant.currentRestaurant.id, Integer.parseInt(commands[5])))
                                     System.out.println("Address changed successfully");
+                                else
+                                    System.out.println("you have open orders.");
                             }
                             else if (command.matches("add\\s+food")) {
                                 System.out.println("enter the name: ");
@@ -517,6 +519,8 @@ public class Main {
                                 if (User.currentUser.id == Restaurant.getRestaurant(Integer.parseInt(commands[4])).id) {
                                     if (Restaurant.deleteRestaurant(Integer.parseInt(commands[4])))
                                         System.out.println("successful");
+                                    else
+                                        System.out.println("you have open orders.");
                                 } else
                                     System.out.println("You don't have an access to delete this restaurant");
                             } else
