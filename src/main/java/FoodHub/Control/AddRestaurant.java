@@ -49,7 +49,15 @@ public class AddRestaurant {
         alert.setTitle("Error");
         alert.setHeaderText("Invalid type input.");
         if (!name.getText().matches("\\w+")) {
-            alert.setTitle("the name type must have more that one word include letters and numbers and '_'");
+            alert.setContentText("the name type must have more that one word include letters and numbers and '_'");
+            alert.show();
+        }
+        ArrayList<FoodType> foodTypes = new ArrayList<>();
+        for (int i = 0; i < checkFoodType.getItems().size(); i++)
+            if (checkFoodType.getCheckModel().isChecked(i))
+                foodTypes.add(FoodType.stringToFoodType(checkFoodType.getCheckModel().getItem(i)));
+        if (foodTypes.size() == 0) {
+            alert.setContentText("the types must not be null.");
             alert.show();
         }
         else {
@@ -58,14 +66,8 @@ public class AddRestaurant {
             alert.setHeaderText("The new restaurant will add.");
             alert.setContentText("Are you sure?");
             if (alert.showAndWait().get() == ButtonType.OK) {
-                ArrayList<FoodType> foodTypes = new ArrayList<>();
-                for (int i = 0; i < checkFoodType.getItems().size(); i++)
-                    if (checkFoodType.getCheckModel().isChecked(i))
-                        foodTypes.add(FoodType.stringToFoodType(checkFoodType.getCheckModel().getItem(i)));
                 Restaurant.addRestaurant(User.currentUser.id, name.getText(), postCost.getValue(), Restaurant.foodTypesToString(foodTypes, false), address.getValue());
-                Main.sql.editRestaurant(Restaurant.currentRestaurant.id, Restaurant.currentRestaurant.owner.id, name.getText(), Restaurant.foodTypesToString(foodTypes, false), postCost.getValue());
-                Restaurant.editRestaurantAddress(Restaurant.currentRestaurant.id, address.getValue());
-                RestaurantOwnerPanel.show();
+                OwnerPanel.show();
             }
         }
     }
@@ -74,7 +76,7 @@ public class AddRestaurant {
         alert.setTitle("Cancel");
         alert.setHeaderText("The changes will discard.");
         alert.setContentText("Are you sure you want to discard the changes?");
-        if (alert.showAndWait().get() == ButtonType.NO) {
+        if (alert.showAndWait().get() == ButtonType.OK) {
             OwnerPanel.show();
         }
     }

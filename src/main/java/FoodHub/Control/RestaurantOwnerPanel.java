@@ -93,7 +93,7 @@ public class RestaurantOwnerPanel {
         else {
 //            box.getChildren().removeAll();
 //            box.getChildren().clear();
-            EditRestaurant.show();
+            AddFood.show();
         }
     }
     public void delete(int id) throws IOException {

@@ -73,7 +73,7 @@ public class EditFood {
         alert.setTitle("Cancel");
         alert.setHeaderText("The changes will discard.");
         alert.setContentText("Are you sure you want to discard the changes?");
-        if (alert.showAndWait().get() == ButtonType.NO) {
+        if (alert.showAndWait().get() == ButtonType.OK) {
             RestaurantOwnerPanel.show();
         }
     }

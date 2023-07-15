@@ -32,6 +32,8 @@ public class EditRestaurant {
         Scene scene = new Scene(loader.load());
         MainApplication.primaryStage.setScene(scene);
         MainApplication.primaryStage.show();
+        System.out.println(Restaurant.currentRestaurant.name);
+
     }
     @FXML
     public void initialize() {
@@ -58,6 +60,15 @@ public class EditRestaurant {
         if (!name.getText().matches("\\w+")) {
             alert.setTitle("the name type must have more that one word include letters and numbers and '_'");
             alert.show();
+            return;
+        }
+        ArrayList<FoodType> foodTypes = new ArrayList<>();
+        for (int i = 0; i < checkFoodType.getItems().size(); i++)
+            if (checkFoodType.getCheckModel().isChecked(i))
+                foodTypes.add(FoodType.stringToFoodType(checkFoodType.getCheckModel().getItem(i)));
+        if (foodTypes.size() == 0) {
+            alert.setContentText("the types must not be null.");
+            alert.show();
         }
         else {
             alert.setAlertType(Alert.AlertType.CONFIRMATION);
@@ -65,10 +76,6 @@ public class EditRestaurant {
             alert.setHeaderText("All the restaurant's data will delete because of changing.");
             alert.setContentText("Are you sure?");
             if (alert.showAndWait().get() == ButtonType.OK) {
-                ArrayList<FoodType> foodTypes = new ArrayList<>();
-                for (int i = 0; i < checkFoodType.getItems().size(); i++)
-                    if (checkFoodType.getCheckModel().isChecked(i))
-                        foodTypes.add(FoodType.stringToFoodType(checkFoodType.getCheckModel().getItem(i)));
                 Main.sql.editRestaurant(Restaurant.currentRestaurant.id, Restaurant.currentRestaurant.owner.id, name.getText(), Restaurant.foodTypesToString(foodTypes, false), postCost.getValue());
                 Restaurant.editRestaurantAddress(Restaurant.currentRestaurant.id, address.getValue());
                 RestaurantOwnerPanel.show();
@@ -80,7 +87,7 @@ public class EditRestaurant {
         alert.setTitle("Cancel");
         alert.setHeaderText("The changes will discard.");
         alert.setContentText("Are you sure you want to discard the changes?");
-        if (alert.showAndWait().get() == ButtonType.NO) {
+        if (alert.showAndWait().get() == ButtonType.OK) {
             RestaurantOwnerPanel.show();
         }
     }

@@ -42,13 +42,15 @@ public class MainApplication extends Application {
         Offer offer = new Offer();
         offer.start();
         User.currentUser = User.getUserById(1);
+        Restaurant.setCurrentRestaurant(8);
 //        primaryStage.getIcons().add(new Image(getClass().getResourceAsStream("logo.png")));
-        Panel.show();
+//        Panel.show();
 //        ServiceOrder.show();
-        ServiceOrder.show();
+//        ServiceOrder.show();
         //User.currentUser = User.getUserById(1);
         primaryStage.getIcons().add(new Image(getClass().getResourceAsStream("logo.png")));
-        LoginController.show();
+//        LoginController.show();
+        RestaurantOwnerPanel.show();
 //        RestaurantOrder.show(1);
        // OwnerPanel.show();
 //        Restaurants.show("shit");
