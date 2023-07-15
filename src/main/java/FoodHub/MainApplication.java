@@ -42,7 +42,7 @@ public class MainApplication extends Application {
         Offer offer = new Offer();
         offer.start();
         User.currentUser = User.getUserById(1);
-        primaryStage.getIcons().add(new Image(getClass().getResourceAsStream("logo.png")));
+//        primaryStage.getIcons().add(new Image(getClass().getResourceAsStream("logo.png")));
         ServiceOrder.show();
 //        RestaurantOrder.show(1);
        // OwnerPanel.show();

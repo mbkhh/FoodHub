@@ -66,4 +66,7 @@ public class OwnerPanel {
             }
         }
     }
+    public void addRestaurant(ActionEvent event) throws IOException {
+        AddRestaurant.show();
+    }
 }

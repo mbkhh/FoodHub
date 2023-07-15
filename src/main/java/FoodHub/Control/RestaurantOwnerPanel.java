@@ -66,7 +66,17 @@ public class RestaurantOwnerPanel {
         Restaurant.currentRestaurant = null;
         OwnerPanel.show();
     }
-    public void edit(ActionEvent event) {
+    public void edit(ActionEvent event) throws IOException {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        if (Order.openOrders(Restaurant.currentRestaurant.id).size() != 0) {
+            alert.setTitle("Error");
+            alert.setHeaderText("Can't edit restaurant.");
+            alert.setContentText("You have open orders in this restaurant and can't edit before finish your jobs.");
+            alert.show();
+        }
+        else {
+            EditRestaurant.show();
+        }
     }
     public void addFood(ActionEvent event) {
     }

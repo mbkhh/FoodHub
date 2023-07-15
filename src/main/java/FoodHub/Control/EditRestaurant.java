@@ -81,7 +81,7 @@ public class EditRestaurant {
         alert.setHeaderText("The changes will discard.");
         alert.setContentText("Are you sure you want to discard the changes?");
         if (alert.showAndWait().get() == ButtonType.NO) {
-            OwnerPanel.show();
+            RestaurantOwnerPanel.show();
         }
     }
 }

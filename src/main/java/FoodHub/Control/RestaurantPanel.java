@@ -36,7 +36,7 @@ public class RestaurantPanel {
         restaurantPanel = this;
         ArrayList<Food> foods = Main.sql.getFood(Restaurant.currentRestaurant.id, "restaurantId", false, "");
         for (Food food : foods){
-            FXMLLoader loader = new FXMLLoader(MainApplication.class.getResource("RestaurantOwnerPanelRow.fxml"));
+            FXMLLoader loader = new FXMLLoader(MainApplication.class.getResource("RestaurantPanelRow.fxml"));
             HBox hBox = loader.load();
             RestaurantOwnerPanelRow restaurantOwnerPanelRow = loader.getController();
             restaurantOwnerPanelRow.setData(food.id, food.name, food.foodType.getFoodType(), food.getPrice()[0], food.getPrice()[0] - food.getPrice()[1], Comment.averageRate(Main.sql.getComment(food.id, "foodId", false)));

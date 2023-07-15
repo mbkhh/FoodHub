@@ -38,7 +38,7 @@
          <children>
             <Button mnemonicParsing="false" onAction="#openOrders" prefHeight="30.0" text="Open Orders" />
             <Button mnemonicParsing="false" onAction="#allOrders" prefHeight="30.0" text="All Orders" />
-            <Button mnemonicParsing="false" prefHeight="30.0" text="Button" />
+            <Button mnemonicParsing="false" onAction="#addRestaurant" prefHeight="30.0" text="Add Restaurant" />
          </children>
          <padding>
             <Insets left="100.0" right="100.0" />
