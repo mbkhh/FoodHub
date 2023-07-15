@@ -5,6 +5,7 @@ import FoodHub.Base.Food;
 import FoodHub.Base.Restaurant;
 import FoodHub.Base.User;
 import FoodHub.Main;
+import FoodHub.MainApplication;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.fxml.FXML;
@@ -94,8 +95,8 @@ public class RescomController2 {
     {
 
         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("customerCommentR.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), Main.secondaryWidth, Main.secondaryHeight);
-        Main.primaryStage.setTitle("Comment Box!");
+        Scene scene = new Scene(fxmlLoader.load(), MainApplication.secondaryWidth, MainApplication.secondaryHeight);
+        MainApplication.primaryStage.setTitle("Comment Box!");
         Main.primaryStage.setScene(scene);
         Main.primaryStage.show();
     }

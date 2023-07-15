@@ -4,6 +4,7 @@ import FoodHub.Base.Comment;
 import FoodHub.Base.Food;
 import FoodHub.Base.User;
 import FoodHub.Main;
+import FoodHub.MainApplication;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.fxml.FXML;
@@ -118,9 +119,9 @@ public class EditController {
         comid=comID;
         rating=Rating;
         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("editcuscom.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), Main.secondaryWidth, Main.secondaryHeight);
-        Main.primaryStage.setTitle("Comment Box!");
-        Main.primaryStage.setScene(scene);
-        Main.primaryStage.show();
+        Scene scene = new Scene(fxmlLoader.load(), MainApplication.secondaryWidth, MainApplication.secondaryHeight);
+        MainApplication.primaryStage.setTitle("Comment Box!");
+        MainApplication.primaryStage.setScene(scene);
+        MainApplication.primaryStage.show();
     }
 }

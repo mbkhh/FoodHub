@@ -4,6 +4,7 @@ import FoodHub.Base.Comment;
 import FoodHub.Base.Restaurant;
 import FoodHub.Base.User;
 import FoodHub.Main;
+import FoodHub.MainApplication;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -104,9 +105,9 @@ public class AddReplyControllerR {
         co=coo;
         comid=comidd;
         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("addreplyR.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), Main.secondaryWidth, Main.secondaryHeight);
-        Main.primaryStage.setTitle("Comment Box!");
-        Main.primaryStage.setScene(scene);
-        Main.primaryStage.show();
+        Scene scene = new Scene(fxmlLoader.load(), MainApplication.secondaryWidth, MainApplication.secondaryHeight);
+        MainApplication.primaryStage.setTitle("Comment Box!");
+        MainApplication.primaryStage.setScene(scene);
+        MainApplication.primaryStage.show();
     }
 }

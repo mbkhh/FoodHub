@@ -18,6 +18,9 @@ public class MainApplication extends Application {
     public static String scene;
     public static final int primaryWidth = 1000;
     public static final int primaryHeight = 700;
+    public static final int secondaryWidth = 350;
+    public static final int secondaryHeight = 350;
+
     public static Traffic traffic;
     @Override
     public void start(Stage stage) throws IOException {
