@@ -46,4 +46,23 @@ public class Functions {
             return false;
         }
     }
+    public static int Calculator(int a ,int b,char operator)
+    {
+        int answer=-1;
+        switch(operator)
+        {
+            case '+' :
+                answer=a+b;
+                break;
+            case '-' :
+                answer=a-b;
+                break;
+            case '*' :
+                answer=a*b;
+                break;
+            default:
+                break;
+        }
+        return answer;
+    }
 }
