@@ -3,7 +3,6 @@ import FoodHub.Base.*;
 
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.IdentityHashMap;
 import java.util.Scanner;
 
 
@@ -326,7 +325,7 @@ public class Main {
                             System.out.println(Restaurant.currentRestaurant.getRestaurantAddress().node);
                         }
                         else if (command.matches("show\\s+food\\s+types\\s+")) {
-                            System.out.println(Restaurant.foodTypesToString(Restaurant.currentRestaurant.foodTypes));
+                            System.out.println(Restaurant.foodTypesToString(Restaurant.currentRestaurant.foodTypes, true));
                         }
                         else if (command.matches("select\\s+food\\s+with\\s+id\\s+\\d+")) {
                             if (Food.setCurrentFood(Integer.parseInt(commands[4]))) {
@@ -501,8 +500,13 @@ public class Main {
                                             command = scanner.nextLine();
                                             if (command.matches("[\\w,]+")) {
                                                 String foodType = command;
-                                                if (Restaurant.addRestaurant(ownerId, name, postCost, foodType))
-                                                    System.out.println("The restaurant was successfully added");
+                                                System.out.println("enter restaurant address: ");
+                                                command = scanner.nextLine();
+                                                if (command.matches("\\d+")) {
+                                                    int addressNode = Integer.parseInt(command);
+                                                    if (Restaurant.addRestaurant(ownerId, name, postCost, foodType, addressNode))
+                                                        System.out.println("The restaurant was successfully added");
+                                                }
                                             } else
                                                 System.out.println("Invalid food type type");
                                         } else

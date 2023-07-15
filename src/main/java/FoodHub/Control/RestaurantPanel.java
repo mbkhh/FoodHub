@@ -45,7 +45,7 @@ public class RestaurantPanel {
         }
         name.setText(Restaurant.currentRestaurant.name);
         address.setText(String.valueOf(Restaurant.currentRestaurant.getRestaurantAddress().node));
-        foodType.setText(Restaurant.foodTypesToString(Restaurant.currentRestaurant.foodTypes));
+        foodType.setText(Restaurant.foodTypesToString(Restaurant.currentRestaurant.foodTypes, true));
         postCost.setText(String.valueOf(Restaurant.currentRestaurant.postCost));
         double averageRate = Comment.averageRate(Main.sql.getComment(Restaurant.currentRestaurant.id, "restaurantId", false));
         rating.setText((averageRate > 0) ? String.valueOf(averageRate) : "");

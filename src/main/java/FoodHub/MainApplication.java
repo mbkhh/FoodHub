@@ -30,8 +30,10 @@ public class MainApplication extends Application {
 //        traffic.start();
         User.currentUser = User.getUserById(1);
         Restaurant.setCurrentRestaurant(1);
-//        OwnerPanel.show();
-        EditRestaurant.show();
+        AddRestaurant.show();
+//        RestaurantPanel.show();
+////        OwnerPanel.show();
+//        EditRestaurant.show();
 //        RestaurantOwnerPanel.show();
 //        FXMLLoader loader = new FXMLLoader(MainApplication.class.getResource("RestaurantOwnerPanelRow.fxml"));
 //        Scene root = new Scene(loader.load());

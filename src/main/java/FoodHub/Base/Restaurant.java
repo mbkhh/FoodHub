@@ -18,17 +18,22 @@ public class Restaurant {
         this.foodTypes = foodTypes;
         this.postCost = postCost;
     }
-    public static boolean addRestaurant(int ownerId, String name, int postCost, String foodType) {
+    public static boolean addRestaurant(int ownerId, String name, int postCost, String foodType, int addressNode) {
         if (User.getUserById(ownerId) != null) {
             Main.sql.insertToRestaurant(ownerId, name, foodType, postCost);
+            ArrayList<Restaurant> restaurants = Main.sql.getRestaurant(ownerId, "ownerId", false, "");
+            Main.sql.InsertToAddress(0, restaurants.get(restaurants.size() - 1).id, addressNode);
             return true;
         }
         return false;
     }
-    public static String foodTypesToString(ArrayList<FoodType> foodTypes) {
+    public static String foodTypesToString(ArrayList<FoodType> foodTypes, boolean space) {
         String foodType = foodTypes.get(0).getFoodType();
         for (int i = 1; i < foodTypes.size(); i++) {
-            foodType += ", " + foodTypes.get(i).getFoodType();
+            if (space)
+                foodType += ", " + foodTypes.get(i).getFoodType();
+            else
+                foodType += "," + foodTypes.get(i).getFoodType();
         }
         return foodType;
     }
@@ -41,7 +46,7 @@ public class Restaurant {
         System.out.format(leftAlignHeaderFormat," Id","     Name","                   foodTypes","PostCost");
         System.out.println (dashedLine);
         for (int i = 0; i < restaurants.size(); i++)
-            System.out.format(leftAlignFormat,restaurants.get(i).id,restaurants.get(i).name,foodTypesToString(restaurants.get(i).foodTypes),restaurants.get(i).postCost);
+            System.out.format(leftAlignFormat,restaurants.get(i).id,restaurants.get(i).name,foodTypesToString(restaurants.get(i).foodTypes, true),restaurants.get(i).postCost);
         System.out.println(dashedLine);
     }
     public Address getRestaurantAddress() {

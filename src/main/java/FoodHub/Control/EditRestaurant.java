@@ -51,7 +51,7 @@ public class EditRestaurant {
         }
         foodTypeBox.getChildren().add(checkFoodType);
     }
-    public void save(ActionEvent event) {
+    public void save(ActionEvent event) throws IOException {
         Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.setTitle("Error");
         alert.setHeaderText("Invalid type input.");
@@ -69,7 +69,9 @@ public class EditRestaurant {
                 for (int i = 0; i < checkFoodType.getItems().size(); i++)
                     if (checkFoodType.getCheckModel().isChecked(i))
                         foodTypes.add(FoodType.stringToFoodType(checkFoodType.getCheckModel().getItem(i)));
-//                Main.sql.editRestaurant(Restaurant.currentRestaurant.id, Restaurant.currentRestaurant.owner.id, name.getText(), checkFoodType.getCheckModel(), postCost.getValue(), address.getValue());
+                Main.sql.editRestaurant(Restaurant.currentRestaurant.id, Restaurant.currentRestaurant.owner.id, name.getText(), Restaurant.foodTypesToString(foodTypes, false), postCost.getValue());
+                Restaurant.editRestaurantAddress(Restaurant.currentRestaurant.id, address.getValue());
+                RestaurantOwnerPanel.show();
             }
         }
     }

@@ -8,12 +8,10 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.PrimitiveIterator;
 
 public class OwnerPanel {
     @FXML
@@ -35,7 +33,7 @@ public class OwnerPanel {
             HBox hBox = loader.load();
             OwnerPanelRow ownerPanelRow = loader.getController();
             double average = Comment.averageRate(Main.sql.getComment(restaurant.id, "restaurantId", false));
-            ownerPanelRow.setData(restaurant.id, restaurant.name, Restaurant.foodTypesToString(restaurant.foodTypes), Integer.toString(restaurant.postCost), Integer.toString(Address.getAddress(0, restaurant.id).node), (average > 0) ? String.valueOf(average) : "");
+            ownerPanelRow.setData(restaurant.id, restaurant.name, Restaurant.foodTypesToString(restaurant.foodTypes, true), Integer.toString(restaurant.postCost), Integer.toString(Address.getAddress(0, restaurant.id).node), (average > 0) ? String.valueOf(average) : "");
             hBox.setId("Restaurant_" + restaurant.id);
             box.getChildren().add(hBox);
         }

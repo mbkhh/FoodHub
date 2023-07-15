@@ -34,7 +34,7 @@ public class Restaurants {
             row.setId("Restaurant_" + temp.id);
             RestaurantsRow restaurantsRow = loader.getController();
             double average = Comment.averageRate(Main.sql.getComment(temp.id, "restaurantId", false));
-            restaurantsRow.setData(temp.id, temp.name, Restaurant.foodTypesToString(temp.foodTypes), Integer.toString(temp.postCost), Integer.toString(Address.getAddress(0, temp.id).node), (average > 0) ? String.valueOf(average) : "");
+            restaurantsRow.setData(temp.id, temp.name, Restaurant.foodTypesToString(temp.foodTypes, true), Integer.toString(temp.postCost), Integer.toString(Address.getAddress(0, temp.id).node), (average > 0) ? String.valueOf(average) : "");
             box.getChildren().add(row);
         }
     }
