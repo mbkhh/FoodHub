@@ -4,6 +4,7 @@ module com.example.foodhub {
     requires javafx.media;
     requires java.sql;
     requires com.gluonhq.charm.glisten;
+    requires org.controlsfx.controls;
     exports FoodHub;
     exports FoodHub.Control;
     opens FoodHub to javafx.fxml;

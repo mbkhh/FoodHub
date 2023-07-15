@@ -15,7 +15,7 @@ public class OwnerPanelRow {
     @FXML
     public Label name, foodType, postCost, address, rate;
     int restaurantId;
-    public void select(ActionEvent event) {
+    public void select(ActionEvent event) throws IOException {
         Restaurant.setCurrentRestaurant(restaurantId);
         RestaurantOwnerPanel.show();
     }

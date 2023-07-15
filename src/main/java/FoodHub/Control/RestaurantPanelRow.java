@@ -19,7 +19,7 @@ public class RestaurantPanelRow {
         this.rate.setText((rate > 0) ? String.valueOf(rate) : "");
     }
 
-    public void comment(ActionEvent event) {
+    public void comments(ActionEvent event) {
 
     }
     public void add(ActionEvent event) {

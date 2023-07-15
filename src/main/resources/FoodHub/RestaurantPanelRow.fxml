@@ -6,23 +6,23 @@
 <?import javafx.scene.control.Tooltip?>
 <?import javafx.scene.layout.HBox?>
 
-<HBox alignment="CENTER_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="71.0" prefWidth="682.0" spacing="5.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="FoodHub.Control.RestaurantPanelRow">
+<HBox alignment="CENTER_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="71.0" prefWidth="682.0" spacing="5.0" style="-fx-background-color: ddd;" stylesheets="@style.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="FoodHub.Control.RestaurantPanelRow">
    <children>
       <Label fx:id="name" prefHeight="30.0" prefWidth="100.0" styleClass="TableLable" />
-      <Label fx:id="type" prefHeight="30.0" prefWidth="100.0" styleClass="TableLable" />
+      <Label fx:id="type" prefHeight="31.0" prefWidth="120.0" styleClass="TableLable" />
       <Label fx:id="price" prefHeight="30.0" prefWidth="100.0" styleClass="TableLable" />
       <Label fx:id="discount" prefHeight="30.0" prefWidth="101.0" styleClass="TableLable" />
-      <Button mnemonicParsing="false" onAction="#comment" prefHeight="45.0" prefWidth="59.0" styleClass="TableButton">
+      <Button minWidth="42.0" mnemonicParsing="false" onAction="#comments" prefHeight="35.0" prefWidth="65.0" styleClass="TableButton">
          <graphic>
-            <Label fx:id="rate" alignment="CENTER" prefHeight="30.0" prefWidth="101.0" styleClass="TableLable" />
+            <Label fx:id="rate" alignment="CENTER" prefHeight="30.0" prefWidth="101.0" style="-fx-font-style: 111; -fx-font-size: 10;" styleClass="TableLable" textFill="WHITE" />
          </graphic>
          <tooltip>
             <Tooltip text="Tap to See the Comments" />
          </tooltip>
       </Button>
-      <Button minWidth="50.0" mnemonicParsing="false" onAction="#subtract" prefHeight="42.0" prefWidth="77.0" styleClass="TableButton" text="Subtract" />
-      <Button minWidth="50.0" mnemonicParsing="false" onAction="#add" prefHeight="41.0" prefWidth="50.0" styleClass="TableButton" text="Add" />
-      <Label fx:id="number" prefHeight="43.0" prefWidth="43.0" styleClass="TableLable" />
+      <Button minWidth="50.0" mnemonicParsing="false" onAction="#subtract" prefHeight="34.0" prefWidth="50.0" style="-fx-font-size: 10;" styleClass="TableButton" text="Sub" />
+      <Button minWidth="40.0" mnemonicParsing="false" onAction="#add" prefHeight="34.0" prefWidth="40.0" style="-fx-font-size: 10;" styleClass="TableButton" text="Add" />
+      <Label fx:id="number" alignment="CENTER" prefHeight="43.0" prefWidth="43.0" styleClass="TableLable" />
    </children>
    <padding>
       <Insets left="5.0" />

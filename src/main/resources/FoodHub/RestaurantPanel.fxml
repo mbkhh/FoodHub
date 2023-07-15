@@ -21,10 +21,10 @@
                   <HBox alignment="CENTER_LEFT" prefHeight="60.0" prefWidth="200.0" spacing="5.0">
                      <children>
                         <Label prefHeight="34.0" prefWidth="100.0" styleClass="TableTitleLable" text="Name" />
-                        <Label prefHeight="34.0" prefWidth="100.0" styleClass="TableTitleLable" text="Type" />
+                        <Label prefHeight="34.0" prefWidth="119.0" styleClass="TableTitleLable" text="Type" />
                         <Label prefHeight="34.0" prefWidth="100.0" styleClass="TableTitleLable" text="Price" />
                         <Label prefHeight="34.0" prefWidth="100.0" styleClass="TableTitleLable" text="Discount" />
-                        <Label prefHeight="34.0" prefWidth="80.0" styleClass="TableTitleLable" text="Rating" />
+                        <Label prefHeight="34.0" prefWidth="73.0" styleClass="TableTitleLable" text="Rating" />
                      </children>
                      <VBox.margin>
                         <Insets />
@@ -93,7 +93,7 @@
                               <Label prefHeight="34.0" prefWidth="225.0" styleClass="CartDataLable" text="Food Types:" />
                            </children>
                         </HBox>
-                        <Label fx:id="foodType" alignment="TOP_LEFT" prefHeight="75.0" prefWidth="281.0" styleClass="CartDataLable" text="xfgccccccccccccccccccccccccccccccccccccccccccj" />
+                        <Label fx:id="foodType" alignment="TOP_LEFT" prefHeight="75.0" prefWidth="281.0" styleClass="CartDataLable" text="xfgccccccccccccccccccccccccccccccccccccccccccj" wrapText="true" VBox.vgrow="ALWAYS" />
                      </children>
                   </VBox>
                   <HBox alignment="CENTER_LEFT" prefHeight="70.0" prefWidth="384.0" spacing="10.0">

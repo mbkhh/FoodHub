@@ -25,7 +25,7 @@ public class Restaurant {
         }
         return false;
     }
-    public String foodTypesToString() {
+    public static String foodTypesToString(ArrayList<FoodType> foodTypes) {
         String foodType = foodTypes.get(0).getFoodType();
         for (int i = 1; i < foodTypes.size(); i++) {
             foodType += ", " + foodTypes.get(i).getFoodType();
@@ -41,7 +41,7 @@ public class Restaurant {
         System.out.format(leftAlignHeaderFormat," Id","     Name","                   foodTypes","PostCost");
         System.out.println (dashedLine);
         for (int i = 0; i < restaurants.size(); i++)
-            System.out.format(leftAlignFormat,restaurants.get(i).id,restaurants.get(i).name,restaurants.get(i).foodTypesToString(),restaurants.get(i).postCost);
+            System.out.format(leftAlignFormat,restaurants.get(i).id,restaurants.get(i).name,foodTypesToString(restaurants.get(i).foodTypes),restaurants.get(i).postCost);
         System.out.println(dashedLine);
     }
     public Address getRestaurantAddress() {

@@ -36,16 +36,16 @@ public class RestaurantPanel {
         restaurantPanel = this;
         ArrayList<Food> foods = Main.sql.getFood(Restaurant.currentRestaurant.id, "restaurantId", false, "");
         for (Food food : foods){
-            FXMLLoader loader = new FXMLLoader(MainApplication.class.getResource("RestaurantPanelRow.fxml"));
+            FXMLLoader loader = new FXMLLoader(MainApplication.class.getResource("RestaurantOwnerPanelRow.fxml"));
             HBox hBox = loader.load();
-            RestaurantPanelRow restaurantPanelRow = loader.getController();
-            restaurantPanelRow.setData(food.id, food.name, food.foodType.getFoodType(), food.getPrice()[0], food.getPrice()[0] - food.getPrice()[1], Comment.averageRate(Main.sql.getComment(food.id, "foodId", false)));
+            RestaurantOwnerPanelRow restaurantOwnerPanelRow = loader.getController();
+            restaurantOwnerPanelRow.setData(food.id, food.name, food.foodType.getFoodType(), food.getPrice()[0], food.getPrice()[0] - food.getPrice()[1], Comment.averageRate(Main.sql.getComment(food.id, "foodId", false)));
             hBox.setId("food_" + food.id);
             box.getChildren().add(hBox);
         }
         name.setText(Restaurant.currentRestaurant.name);
         address.setText(String.valueOf(Restaurant.currentRestaurant.getRestaurantAddress().node));
-        foodType.setText(Restaurant.currentRestaurant.foodTypesToString());
+        foodType.setText(Restaurant.foodTypesToString(Restaurant.currentRestaurant.foodTypes));
         postCost.setText(String.valueOf(Restaurant.currentRestaurant.postCost));
         double averageRate = Comment.averageRate(Main.sql.getComment(Restaurant.currentRestaurant.id, "restaurantId", false));
         rating.setText((averageRate > 0) ? String.valueOf(averageRate) : "");

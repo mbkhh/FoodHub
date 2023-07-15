@@ -35,7 +35,7 @@ public class OwnerPanel {
             HBox hBox = loader.load();
             OwnerPanelRow ownerPanelRow = loader.getController();
             double average = Comment.averageRate(Main.sql.getComment(restaurant.id, "restaurantId", false));
-            ownerPanelRow.setData(restaurant.id, restaurant.name, restaurant.foodTypesToString(), Integer.toString(restaurant.postCost), Integer.toString(Address.getAddress(0, restaurant.id).node), (average > 0) ? String.valueOf(average) : "");
+            ownerPanelRow.setData(restaurant.id, restaurant.name, Restaurant.foodTypesToString(restaurant.foodTypes), Integer.toString(restaurant.postCost), Integer.toString(Address.getAddress(0, restaurant.id).node), (average > 0) ? String.valueOf(average) : "");
             hBox.setId("Restaurant_" + restaurant.id);
             box.getChildren().add(hBox);
         }
@@ -52,7 +52,7 @@ public class OwnerPanel {
             alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Error");
             alert.setHeaderText("Can't delete restaurant.");
-            alert.setContentText("You have open orders int this restaurant and can't delete before finish your jobs.");
+            alert.setContentText("You have open orders in this restaurant and can't delete before finish your jobs.");
             alert.show();
         }
         else {

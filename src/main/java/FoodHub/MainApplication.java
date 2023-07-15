@@ -28,10 +28,11 @@ public class MainApplication extends Application {
         Main.sql=new Sql();
 //        traffic = new Traffic();
 //        traffic.start();
-        User.currentUser = User.getUserById(4);
+        User.currentUser = User.getUserById(1);
         Restaurant.setCurrentRestaurant(1);
 //        OwnerPanel.show();
-        RestaurantPanel.show();
+        EditRestaurant.show();
+//        RestaurantOwnerPanel.show();
 //        FXMLLoader loader = new FXMLLoader(MainApplication.class.getResource("RestaurantOwnerPanelRow.fxml"));
 //        Scene root = new Scene(loader.load());
 //        primaryStage.setScene(root);

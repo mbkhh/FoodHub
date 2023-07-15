@@ -326,7 +326,7 @@ public class Main {
                             System.out.println(Restaurant.currentRestaurant.getRestaurantAddress().node);
                         }
                         else if (command.matches("show\\s+food\\s+types\\s+")) {
-                            System.out.println(Restaurant.currentRestaurant.foodTypesToString());
+                            System.out.println(Restaurant.foodTypesToString(Restaurant.currentRestaurant.foodTypes));
                         }
                         else if (command.matches("select\\s+food\\s+with\\s+id\\s+\\d+")) {
                             if (Food.setCurrentFood(Integer.parseInt(commands[4]))) {
