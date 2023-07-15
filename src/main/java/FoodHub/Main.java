@@ -150,7 +150,7 @@ public class Main {
 //                    info.add("0");
 //                }
 //                do {
-//                    System.out.println("Enter an address:");
+//                    System.out.println("Enter an price:");
 //                    if (info.size() >= 8)
 //                        info.remove(7);
 //                    command = scanner.nextLine();
@@ -500,7 +500,7 @@ public class Main {
                                             command = scanner.nextLine();
                                             if (command.matches("[\\w,]+")) {
                                                 String foodType = command;
-                                                System.out.println("enter restaurant address: ");
+                                                System.out.println("enter restaurant price: ");
                                                 command = scanner.nextLine();
                                                 if (command.matches("\\d+")) {
                                                     int addressNode = Integer.parseInt(command);

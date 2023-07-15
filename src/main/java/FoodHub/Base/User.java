@@ -69,12 +69,12 @@ public class User {
 
         if(!registerRequirments.get(7).matches("\\d+"))
         {
-            System.out.println("Invalid address!Address must be a number between 1 to 1000");
+            System.out.println("Invalid price!Address must be a number between 1 to 1000");
             return "Address OOR";
         }
         else if(Integer.parseInt(registerRequirments.get(7)) < 1 || Integer.parseInt(registerRequirments.get(7)) > 1000)
         {
-            System.out.println("Invalid address!Address must be a number between 1 to 1000");
+            System.out.println("Invalid price!Address must be a number between 1 to 1000");
             return "Address OOR";
         }
 

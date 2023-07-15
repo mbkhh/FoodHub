@@ -75,10 +75,24 @@ public class RestaurantOwnerPanel {
             alert.show();
         }
         else {
+//            box.getChildren().removeAll();
+//            box.getChildren().clear();
             EditRestaurant.show();
         }
     }
-    public void addFood(ActionEvent event) {
+    public void addFood(ActionEvent event) throws IOException {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        if (Order.openOrders(Restaurant.currentRestaurant.id).size() != 0) {
+            alert.setTitle("Error");
+            alert.setHeaderText("Can't edit restaurant.");
+            alert.setContentText("You have open orders in this restaurant and can't edit before finish your jobs.");
+            alert.show();
+        }
+        else {
+//            box.getChildren().removeAll();
+//            box.getChildren().clear();
+            EditRestaurant.show();
+        }
     }
     public void delete(int id) throws IOException {
         Alert alert = new Alert(Alert.AlertType.ERROR);

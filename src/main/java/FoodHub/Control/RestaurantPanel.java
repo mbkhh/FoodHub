@@ -38,8 +38,8 @@ public class RestaurantPanel {
         for (Food food : foods){
             FXMLLoader loader = new FXMLLoader(MainApplication.class.getResource("RestaurantPanelRow.fxml"));
             HBox hBox = loader.load();
-            RestaurantOwnerPanelRow restaurantOwnerPanelRow = loader.getController();
-            restaurantOwnerPanelRow.setData(food.id, food.name, food.foodType.getFoodType(), food.getPrice()[0], food.getPrice()[0] - food.getPrice()[1], Comment.averageRate(Main.sql.getComment(food.id, "foodId", false)));
+            RestaurantPanelRow restaurantPanelRow = loader.getController();
+            restaurantPanelRow.setData(food.id, food.name, food.foodType.getFoodType(), food.getPrice()[0], food.getPrice()[0] - food.getPrice()[1], Comment.averageRate(Main.sql.getComment(food.id, "foodId", false)));
             hBox.setId("food_" + food.id);
             box.getChildren().add(hBox);
         }

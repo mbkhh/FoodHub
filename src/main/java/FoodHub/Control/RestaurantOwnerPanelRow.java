@@ -26,9 +26,6 @@ public class RestaurantOwnerPanelRow {
         this.discount.setText((discount > 0) ? String.valueOf(discount) : "");
         this.rate.setText((rate > 0) ? String.valueOf(rate) : "");
     }
-    public void comments(ActionEvent event) {
-
-    }
     public void changeActivity(ActionEvent event) {
         Alert alert = new Alert(Alert.AlertType.ERROR);
         if (Order.openOrders(Restaurant.currentRestaurant.id).size() != 0) {
@@ -50,5 +47,21 @@ public class RestaurantOwnerPanelRow {
     }
     public void delete(ActionEvent event) throws IOException {
         RestaurantOwnerPanel.restaurantOwnerPanel.delete(foodId);
+    }
+
+    public void edit(ActionEvent event) throws IOException {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        if (Order.openOrders(Restaurant.currentRestaurant.id).size() != 0) {
+            alert.setTitle("Error");
+            alert.setHeaderText("Can't edit food.");
+            alert.setContentText("You have open orders in this restaurant and can't edit before finish your jobs.");
+            alert.show();
+        }
+        else {
+//            box.getChildren().removeAll();
+//            box.getChildren().clear();
+            Food.currentFood = Food.getFood(foodId);
+            EditFood.show();
+        }
     }
 }

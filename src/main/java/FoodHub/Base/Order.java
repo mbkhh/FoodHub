@@ -274,7 +274,7 @@ public class Order {
                 Address userAddress = Address.getAddress(user.id, 0);
                 if(userAddress == null) {
                     do {
-                        System.out.println("You have no registered Address please enter your address:");
+                        System.out.println("You have no registered Address please enter your price:");
                         String node = Main.scanner.nextLine();
                         node = node.trim();
                         if(node.matches("\\d+"))
