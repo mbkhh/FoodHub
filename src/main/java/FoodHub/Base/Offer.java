@@ -81,7 +81,7 @@ public class Offer extends Thread{
             if (!isRunning)
                 break;
             x++;
-            if(x == 6)
+            if(x == 200)
             {
                 showOffer();
                 x = 0;

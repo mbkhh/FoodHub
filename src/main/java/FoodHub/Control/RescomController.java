@@ -78,7 +78,9 @@ public class RescomController {
             if (!hasreply) commentmenu.getChildren().add(row);
 
         }
-            int average= sumRate/(comentz.size());
+        int average = 0;
+        if(comentz.size() != 0)
+            average= sumRate/(comentz.size());
         double aver=(double)(sumRate)/(comentz.size());
 
 
@@ -115,8 +117,8 @@ public class RescomController {
     }
 
     @FXML
-    void backkk(ActionEvent event) {
-        System.out.println("back");
+    void backkk(ActionEvent event) throws IOException{
+        RestaurantPanel.show();
     }
 
     public static void show() throws IOException

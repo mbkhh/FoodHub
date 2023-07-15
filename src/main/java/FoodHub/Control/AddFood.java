@@ -54,8 +54,7 @@ public class AddFood {
         if (!name.getText().matches("\\w+")) {
             alert.setTitle("the name type must have more that one word include letters and numbers and '_'");
             alert.show();
-        }
-        else {
+        } else {
             alert.setAlertType(Alert.AlertType.CONFIRMATION);
             alert.setTitle("confirm");
             alert.setHeaderText("The new food will add.");

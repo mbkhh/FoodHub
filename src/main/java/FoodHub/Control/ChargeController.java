@@ -68,7 +68,10 @@ public class ChargeController {
         }
 
     }
-
+    public void back() throws IOException
+    {
+        Panel.show();
+    }
     public static void show() throws IOException
     {
         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("charge.fxml"));

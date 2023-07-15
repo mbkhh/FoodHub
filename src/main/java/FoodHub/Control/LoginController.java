@@ -156,7 +156,7 @@ public class LoginController{
 ////        registerStage = (Stage)((Node)e.getSource()).getScene().getWindow();
 //        Main.primaryStage.setScene(new Scene(root,Main.primaryWidth, Main.primaryHeight));
 //        Main.primaryStage.show();
-
+        System.out.println("dsfdfsdf");
         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("register.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), MainApplication.primaryWidth, MainApplication.primaryHeight);
         MainApplication.primaryStage.setTitle("Hello!");
@@ -175,7 +175,7 @@ public class LoginController{
     String username,password,fullname,address,secA,secQ,type;
     ArrayList <String> info = new ArrayList<>();
 
-    public void loginhandler(Event e)
+    public void loginhandler(Event e) throws IOException
     {
          username =  loginUsername.getText();
          password =  loginPassword.getText();
@@ -196,7 +196,19 @@ public class LoginController{
                 wrongUsername.setVisible(false);
                 wrongPass.setVisible(false);
                 recoverPass.setVisible(false);
-                gotoNextPage=true;
+                User.currentUser = Main.sql.getUser(username,password);
+                if (User.currentUser.type == 1)
+                {
+                    Panel.show();
+                }
+                else if(User.currentUser.type == 2)
+                {
+                    OwnerPanel.show();
+                }
+                else if(User.currentUser.type == 3)
+                {
+                    ServiceOpenOrder.show();
+                }
             default:
                 break;
     }
@@ -218,15 +230,17 @@ public class LoginController{
         secQues.setVisible(true);
         secQues.setText(Main.sql.getUser(username).securityQuestion);
     }
-    public void loginhandler2(Event e) {
+    public void loginhandler2(Event e) throws  IOException {
         if (!secAnswer.getText().equals(Main.sql.getUser(username).securityAnswer)) {
             wrongSecAns.setVisible(true);
         } else if(secAnswer.getText().equals(Main.sql.getUser(username).securityAnswer)) {
             wrongSecAns.setVisible(false);
+            User.currentUser = Main.sql.getUser(username);
+            Panel.show();
         }
     }
 
-    public void registerHandler (Event e)
+    public void registerHandler (Event e) throws IOException
     {
         boolean x=false;
         boolean y = false;
@@ -354,6 +368,19 @@ public class LoginController{
                         less4Name.setVisible(false);
                         outofrageAddress.setVisible(false);
                         calEror.setVisible(false);
+                        User.currentUser = Main.sql.getUser(regUsername.getText(),regPass.getText());
+                        if (User.currentUser.type == 1)
+                        {
+                            Panel.show();
+                        }
+                        else if(User.currentUser.type == 2)
+                        {
+                            OwnerPanel.show();
+                        }
+                        else if(User.currentUser.type == 3)
+                        {
+                            ServiceOpenOrder.show();
+                        }
                         break;
                     default:
                         break;

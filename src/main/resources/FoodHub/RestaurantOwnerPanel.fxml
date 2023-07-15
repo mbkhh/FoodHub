@@ -120,9 +120,8 @@
       </HBox>
       <HBox alignment="CENTER" prefHeight="70.0" prefWidth="200.0" spacing="150.0" style="-fx-background-color: eee;">
          <children>
-            <Button mnemonicParsing="false" onAction="#openOrders" prefHeight="41.0" prefWidth="91.0" text="Open Orders" />
             <Button mnemonicParsing="false" onAction="#allOrders" prefHeight="41.0" prefWidth="86.0" text="All Orders" />
-            <Button mnemonicParsing="false" prefHeight="41.0" prefWidth="91.0" text="Button" />
+            <Button mnemonicParsing="false" onAction="#foodcom" prefHeight="41.0" prefWidth="111.0" text="Food comments" />
          </children>
          <padding>
             <Insets left="50.0" right="50.0" />

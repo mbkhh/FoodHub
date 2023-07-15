@@ -1,9 +1,13 @@
 package FoodHub.Control;
 import FoodHub.Base.Cart;
+import FoodHub.Base.Food;
 import FoodHub.Base.User;
+import FoodHub.Main;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
+
+import java.io.IOException;
 
 public class RestaurantPanelRow {
     @FXML
@@ -19,8 +23,9 @@ public class RestaurantPanelRow {
         this.rate.setText((rate > 0) ? String.valueOf(rate) : "");
     }
 
-    public void comments(ActionEvent event) {
-
+    public void comments(ActionEvent event) throws IOException {
+        Food.currentFood = Food.getFood(foodId);
+        CustcomController.show();
     }
     public void add(ActionEvent event) {
         if (number.getText().equals(""))

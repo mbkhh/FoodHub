@@ -53,6 +53,6 @@ public class RestaurantOrder {
 
     public void back() throws IOException
     {
-        Panel.show();
+        OwnerPanel.show();
     }
 }

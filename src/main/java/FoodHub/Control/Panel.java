@@ -36,8 +36,8 @@ public class Panel {
             box.getChildren().add(pane);
         }
     }
-    public void balance(ActionEvent event) {
-
+    public void balance(ActionEvent event) throws IOException {
+        ChargeController.show();
     }
     public void cart(ActionEvent event) throws IOException {
         CartController.show();

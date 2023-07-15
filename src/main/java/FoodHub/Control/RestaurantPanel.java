@@ -50,11 +50,11 @@ public class RestaurantPanel {
         double averageRate = Comment.averageRate(Main.sql.getComment(Restaurant.currentRestaurant.id, "restaurantId", false));
         rating.setText((averageRate > 0) ? String.valueOf(averageRate) : "");
     }
-    public void comments(ActionEvent event) {
-
+    public void comments(ActionEvent event) throws IOException{
+        RescomController.show();
     }
-    public void balance(ActionEvent event) {
-
+    public void balance(ActionEvent event) throws IOException{
+        ChargeController.show();
     }
     public void cart(ActionEvent event) throws IOException {
         CartController.show();

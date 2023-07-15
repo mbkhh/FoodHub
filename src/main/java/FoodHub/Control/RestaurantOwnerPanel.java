@@ -53,14 +53,16 @@ public class RestaurantOwnerPanel {
         double averageRate = Comment.averageRate(Main.sql.getComment(Restaurant.currentRestaurant.id, "restaurantId", false));
         rating.setText((averageRate > 0) ? String.valueOf(averageRate) : "");
     }
-    public void comments(ActionEvent event) {
-
+    public void comments(ActionEvent event) throws IOException{
+        System.out.println("sffdsfds");
+        CoResownerRController.show();
     }
-    public void openOrders(ActionEvent event) {
-
+    public void foodcom() throws IOException
+    {
+        CoResownerFController.show();
     }
-    public void allOrders(ActionEvent event) {
-
+    public void allOrders(ActionEvent event) throws IOException{
+        RestaurantOrder.show(Restaurant.currentRestaurant.id);
     }
     public void back(ActionEvent event) throws IOException {
         Restaurant.currentRestaurant = null;
